@@ -1,34 +1,47 @@
-let canvas = document.getElementById("red");
+let canvas = document.getElementById("paint");
 let ctx = canvas.getContext("2d");
-ctx.fillStyle = "#FF0000BB";
-ctx.fillRect(0, 0, canvas.width, canvas.height);
+let pencil = new Pencil(3,'circle');
 
-canvas = document.getElementById("green");
-ctx = canvas.getContext("2d");
-ctx.fillStyle = "#00FF00BB";
-ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-canvas = document.getElementById("blue");
-ctx = canvas.getContext("2d");
-ctx.fillStyle = "#0000FFBB";
-ctx.fillRect(0, 0, canvas.width, canvas.height);
+let colorPencil = document.getElementById("color").addEventListener("click",()=>{
+    let color = colorPencil.getValue();
+    pencil.setGrosor(color);
+})
 
-canvas = document.getElementById("yellow");
-ctx = canvas.getContext("2d");
-ctx.fillStyle = "#FFFF00BB";
-ctx.fillRect(0, 0, canvas.width, canvas.height);
+/*let grosorPencil = document.getElementById("grosorPencil").addEventListener("click",()=>{
+    let grosor = grosorPencil.getValue();
+    pencil.setGrosor(grosor);
+})*/
 
-canvas = document.getElementById("pink");
-ctx = canvas.getContext("2d");
-ctx.fillStyle = "#FF00FFBB";
-ctx.fillRect(0, 0, canvas.width, canvas.height);
+document.getElementById("pencil").addEventListener("click",()=>{
+    pencil.setForm('circle');
+})
+document.getElementById("rubber").addEventListener("click",()=>{
+    pencil.setForm('rubber');
+    pencil.setColor('FFFFFFFF')
+})
 
-canvas = document.getElementById("lightblue");
-ctx = canvas.getContext("2d");
-ctx.fillStyle = "#00FFFFBB";
-ctx.fillRect(0, 0, canvas.width, canvas.height);
+let mouseDown=false;
 
-canvas = document.getElementById("black");
-ctx = canvas.getContext("2d");
-ctx.fillStyle = "#000000FF";
-ctx.fillRect(0, 0, canvas.width, canvas.height);
+document.getElementById("paint").addEventListener("mousedown",()=>{
+    mouseDown=true;
+    ctx.beginPath();
+})
+
+document.getElementById("paint").addEventListener("mousemove",(e)=>{
+    ctx.lineWidth = pencil.getGrosor();
+    if (pencil.getForm === 'circle') {
+        ctx.lineCap = 'round';
+    }else{
+        ctx.lineCap = 'square';
+    }
+    ctx.moveTo(e.layerX,e.layerY);
+    ctx.lineTo(e.layerX,e.layerY);
+    ctx.stroke();
+})
+
+document.getElementById("paint").addEventListener("mouseup",()=>{
+    mouseDown=false;
+})
+
+

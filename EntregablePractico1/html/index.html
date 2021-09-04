@@ -1,46 +1,20 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-		<title>Entregable 1 - Paint</title>
-	</head>
+        <title>Entregable 1 - Paint</title>
+    </head>
     <body>
         <nav class="container">
             <div class="row border border-2 border-dark border-top-0">
                 <div class="col m-2 b-2 ">
-                    <button class="btn btn-dark m-md-4 bg-light" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" >
+                    <button class="btn btn-dark m-md-4 bg-light" type="button" id="pencil" >
                         <img src="../img/pencil.png" alt="pencil" width="30" height="30"></button>
-                    <div class="dropdown-menu p-0" aria-labelledby="dropdownMenuButton1">
-                        <div class="row m-0">
-                            <div class="col p-0">
-                                <a class="dropdown-item" href="#"><canvas class="pt-1" id="red" width="20" height="20"></canvas></a>
-                            </div>
-                            <div class="col p-0">
-                                <a class="dropdown-item" href="#"><canvas class="pt-1" id="green" width="20" height="20"></canvas></a>
-                            </div>
-                            <div class="col p-0">
-                                <a class="dropdown-item " href="#"><canvas class="pt-1" id="blue" width="20" height="20"></canvas></a>
-                            </div>
-                        </div>
-                        <div class="row m-0">
-                            <div class="col p-0">
-                                <a class="dropdown-item" href="#"><canvas class="pt-1" id="yellow" width="20" height="20"></canvas></a>
-                            </div>
-                            <div class="col p-0">
-                                <a class="dropdown-item" href="#"><canvas class="pt-1" id="pink" width="20" height="20"></canvas></a>
-                            </div>
-                            <div class="col p-0">
-                                <a class="dropdown-item " href="#"><canvas class="pt-1" id="lightblue" width="20" height="20"></canvas></a>
-                            </div>
-                        </div>
-                        <div class="row m-0">
-                            <div class="col p-0">
-                                <a class="dropdown-item" href="#"><canvas class="pt-1" id="black" width="20" height="20"></canvas></a>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="btn btn-dark m-lg-4 bg-light"><img src="../img/rubber.png" alt="rubber" width="30" height="30"></button>
+                    <button class="btn btn-primary p-0">
+                        <input type="color" id="color">
+                    </button>
+                    <button id="rubber" class="btn btn-dark m-lg-4 bg-light"><img src="../img/rubber.png" alt="rubber" width="30" height="30"></button>
                     <button class="btn btn-dark m-lg-4 bg-light" style="color: black;">Select Filtros</button>
                     <button class="btn btn-dark m-lg-4 bg-light" style="color: black;">Subir Imagen</button>
                     <button class="btn btn-dark m-lg-4 bg-light" style="color: black;">Guardar Imagen</button>
@@ -52,6 +26,7 @@
             </div>
         </nav>
         <!--empieza el canvas-->
+        <script src="../js/pencil.js"></script>
         <script src="../js/index.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
     </body>
