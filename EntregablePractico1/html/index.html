@@ -3,10 +3,12 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+        <link rel="stylesheet" href="../css/style.css">
         <title>Entregable 1 - Paint</title>
     </head>
-    <body>
-        <nav class="container">
+    <body id="body">
+
+        <nav id="nav"class="container">
             <div class="row border border-2 border-dark border-top-0">
                 <div class="col m-2 b-2 ">
                     <button class="btn btn-dark m-md-4 bg-light" type="button" id="pencil" >
@@ -14,17 +16,27 @@
                     <button class="btn btn-primary p-0">
                         <input type="color" id="color">
                     </button>
+                    <input id="grosor" type="range" value="0"max="20" min="1">
                     <button id="rubber" class="btn btn-dark m-lg-4 bg-light"><img src="../img/rubber.png" alt="rubber" width="30" height="30"></button>
                     <button class="btn btn-dark m-lg-4 bg-light" style="color: black;">Select Filtros</button>
-                    <button class="btn btn-dark m-lg-4 bg-light" style="color: black;">Subir Imagen</button>
+                    <input type="file" id="archivo" accept="image/png, .jpeg, .jpg, image/gif"style="color: black;"></input>
+                    <button class="btn btn-dark m-lg-4 bg-light" id="subir_image"style="color: black;">Subir</button>
                     <button class="btn btn-dark m-lg-4 bg-light" style="color: black;">Guardar Imagen</button>
-                    <button class="btn btn-dark m-lg-4 bg-light" style="color: black;">Borrar Imagen</button>
+                    <button class="btn btn-dark m-lg-4 bg-light" id="borrar_imagen" style="color: black;">Borrar Imagen</button>
                 </div>  
             </div>
-            <div class="row bg-white border border-2 border-dark border-top-0">
-                <canvas id="paint" width="200" height="100"></canvas>
-            </div>
         </nav>
+        <div>
+            <div id="pop-up">
+                <p>Como desea comenzar?</p>
+                <button id="cargar-image" type="button">Subir Imagen</button>
+                <button id="close-pop-up" type="button">Fondo blanco</button>
+            </div>
+        <div>
+
+        <section id="section">
+            <canvas id="paint" width="1100" height="400"></canvas>
+        </section>
         <!--empieza el canvas-->
         <script src="../js/pencil.js"></script>
         <script src="../js/index.js"></script>
