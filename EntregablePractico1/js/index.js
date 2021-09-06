@@ -36,36 +36,28 @@ document.getElementById("paint").addEventListener("mousemove",(e)=>{
     }
 
 })
-function returnPosMouse(canvas, e){
-    var c = canvas.getBoundingClientRect();
-    return { //objeto
-       x: (e.clientX - c.left),
-       y: (e.clientY - c.top)
-    }
-}
+
 document.getElementById("paint").addEventListener("mouseup",()=>{
     mouseDown=false;
 })
 
 function draw(e){
-    if(mouseDown){
+
         ctx.lineWidth = pencil.getGrosor();
         let color= document.getElementById("color").value;
         let grosor = document.getElementById("grosor").value;
         if (pencil.getForm() == 'circle') {
             ctx.lineCap = 'round';
         }else{
-            console.log("estoy en el else");
             ctx.lineCap = 'square';
         }
         pencil.setGrosor(grosor);
         pencil.setColor(color);
         ctx.strokeStyle = pencil.getColor();
-        //ctx.moveTo(e.layerX,e.layerY);
-        let pos = returnPosMouse(canvas, e);
-        ctx.lineTo(pos.x, pos.y);
+        let c = canvas.getBoundingClientRect();
+        ctx.lineTo(e.clientX - c.left, e.clientY - c.top);
         ctx.stroke();
-    }
+    
 }
 
 ////////////////////////////////////////////////////////////////////////////////////
@@ -96,6 +88,8 @@ btn_borrar.addEventListener('click', borrar_canvas);
 
 function borrar_canvas(){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    canvas.width = width;
+    canvas.height = height;
 }
 
 //////////////////////////////////////////////////////////////////////////////////////
@@ -106,38 +100,40 @@ function borrar_canvas(){
 
 
 //function fill(){
-    let image = new Image();
+    
     let file = document.getElementById('archivo');
-    let reader = new FileReader();
-    
-    
-    file.addEventListener('change', (event) => {
-        let fileList = event.target.files;
-        image.src = fileList[0].name; 
-        console.log(image.src)   
-    })
-    // reader.onloadend = function () {
-    //     image.src = reader.result;
-    // }
+    let fileModal = document.getElementById('archivoModal');
 
-    // if(file){
-    //     alert("aa")
-    //     reader.readAsDataURL(file);
-    // }else{
-    //     image.src = "";
-    // }
-//}
+    file.addEventListener('change', subirImagen);
+    fileModal.addEventListener('change', subirImagen);
 
+    function subirImagen(event){
+        close_popUp()
+        let reader = new FileReader();
+        let file = event.target.files[0];
+        reader.readAsDataURL(file);
+  
+        reader.onloadend = function (event) {
+        let contenido = event.target.result;
+        let image = new Image();
+        console.log(image.src) 
+        image.src = contenido;
+        image.onload = function () {
+            ctx.clearRect(0, 0, width, height);
+            canvas.width = image.width;
+            canvas.height = image.height;
+            ctx.drawImage(image,0,0);
+     }
+    }}
 
+//////////////////////////////////////////////////////////////////////////////////////
+//guardar imagen
 
-//     image.src = file;
-//     console.log(image.src)
-//     image.onload = function() {
-//          myDrawImage(this);
-//      }
-//  }
+let btn_guardarImagen = document.getElementById("guardar_imagen");
 
-
-//  function myDrawImage(image){
-//      ctx.drawImage(image, 0, 0)
-//  }
+btn_guardarImagen.addEventListener('click', () => {
+    let boton = document.createElement('a');
+    boton.download = "Paint.png";
+    boton.href = document.getElementById('paint').toDataURL("image/png").replace("image/png", "image/octet-stream");
+    boton.click();
+})

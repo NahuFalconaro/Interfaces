@@ -19,9 +19,9 @@
                     <input id="grosor" type="range" value="0"max="20" min="1">
                     <button id="rubber" class="btn btn-dark m-lg-4 bg-light"><img src="../img/rubber.png" alt="rubber" width="30" height="30"></button>
                     <button class="btn btn-dark m-lg-4 bg-light" style="color: black;">Select Filtros</button>
+                    <!-- El filtros tiene que ser un select-->
                     <input type="file" id="archivo" accept="image/png, .jpeg, .jpg, image/gif"style="color: black;"></input>
-                    <button class="btn btn-dark m-lg-4 bg-light" id="subir_image"style="color: black;">Subir</button>
-                    <button class="btn btn-dark m-lg-4 bg-light" style="color: black;">Guardar Imagen</button>
+                    <button class="btn btn-dark m-lg-4 bg-light" id="guardar_imagen" style="color: black;">Guardar Imagen</button>
                     <button class="btn btn-dark m-lg-4 bg-light" id="borrar_imagen" style="color: black;">Borrar Imagen</button>
                 </div>  
             </div>
@@ -29,7 +29,7 @@
         <div>
             <div id="pop-up">
                 <p>Como desea comenzar?</p>
-                <button id="cargar-image" type="button">Subir Imagen</button>
+                <input type="file" id="archivoModal" accept="image/png, .jpeg, .jpg, image/gif"style="color: black;"></input>
                 <button id="close-pop-up" type="button">Fondo blanco</button>
             </div>
         <div>
