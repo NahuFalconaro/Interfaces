@@ -73,11 +73,18 @@ closePop.addEventListener("click", close_popUp);
 window.addEventListener('click', function(e){
     //si el div no contiene el target lo oculta
     if(!(pop_up.contains(e.target))){
-        close_popUp();
+        pop_up.classList.add("hidden");
     }
 })
 function close_popUp(){
     pop_up.classList.add("hidden");
+    fillWhite();
+    
+}
+
+function fillWhite(){
+    ctx.fillStyle = "#FFFFFFFF";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////
@@ -90,6 +97,7 @@ function borrar_canvas(){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     canvas.width = width;
     canvas.height = height;
+    fillWhite();
 }
 
 //////////////////////////////////////////////////////////////////////////////////////
@@ -108,23 +116,31 @@ function borrar_canvas(){
     fileModal.addEventListener('change', subirImagen);
 
     function subirImagen(event){
-        close_popUp()
+        close_popUp();
+        borrar_canvas();
         let reader = new FileReader();
         let file = event.target.files[0];
         reader.readAsDataURL(file);
-  
-        reader.onloadend = function (event) {
-        let contenido = event.target.result;
-        let image = new Image();
-        console.log(image.src) 
-        image.src = contenido;
-        image.onload = function () {
-            ctx.clearRect(0, 0, width, height);
-            canvas.width = image.width;
-            canvas.height = image.height;
-            ctx.drawImage(image,0,0);
-     }
-    }}
+        reader.onloadend = (event)=> {
+            let contenido = event.target.result;
+            let image = new Image();
+            console.log(image.src) 
+            image.src = contenido;
+            image.onload = ()=> {
+                if ((canvas.width<image.width)||(canvas.height<image.height)){
+                    var hRatio = canvas.width / image.width;
+                    var vRatio = canvas.height / image.height;
+                    var ratio  = Math.min ( hRatio, vRatio );
+                    ctx.drawImage(image, 0,0, image.width, image.height, 0,0,image.width*ratio, image.height*ratio);
+                }else{
+                    ctx.clearRect(0, 0, width, height);
+                    canvas.width=image.width
+                    canvas.height=image.height
+                    ctx.drawImage(image,0,0); 
+                }   
+            }
+        }
+    }
 
 //////////////////////////////////////////////////////////////////////////////////////
 //guardar imagen
