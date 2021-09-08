@@ -3,8 +3,8 @@ let ctx = canvas.getContext("2d");
 let pencil = new Pencil(1,'circle');
 let width = canvas.width;
 let height = canvas.height;
-
 let mouseDown=false;
+fillWhite();
 
 
 document.getElementById("pencil").addEventListener("click",()=>{
@@ -110,10 +110,13 @@ function subirImagen(event){
         console.log(image.src) 
         image.src = contenido;
         image.onload = ()=> {
+            //Sacando el if y el else todas las imagenes se adaptarian al tamaño del canvas
             if ((canvas.width<image.width)||(canvas.height<image.height)){
                 var hRatio = canvas.width / image.width;
                 var vRatio = canvas.height / image.height;
                 var ratio  = Math.min ( hRatio, vRatio );
+                canvas.width=image.width*ratio;
+                canvas.height=image.height*ratio;
                 ctx.drawImage(image, 0,0, image.width, image.height, 0,0,image.width*ratio, image.height*ratio);
             }else{
                 ctx.clearRect(0, 0, width, height);
