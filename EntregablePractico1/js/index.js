@@ -99,15 +99,15 @@ file.addEventListener('change', subirImagen);
 fileModal.addEventListener('change', subirImagen);
 
 function subirImagen(event){
+ 
     close_popUp();
     borrar_canvas();
     let reader = new FileReader();
-    let file = event.target.files[0];
-    reader.readAsDataURL(file);
+    let fileReader = event.target.files[0];
+    reader.readAsDataURL(fileReader);
     reader.onloadend = (event)=> {
         let contenido = event.target.result;
         let image = new Image();
-        console.log(image.src) 
         image.src = contenido;
         image.onload = ()=> {
             //Sacando el if y el else todas las imagenes se adaptarian al tamaño del canvas
@@ -126,7 +126,7 @@ function subirImagen(event){
             }   
         }
     }
-    
+    file.value = "";
 }
 
 //guardar imagen
