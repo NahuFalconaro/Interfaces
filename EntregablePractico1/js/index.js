@@ -181,6 +181,69 @@ function setPixelNegative(imageData, x, y, a){
 }
 
 
+//Binarizacion
 
 
-  
+document.getElementById("binarizacion").addEventListener("click", binarizacionFilter);
+
+function binarizacionFilter(){
+    let a = 255;
+    let imageData = ctx.getImageData(0,0,width,height);
+    applyBinarizacion(imageData,a);
+    ctx.putImageData(imageData,0,0)*4;
+}
+
+function applyBinarizacion(imageData, a){
+    for (let x=0;x<width;x++){
+        for (let y=0;y<height;y++){
+            setPixelBinarizacion(imageData,x,y,a);
+        }
+    }
+}
+
+function setPixelBinarizacion(imageData, x, y, a){
+
+    let index = (x + y * imageData.width) * 4;
+    var binarizacion= (imageData.data[index+0]+imageData.data[index+1]+imageData.data[index+2]) / 3;
+    imageData.data[index+0] = binarizacion;
+    imageData.data[index+1] = binarizacion;
+    imageData.data[index+2] = binarizacion;
+    imageData.data[index+3] = a;
+}
+
+//Sepia
+
+document.getElementById("sepia").addEventListener("click", sepiaFilter);
+
+function sepiaFilter(){
+    let a = 255;
+    let imageData = ctx.getImageData(0,0,width,height);
+    applySepia(imageData,a);
+    ctx.putImageData(imageData,0,0)*4;
+}
+
+function applySepia(imageData, a){
+    for (let x=0;x<width;x++){
+        for (let y=0;y<height;y++){
+            setPixelSepia(imageData,x,y,a);
+        }
+    }
+}
+
+function setPixelSepia(imageData, x, y, a){
+    //https://stackoverflow.com/questions/1061093/how-is-a-sepia-tone-created
+    //https://www.techrepublic.com/blog/how-do-i/how-do-i-convert-images-to-grayscale-and-sepia-tone-using-c/
+    let index = (x + y * imageData.width) * 4;
+    var r = imageData.data[index+0];
+    var g = imageData.data[index+1];
+    var b = imageData.data[index+2];
+    
+    imageData.data[index+0] = 255 - r;
+    imageData.data[index+0] = 255 - g;
+    imageData.data[index+0] = 255 - b;
+
+    imageData.data[index+0] = (r * .393) + (g * .769 ) + (b * .189);
+    imageData.data[index+1] = (r * .349) + (g * .686) + (b * .168);
+    imageData.data[index+2] = (r * .272) + (g * .534) + (b * .131);
+    imageData.data[index+3] = a;
+}
