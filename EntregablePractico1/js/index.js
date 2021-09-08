@@ -31,6 +31,10 @@ document.getElementById("paint").addEventListener("mouseup",()=>{
     mouseDown=false;
 })
 
+window.addEventListener("mouseup",()=>{
+    mouseDown=false;
+})
+
 function draw(e){
         ctx.lineWidth = pencil.getGrosor();
         let color= document.getElementById("color").value;
@@ -102,12 +106,11 @@ function subirImagen(event){
     close_popUp();
     borrar_canvas();
     let reader = new FileReader();
-    let file = event.target.files[0];
-    reader.readAsDataURL(file);
+    let fileReader = event.target.files[0];
+    reader.readAsDataURL(fileReader);
     reader.onloadend = (event)=> {
         let contenido = event.target.result;
         let image = new Image();
-        console.log(image.src) 
         image.src = contenido;
         image.onload = ()=> {
             //Sacando el if y el else todas las imagenes se adaptarian al tamaño del canvas
@@ -125,6 +128,7 @@ function subirImagen(event){
                 ctx.drawImage(image,0,0); 
             }   
         }
+        file.value="";
     }
     
 }
@@ -177,6 +181,35 @@ function setPixelNegative(imageData, x, y, a){
     imageData.data[index+0] = 255-imageData.data[index];
     imageData.data[index+1] = 255-imageData.data[index+1];
     imageData.data[index+2] = 255-imageData.data[index+2];
+    imageData.data[index+3] = a;
+}
+
+
+//brillo
+
+document.getElementById("brillo").addEventListener("click",brightnessFilter);
+
+function brightnessFilter(){
+    let a = 255;
+    let imageData = ctx.getImageData(0,0,width,height);
+    applyBrightnessFilter(imageData,a);
+    ctx.putImageData(imageData,0,0)*4;
+}
+
+function applyBrightnessFilter(imageData,a){
+    for (let x=0;x<width;x++){
+        for (let y=0;y<height;y++){
+            setPixelBrightness(imageData,x,y,a);
+        }
+    }
+}
+
+
+function setPixelBrightness(imageData, x, y, a){
+    let index = (x + y * imageData.width) * 4;
+    imageData.data[index+0] +=10;
+    imageData.data[index+1] +=10;
+    imageData.data[index+2] +=10;
     imageData.data[index+3] = a;
 }
 
