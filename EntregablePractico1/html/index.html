@@ -11,6 +11,7 @@
         <nav id="nav"class="container">
             <div class="row border border-2 border-dark border-top-0">
                 <div class="col m-2 b-2 ">
+
                     <button class="btn btn-dark m-md-4 bg-light" type="button" id="pencil" >
                         <img src="../img/pencil.png" alt="pencil" width="30" height="30"></button>
                     <button class="btn btn-primary p-0">
@@ -18,26 +19,37 @@
                     </button>
                     <input id="grosor" type="range" value="0"max="20" min="1">
                     <button id="rubber" class="btn btn-dark m-lg-4 bg-light"><img src="../img/rubber.png" alt="rubber" width="30" height="30"></button>
-                    <button class="btn btn-dark m-lg-4 bg-light" style="color: black;">Select Filtros</button>
-                    <!-- El filtros tiene que ser un select-->
-                    <input type="file" id="archivo" accept="image/png, .jpeg, .jpg, image/gif"style="color: black;"></input>
+
+                    <button id="select-filters" class="btn btn-dark m-lg-4 bg-light" style="color: black;">Mostrar Filtros</button>
+                    <div id="filters" class="hidden filters ">
+                        <button id="negative" class="btn btn-dark m-lg-4 bg-light" style="color: black;">Negativo</button>
+                        <button class="btn btn-dark m-lg-4 bg-light" style="color: black;">Brillo</button>
+                        <button class="btn btn-dark m-lg-4 bg-light" style="color: black;">Binarizacion</button>
+                        <button class="btn btn-dark m-lg-4 bg-light" style="color: black;">Sepia</button>
+                        <button class="btn btn-dark m-lg-4 bg-light" style="color: black;">Saturacion</button>
+                        <button class="btn btn-dark m-lg-4 bg-light" style="color: black;">Blur</button>
+                    </div>
+                    <input  class="btn btn-dark m-lg-4 bg-light "  type="file" id="archivo" accept="image/png, .jpeg, .jpg, image/gif"style="color: black;"></input>
+
                     <button class="btn btn-dark m-lg-4 bg-light" id="guardar_imagen" style="color: black;">Guardar Imagen</button>
                     <button class="btn btn-dark m-lg-4 bg-light" id="borrar_imagen" style="color: black;">Borrar Imagen</button>
+
                 </div>  
             </div>
         </nav>
-        <div>
-            <div id="pop-up">
-                <p>Como desea comenzar?</p>
-                <input type="file" id="archivoModal" accept="image/png, .jpeg, .jpg, image/gif"style="color: black;"></input>
-                <button id="close-pop-up" type="button">Fondo blanco</button>
-            </div>
-        <div>
+
+        
+        <div id="pop-up" class="container w-50 text-center bg-light border border-2 border-dark mt-2">
+            <p class="fs-3 bg-light">¿Cómo desea comenzar?</p>
+            <input class="btn btn-dark m-lg-4 bg-light " style="color: black;" type="file" id="archivoModal" accept="image/png, .jpeg, .jpg, image/gif"style="color: black;"></input>
+            <button  class="btn btn-dark m-lg-4 bg-light" style="color: black;" id="close-pop-up" type="button">Fondo blanco</button>
+        </div>
+
 
         <section id="section">
             <canvas id="paint" width="800" height="600"></canvas>
         </section>
-        <!--empieza el canvas-->
+
         <script src="../js/pencil.js"></script>
         <script src="../js/index.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>

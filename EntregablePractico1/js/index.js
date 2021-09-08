@@ -6,16 +6,6 @@ let height = canvas.height;
 
 let mouseDown=false;
 
-// let colorPencil = document.getElementById("color").addEventListener("click",()=>{
-//     let color = colorPencil.;
-//     pencil.setGrosor(color);
-// })
-
-
-//.addEventListener("click",()=>{
-   // let grosor = grosorPencil.getValue();
-   // pencil.setGrosor(grosor);
-//})
 
 document.getElementById("pencil").addEventListener("click",()=>{
     pencil.setForm('circle');
@@ -42,7 +32,6 @@ document.getElementById("paint").addEventListener("mouseup",()=>{
 })
 
 function draw(e){
-
         ctx.lineWidth = pencil.getGrosor();
         let color= document.getElementById("color").value;
         let grosor = document.getElementById("grosor").value;
@@ -60,26 +49,27 @@ function draw(e){
     
 }
 
-////////////////////////////////////////////////////////////////////////////////////
 //Empieza codigo modal inicio
 let pop_up = document.getElementById("pop-up");
 let closePop = document.getElementById("close-pop-up");
 
 closePop.addEventListener("click", close_popUp);
 
-//https://es.stackoverflow.com/questions/326168/saber-si-se-hizo-click-dentro-fuera-del-div
+
 //Documentacion
-//Le agrego un luistener al evento en toda la ventana
+//https://es.stackoverflow.com/questions/326168/saber-si-se-hizo-click-dentro-fuera-del-div
+//Le agrego un listener al evento en toda la ventana
+
 window.addEventListener('click', function(e){
     //si el div no contiene el target lo oculta
     if(!(pop_up.contains(e.target))){
         pop_up.classList.add("hidden");
     }
 })
+
 function close_popUp(){
     pop_up.classList.add("hidden");
-    fillWhite();
-    
+    fillWhite();  
 }
 
 function fillWhite(){
@@ -87,7 +77,7 @@ function fillWhite(){
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
 
-//////////////////////////////////////////////////////////////////////////////////////
+
 //Codigo para borrar imagen de canvas
 let btn_borrar = document.getElementById("borrar_imagen");
 
@@ -100,49 +90,42 @@ function borrar_canvas(){
     fillWhite();
 }
 
-//////////////////////////////////////////////////////////////////////////////////////
-//suibir image
 
-//let btn_load_image = document.getElementById("subir_image");
-//btn_load_image.addEventListener('click', fill);
-
-
-//function fill(){
     
-    let file = document.getElementById('archivo');
-    let fileModal = document.getElementById('archivoModal');
+let file = document.getElementById('archivo');
+let fileModal = document.getElementById('archivoModal');
 
-    file.addEventListener('change', subirImagen);
-    fileModal.addEventListener('change', subirImagen);
+file.addEventListener('change', subirImagen);
+fileModal.addEventListener('change', subirImagen);
 
-    function subirImagen(event){
-        close_popUp();
-        borrar_canvas();
-        let reader = new FileReader();
-        let file = event.target.files[0];
-        reader.readAsDataURL(file);
-        reader.onloadend = (event)=> {
-            let contenido = event.target.result;
-            let image = new Image();
-            console.log(image.src) 
-            image.src = contenido;
-            image.onload = ()=> {
-                if ((canvas.width<image.width)||(canvas.height<image.height)){
-                    var hRatio = canvas.width / image.width;
-                    var vRatio = canvas.height / image.height;
-                    var ratio  = Math.min ( hRatio, vRatio );
-                    ctx.drawImage(image, 0,0, image.width, image.height, 0,0,image.width*ratio, image.height*ratio);
-                }else{
-                    ctx.clearRect(0, 0, width, height);
-                    canvas.width=image.width
-                    canvas.height=image.height
-                    ctx.drawImage(image,0,0); 
-                }   
-            }
+function subirImagen(event){
+    close_popUp();
+    borrar_canvas();
+    let reader = new FileReader();
+    let file = event.target.files[0];
+    reader.readAsDataURL(file);
+    reader.onloadend = (event)=> {
+        let contenido = event.target.result;
+        let image = new Image();
+        console.log(image.src) 
+        image.src = contenido;
+        image.onload = ()=> {
+            if ((canvas.width<image.width)||(canvas.height<image.height)){
+                var hRatio = canvas.width / image.width;
+                var vRatio = canvas.height / image.height;
+                var ratio  = Math.min ( hRatio, vRatio );
+                ctx.drawImage(image, 0,0, image.width, image.height, 0,0,image.width*ratio, image.height*ratio);
+            }else{
+                ctx.clearRect(0, 0, width, height);
+                canvas.width=image.width
+                canvas.height=image.height
+                ctx.drawImage(image,0,0); 
+            }   
         }
     }
+    
+}
 
-//////////////////////////////////////////////////////////////////////////////////////
 //guardar imagen
 
 let btn_guardarImagen = document.getElementById("guardar_imagen");
@@ -153,3 +136,48 @@ btn_guardarImagen.addEventListener('click', () => {
     boton.href = document.getElementById('paint').toDataURL("image/png").replace("image/png", "image/octet-stream");
     boton.click();
 })
+
+//pop-up filtro
+
+document.getElementById("select-filters").addEventListener("click",showOrHideFilters)
+
+function showOrHideFilters(){
+    let divFilters = document.getElementById("filters")
+    divFilters.classList.toggle("hidden");
+}
+
+
+//filtros
+
+
+//negativo 
+
+document.getElementById("negative").addEventListener("click",negativeFilter);
+
+function negativeFilter(){
+    let a = 255;
+    let imageData = ctx.getImageData(0,0,width,height);
+    applyNegative(imageData,a);
+    ctx.putImageData(imageData,0,0)*4;
+}
+
+function applyNegative(imageData,a){
+    for (let x=0;x<width;x++){
+        for (let y=0;y<height;y++){
+            setPixelNegative(imageData,x,y,a);
+        }
+    }
+}
+
+function setPixelNegative(imageData, x, y, a){
+    let index = (x + y * imageData.width) * 4;
+    imageData.data[index+0] = 255-imageData.data[index];
+    imageData.data[index+1] = 255-imageData.data[index+1];
+    imageData.data[index+2] = 255-imageData.data[index+2];
+    imageData.data[index+3] = a;
+}
+
+
+
+
+  
