@@ -7,6 +7,8 @@ let mouseDown = false;
 fillWhite();
 
 
+
+
 document.getElementById("pencil").addEventListener("click", () => {
     pencil.setForm('circle');
 })
@@ -204,6 +206,17 @@ function applyBrightnessFilter(imageData, a) {
     }
 }
 
+
+function setPixelBrightness(imageData, x, y, a) {
+    let index = (x + y * imageData.width) * 4;
+    imageData.data[index + 0] += 10;
+    imageData.data[index + 1] += 10;
+    imageData.data[index + 2] += 10;
+    imageData.data[index + 3] = a;
+}
+
+//binarizacion
+//Sacas el promedio, si el promedio es mayor a 255/2, es 255, si no, es 0
 document.getElementById("binarizacion").addEventListener("click", binarizacionFilter);
 
 function binarizacionFilter() {
@@ -220,16 +233,6 @@ function applyBinarizacion(imageData, a) {
         }
     }
 }
-
-
-function setPixelBrightness(imageData, x, y, a) {
-    let index = (x + y * imageData.width) * 4;
-    imageData.data[index + 0] += 10;
-    imageData.data[index + 1] += 10;
-    imageData.data[index + 2] += 10;
-    imageData.data[index + 3] = a;
-}
-
 
 function setPixelBinarizacion(imageData, x, y, a) {
 
@@ -277,4 +280,7 @@ function setPixelSepia(imageData, x, y, a) {
     imageData.data[index + 2] = (r * .272) + (g * .534) + (b * .131);
     imageData.data[index + 3] = a;
 }
+
+//Saturacion
+//Un punto mas a saturacion es un punto mas a rojo y uno menos a g y b
 
