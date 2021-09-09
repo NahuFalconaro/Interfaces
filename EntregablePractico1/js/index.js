@@ -201,7 +201,6 @@ function applyBrightnessFilter(imageData, a) {
     for (let x = 0; x < width; x++) {
         for (let y = 0; y < height; y++) {
             setPixelBrightness(imageData, x, y, a);
-            //Binarizacion
         }
     }
 }
@@ -214,9 +213,35 @@ function setPixelBrightness(imageData, x, y, a) {
     imageData.data[index + 2] += 10;
     imageData.data[index + 3] = a;
 }
+//greyscale
+document.getElementById("greyScale").addEventListener("click", greyScaleFilter);
+
+function greyScaleFilter() {
+    let a = 255;
+    let imageData = ctx.getImageData(0, 0, width, height);
+    applyGreyScale(imageData, a);
+    ctx.putImageData(imageData, 0, 0) * 4;
+}
+
+function applyGreyScale(imageData, a) {
+    for (let x = 0; x < width; x++) {
+        for (let y = 0; y < height; y++) {
+            setPixelGreyScale(imageData, x, y, a);
+        }
+    }
+}
+
+function setPixelGreyScale(imageData, x, y, a) {
+    let index = (x + y * imageData.width) * 4;
+    var grey = (imageData.data[index + 0] + imageData.data[index + 1] + imageData.data[index + 2]) / 3;
+    imageData.data[index + 0] = grey;
+    imageData.data[index + 1] = grey;
+    imageData.data[index + 2] = grey;
+    imageData.data[index + 3] = a;
+}
 
 //binarizacion
-//Sacas el promedio, si el promedio es mayor a 255/2, es 255, si no, es 0
+
 document.getElementById("binarizacion").addEventListener("click", binarizacionFilter);
 
 function binarizacionFilter() {
@@ -235,9 +260,10 @@ function applyBinarizacion(imageData, a) {
 }
 
 function setPixelBinarizacion(imageData, x, y, a) {
-
+    //Sacas el promedio, si el promedio es mayor a 255/2, es 255, si no, es 0
     let index = (x + y * imageData.width) * 4;
     var binarizacion = (imageData.data[index + 0] + imageData.data[index + 1] + imageData.data[index + 2]) / 3;
+    (binarizacion > (255/2)) ? binarizacion = 255: binarizacion = 0;
     imageData.data[index + 0] = binarizacion;
     imageData.data[index + 1] = binarizacion;
     imageData.data[index + 2] = binarizacion;
