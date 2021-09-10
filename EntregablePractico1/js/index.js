@@ -450,58 +450,62 @@ function setPixel(imageData, x, y,r,g,b, a) {
 
 document.getElementById("blur").addEventListener("click", blurFilter);
 
+
+function getRed(imageData, x , y){
+    let index = (x + y * imageData.width) * 4;
+    return imageData.data[index];
+}
+function getGreen(imageData, x , y){
+    let index = (x + y * imageData.width) * 4;
+    return imageData.data[index + 1];
+}
+function getBlue(imageData, x , y){
+    let index = (x + y * imageData.width) * 4;
+    return imageData.data[index + 2];
+}
+
 function blurFilter() {
+    let mat = [[1/9, 1/9, 1/9],
+                [1/9, 1/9, 1/9],
+                [1/9,1/9,1/9]]
     let a = 255;
     let imageData = ctx.getImageData(0, 0, width, height);
-    applyBlur(imageData, a);
+    applyBlur(imageData,mat, a);
     ctx.putImageData(imageData, 0, 0) * 4;
 }
 
-function applyBlur(imageData, a){
-    for (let x = 0; x < imageData.width; x++) {
-        for (let y = 0; y < imageData.height; y++) {
-            let rgbAverage = [];
-            rgbAverage = averageMatrix(x, y, imageData);
-            let r = rgbAverage[0];
-            let g = rgbAverage[1];
-            let b = rgbAverage[2];
-            setPixel(imageData,x,y,r,g,b,a);
+function applyBlur(imageData, mat, a){
+    for (let x = 1; x < canvas.width - 1; x++) {
+        for (let y = 1; y < canvas.height - 1; y++) {
+            rgbAverage = averageMatrix(imageData, mat, x, y, a );
         }
     }
 }
-function averageMatrix(imageData, x ,y){
-    let retorno = [];
-    let r=0;
-    let g=0;
-    let b=0;
-    for (let imgX = x - 1; imgX < x + 1; x++) {
-        for (let imgY = y - 1; imgY < y + 1; y++) { 
-            let rgb = [];
-            rgb = getRgb(imageData, x, y);
-            r += rgb[0];
-            g += rgb[1];
-            b += rgb[2];
-        } 
-    }
 
-    r = r/9;
-    g = g/9;
-    b = b/9;
-    retorno.push(r);
-    retorno.push(g);
-    retorno.push(b);
-    return retorno;
-}
+//Forma vertical y horizontal:
+	//[(x + 1), y] + [(x - 1), y] + [(x,(y + 1))] + [(x, (y - 1))] 
+    // Hago, x+1 y obtengo el vecino de adelante en horizontal, x-1 el vecino anterior
+	// Hago, y+1 y obtengo el vecino de superior en vertical, y-1 el vecino inferior
+//Forma diagonal:
+    //[(x - 1), (y - 1)]+ [(x + 1), (y - 1)]  + [(x - 1), (y - 1)] + [(x - 1), (y + 1)] ,[(x,y)]
+    // Hago, x+1, y-1 y obtengo el vecino de diagonal superior derecha
+	// Hago, x-1, y-1 y obtengo el vecino de diagonal superior izquierda
+	// Hago, x-1, y+1 y obtengo el vecino de diagonal inferior izquierda
+	// Hago, x+1, y+1 y obtengo el vecino de diagonal inferior derecha
 
-function getRed(imageData, x , y){
-    let index = (x + y * imgData.width) * 4;
-    return imgData.data[index];
-}
-function getGreen(imageData, x , y){
-    let index = (x + y * imgData.width) * 4;
-    return imgData.data[index + 1];
-}
-function getBlue(imageData, x , y){
-    let index = (x + y * imgData.width) * 4;
-    return imgData.data[index + 2];
+
+function averageMatrix(imageData, mat, x ,y, a){
+     let r=0;
+     let g=0;
+     let b=0;
+     let promed = 1/9;
+    for (let imgX = x - 1; imgX <= x + 1; imgX++) {
+        for (let imgY = y - 1; imgY <= y + 1; imgY++) { 
+                r += getRed(imageData, imgX, imgY) * promed;
+                g += getGreen(imageData, imgX, imgY) * promed;
+                b += getBlue(imageData, imgX, imgY) * promed;
+            }
+
+        }
+    setPixel(imageData,x,y,r,g,b,a);
 }
