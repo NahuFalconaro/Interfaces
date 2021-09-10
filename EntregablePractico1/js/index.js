@@ -448,51 +448,60 @@ function setPixel(imageData, x, y,r,g,b, a) {
 
 //promedio matriz
 
-// document.getElementById("blur").addEventListener("click", blurFilter);
+document.getElementById("blur").addEventListener("click", blurFilter);
 
-// function blurFilter() {
-//     let a = 255;
-//     let imageData = ctx.getImageData(0, 0, width, height);
-//     applyBlur(imageData, a);
-//     ctx.putImageData(imageData, 0, 0) * 4;
-// }
+function blurFilter() {
+    let a = 255;
+    let imageData = ctx.getImageData(0, 0, width, height);
+    applyBlur(imageData, a);
+    ctx.putImageData(imageData, 0, 0) * 4;
+}
 
-// function applyBlur(imageData, a){
-//     for (let x = 0; x < imageData.width; x++) {
-//         for (let y = 0; y < imageData.height; y++) {
-//             let rgb = averageMatrix(x, y, imageData);
-//             let r;
-//             let g;
-//             let b;
-//             setPixelBlur(imageData,x,y,r,g,b,a);
-//         }
-//     }
-// }
-// function setPixelBlur(){
+function applyBlur(imageData, a){
+    for (let x = 0; x < imageData.width; x++) {
+        for (let y = 0; y < imageData.height; y++) {
+            let rgbAverage = [];
+            rgbAverage = averageMatrix(x, y, imageData);
+            let r = rgbAverage[0];
+            let g = rgbAverage[1];
+            let b = rgbAverage[2];
+            setPixel(imageData,x,y,r,g,b,a);
+        }
+    }
+}
+function averageMatrix(imageData, x ,y){
+    let retorno = [];
+    let r=0;
+    let g=0;
+    let b=0;
+    for (let imgX = x - 1; imgX < x + 1; x++) {
+        for (let imgY = y - 1; imgY < y + 1; y++) { 
+            let rgb = [];
+            rgb = getRgb(imageData, x, y);
+            r += rgb[0];
+            g += rgb[1];
+            b += rgb[2];
+        } 
+    }
 
-// }
-// function averageMatrix(imageData, x ,y){
-//     let rgb = [];
-//     let r=0;
-//     let g=0;
-//     let b=0;
-//     for (let imgX = x - 1; imgX < x + 1; x++) {
-//         for (let imgY = y - 1; imgY < y + 1; y++) {   
-//              
-//         } 
-//     }
-//       / 9
-//}
+    r = r/9;
+    g = g/9;
+    b = b/9;
+    retorno.push(r);
+    retorno.push(g);
+    retorno.push(b);
+    return retorno;
+}
 
-// function getRed(imageData, x , y){
-//     let index = (x + y * imgData.width) * 4;
-//     return imgData.data[index];
-// }
-// function getGreen(imageData, x , y){
-//     let index = (x + y * imgData.width) * 4;
-//     return imgData.data[index + 1];
-// }
-// function getBlue(imageData, x , y){
-//     let index = (x + y * imgData.width) * 4;
-//     return imgData.data[index + 2];
-// }
+function getRed(imageData, x , y){
+    let index = (x + y * imgData.width) * 4;
+    return imgData.data[index];
+}
+function getGreen(imageData, x , y){
+    let index = (x + y * imgData.width) * 4;
+    return imgData.data[index + 1];
+}
+function getBlue(imageData, x , y){
+    let index = (x + y * imgData.width) * 4;
+    return imgData.data[index + 2];
+}
