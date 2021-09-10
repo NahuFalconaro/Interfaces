@@ -278,3 +278,48 @@ function setPixelSepia(imageData, x, y, a) {
     imageData.data[index + 3] = a;
 }
 
+
+//Saturacion
+
+document.getElementById("saturacion").addEventListener("click", saturacionFilter);
+
+function saturacionFilter() {
+    let a = 255;
+    let imageData = ctx.getImageData(0, 0, width, height);
+    applySaturacion(imageData, a);
+    ctx.putImageData(imageData, 0, 0) * 4;
+}
+
+function applySaturacion(imageData, a) {
+    for (let x = 0; x < canvas.width; x++) {
+        for (let y = 0; y < canvas.height; y++) {
+            let arr=[];
+            arr=getRgb(imageData, x, y);
+            console.log(arr)
+            //pasar a hsl
+            //convertir valor
+            //pasar a rgb
+            setPixel(imageData, x, y,r,g,b, a)
+            ;
+        }
+    }
+}
+function getRgb(imageData, x, y) {
+
+    let index = (x + y * imageData.width) * 4;
+    let arr=[];
+    arr[0]=imageData.data[index + 0];
+    arr[1]=imageData.data[index + 1];
+    arr[2]=imageData.data[index + 2];
+    return arr;
+}
+
+function setPixel(imageData, x, y,r,g,b, a) {
+
+    let index = (x + y * imageData.width) * 4;
+    imageData.data[index + 0] = r;
+    imageData.data[index + 1] = g;
+    imageData.data[index + 2] = b;
+    imageData.data[index + 3] = a;
+}
+
