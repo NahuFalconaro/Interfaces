@@ -23,12 +23,12 @@
                     <button id="select-filters" class="btn btn-dark m-lg-4 bg-light" style="color: black;">Mostrar Filtros</button>
                     <div id="filters" class="hidden filters ">
                         <button id="negative" class="btn btn-dark m-lg-4 bg-light" style="color: black;">Negativo</button>
-                        <button id="brillo" class="btn btn-dark m-lg-4 bg-light" style="color: black;">Brillo</button>
+                        <button id="menosBrillo" value="-">-</button>Brillo<button id="masBrillo" value="+">+</button>
                         <button id="binarizacion" class="btn btn-dark m-lg-4 bg-light" style="color: black;">Binarizacion</button>
                         <button id="greyScale" class="btn btn-dark m-lg-4 bg-light" style="color: black;">Tono Grises</button>
                         <button id="sepia" class="btn btn-dark m-lg-4 bg-light" style="color: black;">Sepia</button>
                         <label for="saturacion">Saturacion</label>
-                        <input id="saturacion" type="range" value="50"max="100" min="1">
+                        <input id="saturacion" type="range" value="60"max="110" min="15"> 
                         <button class="btn btn-dark m-lg-4 bg-light" style="color: black;">Deteccion de Bordes</button>
                         <button class="btn btn-dark m-lg-4 bg-light" style="color: black;">Blur</button>
                     </div>
@@ -50,7 +50,7 @@
 
 
         <section id="section">
-            <canvas id="paint" width="1280" height="720"></canvas>
+            <canvas id="paint" width="1280" height="450"></canvas>
         </section>
 
         <script src="../js/pencil.js"></script>

@@ -44,6 +44,7 @@ function draw(e) {
     if (pencil.getForm() == 'circle') {
         ctx.lineCap = 'round';
     } else {
+        color = "#ffffff"
         ctx.lineCap = 'square';
     }
     pencil.setGrosor(grosor);
@@ -148,7 +149,6 @@ btn_guardarImagen.addEventListener('click', () => {
 //pop-up filtro
 
 document.getElementById("select-filters").addEventListener("click", showOrHideFilters)
-
 function showOrHideFilters() {
     let divFilters = document.getElementById("filters")
     divFilters.classList.toggle("hidden");
@@ -188,52 +188,47 @@ function setPixelNegative(imageData, x, y, a) {
 
 //brillo
 
-document.getElementById("brillo").addEventListener("change", brightnessFilter);
 
-function brightnessFilter() {
+document.getElementById("menosBrillo").addEventListener("click", brightnessFilter);
+document.getElementById("masBrillo").addEventListener("click", brightnessFilter);
+
+function brightnessFilter(e) {
     let a = 255;
-    let brillo = document.getElementById("brillo").value;
-    brillo = brillo/100;
     let imageData = ctx.getImageData(0, 0, width, height);
-    applyBrightnessFilter(imageData, a,brillo);
+    applyBrightnessFilter(imageData, a, e);
     ctx.putImageData(imageData, 0, 0) * 4;
 }
 
-function applyBrightnessFilter(imageData, a,brillo) {
-    for (let x = 0; x < width; x++) {
-        for (let y = 0; y < height; y++) {
-            //obtengo rgb
-            let arr=[];
-            arr=getRgb(imageData, x, y);
-            let r = arr[0];
-            let g = arr[1];
-            let b = arr[2];
-            
-            //paso de rgb a hsl
-            let arrHsl=[]
-            arrHsl=rgbToHsl(r, g, b);
-            if(brillo <= 1){
-                arrHsl[1] = arrHsl[1] * brillo;
+function applyBrightnessFilter(imageData, a, e) {
+    if(e.target.id === "masBrillo"){
+        for (let x = 0; x < canvas.width; x++) {
+            for (let y = 0; y < canvas.height; y++) {
+                setPixelMore(imageData,x,y,a);
             }
-            if(brillo > 1){
-                arrHsl[1] = arrHsl[1] + (100 - arrHsl[1]) * (brillo - 1);
+        }
+    }else{
+        for (let x = 0; x < canvas.width; x++) {
+            for (let y = 0; y < canvas.height; y++) {
+                setPixelLess(imageData,x,y,a);
             }
-            let h = arrHsl[0];
-            let s = arrHsl[1];
-            let l = arrHsl[2];
-            
-            //modifico l
-            //paso de hsl a rgb
-            arr=hslToRgb(h,s,l);
-            r=arr[0];
-            g=arr[1];
-            b=arr[2];
-            //reemplazo el pixel
-            setPixel(imageData,x,y,r,g,b,a);
         }
     }
+    
 }
-
+function setPixelLess(imageData, x, y, a) {
+    let index = (x + y * imageData.width) * 4;
+    imageData.data[index + 0] = imageData.data[index + 0] - 5;
+    imageData.data[index + 1] = imageData.data[index + 1] - 5;
+    imageData.data[index + 2] = imageData.data[index + 2] - 5;
+    imageData.data[index + 3] = a;
+}
+function setPixelMore(imageData, x, y, a) {
+    let index = (x + y * imageData.width) * 4;
+    imageData.data[index + 0] = imageData.data[index + 0] + 5;
+    imageData.data[index + 1] = imageData.data[index + 1] + 5;
+    imageData.data[index + 2] = imageData.data[index + 2] + 5;
+    imageData.data[index + 3]= a;
+}
 //greyscale
 document.getElementById("greyScale").addEventListener("click", greyScaleFilter);
 
@@ -444,3 +439,60 @@ function setPixel(imageData, x, y,r,g,b, a) {
     imageData.data[index + 3] = a;
 }
 
+//Falta hacer andar el de brillo
+//Opcion : volver al metodo anterior, con dos botones, uno que sume 1 a brillo y otro que reste 1
+//Logica : sumar uno o restar uno a los valores rgb.
+
+//anotacion
+//Trabajar con el canvas al aplicar los filtros, o trabajar con los pixeles de la foto y aplicarlos al canvas sin modificar la foto?
+
+//promedio matriz
+
+// document.getElementById("blur").addEventListener("click", blurFilter);
+
+// function blurFilter() {
+//     let a = 255;
+//     let imageData = ctx.getImageData(0, 0, width, height);
+//     applyBlur(imageData, a);
+//     ctx.putImageData(imageData, 0, 0) * 4;
+// }
+
+// function applyBlur(imageData, a){
+//     for (let x = 0; x < imageData.width; x++) {
+//         for (let y = 0; y < imageData.height; y++) {
+//             let rgb = averageMatrix(x, y, imageData);
+//             let r;
+//             let g;
+//             let b;
+//             setPixelBlur(imageData,x,y,r,g,b,a);
+//         }
+//     }
+// }
+// function setPixelBlur(){
+
+// }
+// function averageMatrix(imageData, x ,y){
+//     let rgb = [];
+//     let r=0;
+//     let g=0;
+//     let b=0;
+//     for (let imgX = x - 1; imgX < x + 1; x++) {
+//         for (let imgY = y - 1; imgY < y + 1; y++) {   
+//              
+//         } 
+//     }
+//       / 9
+//}
+
+// function getRed(imageData, x , y){
+//     let index = (x + y * imgData.width) * 4;
+//     return imgData.data[index];
+// }
+// function getGreen(imageData, x , y){
+//     let index = (x + y * imgData.width) * 4;
+//     return imgData.data[index + 1];
+// }
+// function getBlue(imageData, x , y){
+//     let index = (x + y * imgData.width) * 4;
+//     return imgData.data[index + 2];
+// }
