@@ -477,7 +477,8 @@ function blurFilter() {
 function applyBlur(imageData, mat, a){
     for (let x = 1; x < canvas.width - 1; x++) {
         for (let y = 1; y < canvas.height - 1; y++) {
-            rgbAverage = averageMatrix(imageData, mat, x, y, a );
+           let rgb = averageMatrix(imageData, mat, x, y, a );
+           setPixel(imageData,x,y,rgb[0],rgb[1],rgb[2],a);
         }
     }
 }
@@ -494,18 +495,78 @@ function applyBlur(imageData, mat, a){
 	// Hago, x+1, y+1 y obtengo el vecino de diagonal inferior derecha
 
 
-function averageMatrix(imageData, mat, x ,y, a){
-     let r=0;
-     let g=0;
-     let b=0;
-     let promed = 1/9;
+// function averageMatrix(imageData, mat, x ,y, a){
+//      let r=0;
+//      let g=0;
+//      let b=0;
+//      let promed = 1/9;
+
+//     for (let imgX = x - 1; imgX <= x + 1; imgX++) {
+//         for (let imgY = y - 1; imgY <= y + 1; imgY++) { 
+//                 r += getRed(imageData, imgX, imgY) * promed;
+//                 g += getGreen(imageData, imgX, imgY) * promed;
+//                 b += getBlue(imageData, imgX, imgY) * promed;
+//             }
+
+//         }
+//     setPixel(imageData,x,y,r,g,b,a);
+// }
+function averageMatrix(imageData, mat, x ,y){
+    let r=0;
+    let g=0;
+    let b=0;
+    let matX = 0;
+    let matY = 0;
     for (let imgX = x - 1; imgX <= x + 1; imgX++) {
         for (let imgY = y - 1; imgY <= y + 1; imgY++) { 
-                r += getRed(imageData, imgX, imgY) * promed;
-                g += getGreen(imageData, imgX, imgY) * promed;
-                b += getBlue(imageData, imgX, imgY) * promed;
-            }
+                r += getRed(imageData, imgX, imgY) * devolverValorEnMatriz(mat, matX, matY );
+                g += getGreen(imageData, imgX, imgY) * devolverValorEnMatriz(mat, matX, matY );
+                b += getBlue(imageData, imgX, imgY) * devolverValorEnMatriz(mat, matX, matY );
+            matY++;
+        }
+        matY=0;
+        matX++;
+    }
+    return [r,g,b]
+}
+function devolverValorEnMatriz( mat, x, y){
+    return mat[x][y];
+}
+
+//deteccion de bordes
+
+document.getElementById("deteccionBordes").addEventListener("click", deteccionDeBordesFilter);
+function deteccionDeBordesFilter() {
+    let mat = [[-1, 0, 1],
+                [-2, 0, 2],
+                [-1, 0, 1]];
+
+    let matY=[[-1, -2, -1],
+              [0, 0, 0],
+              [1, 2, 1]];
+    let a = 255;
+    let imageData = ctx.getImageData(0, 0, width, height);
+    applyDeteccionDeBordes(imageData,mat,matY, a);
+    ctx.putImageData(imageData, 0, 0);
+}
+
+function applyDeteccionDeBordes(imageData, mat,matY, a){
+    applyGreyScale(imageData, a);
+    for (let x = 1; x < canvas.width -1 ; x++) {
+        for (let y = 1; y < canvas.height -1; y++) {
+            
+            let gX = averageMatrix(imageData, mat, x, y);
+            gX = (gX[0] + gX[1] + gX[2]) / 3;
+            let gY = averageMatrix(imageData, matY, x, y);
+            gY = (gY[0] + gY[1] + gY[2]) / 3;
+            
+            let magnitud = Math.sqrt(Math.pow(gX, 2) + Math.pow(gY, 2));
+            
+            magnitud = (magnitud/1000) * 255;
+            Math.floor(magnitud);
+            setPixel(imageData,x,y,magnitud,magnitud,magnitud,a);
 
         }
-    setPixel(imageData,x,y,r,g,b,a);
+
+    }
 }
