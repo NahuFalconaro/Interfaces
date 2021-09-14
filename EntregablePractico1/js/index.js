@@ -4,6 +4,7 @@ let pencil = new Pencil(1, 'circle');
 let width = canvas.width;
 let height = canvas.height;
 let mouseDown = false;
+let a = 255;
 fillWhite();
 
 
@@ -262,34 +263,24 @@ function setPixelGreyScale(imageData, x, y, a) {
 document.getElementById("binarizacion").addEventListener("click", binarizacionFilter);
 
 function binarizacionFilter() {
-    let a = 255;
+
     let imageData = ctx.getImageData(0, 0, width, height);
     applyBinarizacion(imageData, a);
     ctx.putImageData(imageData, 0, 0) * 4;
 }
 
-function applyBinarizacion(imageData, a) {
+function applyBinarizacion(imageData) {
     for (let x = 0; x < width; x++) {
         for (let y = 0; y < height; y++) {
             let index = (x + y * imageData.width) * 4;
             var binarizacion = (imageData.data[index + 0] + imageData.data[index + 1] + imageData.data[index + 2]) / 3;
             (binarizacion > (255 / 2)) ? binarizacion = 255 : binarizacion = 0;
-            let r = ;
-            let g = ;
-            let b = ;
-            setPixelBinarizacion(imageData, x, y, a);
+            let r = binarizacion;
+            let g = binarizacion;
+            let b = binarizacion;
+            setPixel(imageData, x, y, r, g, b);
         }
     }
-}
-
-function setPixelBinarizacion(imageData, x, y, a) {
-    //Sacas el promedio, si el promedio es mayor a 255/2, es 255, si no, es 0
-    
-    
-    imageData.data[index + 0] = binarizacion;
-    imageData.data[index + 1] = binarizacion;
-    imageData.data[index + 2] = binarizacion;
-    imageData.data[index + 3] = a;
 }
 
 //Sepia
@@ -297,16 +288,28 @@ function setPixelBinarizacion(imageData, x, y, a) {
 document.getElementById("sepia").addEventListener("click", sepiaFilter);
 
 function sepiaFilter() {
-    let a = 255;
     let imageData = ctx.getImageData(0, 0, width, height);
-    applySepia(imageData, a);
+    applySepia(imageData);
     ctx.putImageData(imageData, 0, 0) * 4;
 }
 
-function applySepia(imageData, a) {
+function applySepia(imageData) {
     for (let x = 0; x < width; x++) {
         for (let y = 0; y < height; y++) {
-            setPixelSepia(imageData, x, y, a);
+            let index = (x + y * imageData.width) * 4;
+            let r = imageData.data[index + 0];
+            let g = imageData.data[index + 1];
+            let b = imageData.data[index + 2];
+
+            r = 255 - r;
+            g = 255 - g;
+            b = 255 - b;
+
+            r = (r * .393) + (g * .769) + (b * .189);
+            g = (r * .349) + (g * .686) + (b * .168);
+            b = (r * .272) + (g * .534) + (b * .131);
+
+            setPixel(imageData, x, y, r, g, b);
         }
     }
 }
@@ -433,8 +436,7 @@ function getRgb(imageData, x, y) {
     return arr;
 }
 
-function setPixel(imageData, x, y, r, g, b, a) {
-
+function setPixel(imageData, x, y, r, g, b) {
     let index = (x + y * imageData.width) * 4;
     imageData.data[index + 0] = r;
     imageData.data[index + 1] = g;
@@ -494,8 +496,8 @@ function averageMatrix(imageData, mat, x, y) {
     return [r, g, b]
 }
 
-function getValor(data, x, y, indice){
-    if(indice === null)
+function getValor(data, x, y, indice) {
+    if (indice === null)
         indice = 0;
     return data[((width * y) + x) * 4 + indice];
 }
@@ -514,7 +516,7 @@ function deteccionDeBordesFilter() {
     let returnData = applyDeBordesFilter(imageData, matX, matY);
     ctx.putImageData(returnData, 0, 0);
 }
-function valoresGrisEnArrayDeImagen(data){
+function valoresGrisEnArrayDeImagen(data) {
     let retorno = [];
     for (y = 0; y < height; y++) {
         for (x = 0; x < width; x++) {
