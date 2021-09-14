@@ -5,6 +5,9 @@ let width = canvas.width;
 let height = canvas.height;
 let mouseDown = false;
 let a = 255;
+let imageDataRestore = ctx.getImageData(0, 0, width, height);
+let imageRestore = backupImage(imageDataRestore);
+
 fillWhite();
 
 
@@ -39,16 +42,18 @@ window.addEventListener("mouseup", () => {
 })
 
 function draw(e) {
-    ctx.lineWidth = pencil.getGrosor();
+
     let color = document.getElementById("color").value;
     let grosor = document.getElementById("grosor").value;
+    pencil.setGrosor(grosor);
+    ctx.lineWidth = pencil.getGrosor();
     if (pencil.getForm() == 'circle') {
         ctx.lineCap = 'round';
     } else {
         color = "#ffffff"
         ctx.lineCap = 'square';
     }
-    pencil.setGrosor(grosor);
+
     pencil.setColor(color);
     ctx.strokeStyle = pencil.getColor();
     let c = canvas.getBoundingClientRect();
@@ -72,6 +77,7 @@ window.addEventListener('click', function (e) {
     //si el div no contiene el target lo oculta
     if (!(pop_up.contains(e.target))) {
         pop_up.classList.add("hidden");
+
     }
 })
 
@@ -97,8 +103,6 @@ function borrar_canvas() {
     canvas.height = height;
     fillWhite();
 }
-
-
 
 let file = document.getElementById('archivo');
 let fileModal = document.getElementById('archivoModal');
@@ -131,6 +135,8 @@ function subirImagen(event) {
                 canvas.height = image.height
                 ctx.drawImage(image, 0, 0);
             }
+            imageDataRestore = ctx.getImageData(0, 0, width, height);
+            imageRestore = backupImage(imageDataRestore)
         }
     }
     file.value = "";
@@ -173,22 +179,19 @@ function negativeFilter() {
 function applyNegative(imageData, a) {
     for (let x = 0; x < width; x++) {
         for (let y = 0; y < height; y++) {
-            setPixelNegative(imageData, x, y, a);
+            let index = (x + y * imageData.width) * 4;
+            let r = imageData.data[index + 0];
+            let g = imageData.data[index + 1];
+            let b = imageData.data[index + 2];
+            r = 255 - r;
+            g = 255 - g;
+            b = 255 - b;
+            setPixel(imageData, x, y, r, g, b);
         }
     }
 }
 
-function setPixelNegative(imageData, x, y, a) {
-    let index = (x + y * imageData.width) * 4;
-    imageData.data[index + 0] = 255 - imageData.data[index];
-    imageData.data[index + 1] = 255 - imageData.data[index + 1];
-    imageData.data[index + 2] = 255 - imageData.data[index + 2];
-    imageData.data[index + 3] = a;
-}
-
-
 //brillo
-
 
 document.getElementById("menosBrillo").addEventListener("click", brightnessFilter);
 document.getElementById("masBrillo").addEventListener("click", brightnessFilter);
@@ -236,26 +239,22 @@ document.getElementById("greyScale").addEventListener("click", greyScaleFilter);
 function greyScaleFilter() {
     let a = 255;
     let imageData = ctx.getImageData(0, 0, width, height);
-    let returnData = applyGreyScale(imageData, a);
-    ctx.putImageData(returnData, 0, 0) * 4;
+    applyGreyScale(imageData);
+    ctx.putImageData(imageData, 0, 0) * 4;
 }
 
-function applyGreyScale(imageData, a) {
+function applyGreyScale(imageData) {
     for (let x = 0; x < width; x++) {
         for (let y = 0; y < height; y++) {
-            setPixelGreyScale(imageData, x, y, a);
+            let index = (x + y * imageData.width) * 4;
+            var grey = (imageData.data[index + 0] + imageData.data[index + 1] + imageData.data[index + 2]) / 3;
+            let r = grey;
+            let g = grey;
+            let b = grey;
+            setPixel(imageData, x, y, r, g, b);
+
         }
     }
-    return imageData;
-}
-
-function setPixelGreyScale(imageData, x, y, a) {
-    let index = (x + y * imageData.width) * 4;
-    var grey = (imageData.data[index + 0] + imageData.data[index + 1] + imageData.data[index + 2]) / 3;
-    imageData.data[index + 0] = grey;
-    imageData.data[index + 1] = grey;
-    imageData.data[index + 2] = grey;
-    imageData.data[index + 3] = a;
 }
 
 //binarizacion
@@ -297,42 +296,28 @@ function applySepia(imageData) {
     for (let x = 0; x < width; x++) {
         for (let y = 0; y < height; y++) {
             let index = (x + y * imageData.width) * 4;
+
             let r = imageData.data[index + 0];
             let g = imageData.data[index + 1];
             let b = imageData.data[index + 2];
 
-            r = 255 - r;
-            g = 255 - g;
-            b = 255 - b;
+            imageData.data[index + 0] = 255 - r;
+            imageData.data[index + 1] = 255 - g;
+            imageData.data[index + 2] = 255 - b;
 
-            r = (r * .393) + (g * .769) + (b * .189);
-            g = (r * .349) + (g * .686) + (b * .168);
-            b = (r * .272) + (g * .534) + (b * .131);
+            imageData.data[index + 0] = (r * .393) + (g * .769) + (b * .189);
+            imageData.data[index + 1] = (r * .349) + (g * .686) + (b * .168);
+            imageData.data[index + 2] = (r * .272) + (g * .534) + (b * .131);
+
+            r = imageData.data[index + 0];
+            g = imageData.data[index + 1];
+            b = imageData.data[index + 2];
+
 
             setPixel(imageData, x, y, r, g, b);
         }
     }
 }
-
-function setPixelSepia(imageData, x, y, a) {
-    //https://stackoverflow.com/questions/1061093/how-is-a-sepia-tone-created
-    //https://www.techrepublic.com/blog/how-do-i/how-do-i-convert-images-to-grayscale-and-sepia-tone-using-c/
-    let index = (x + y * imageData.width) * 4;
-    var r = imageData.data[index + 0];
-    var g = imageData.data[index + 1];
-    var b = imageData.data[index + 2];
-
-    imageData.data[index + 0] = 255 - r;
-    imageData.data[index + 0] = 255 - g;
-    imageData.data[index + 0] = 255 - b;
-
-    imageData.data[index + 0] = (r * .393) + (g * .769) + (b * .189);
-    imageData.data[index + 1] = (r * .349) + (g * .686) + (b * .168);
-    imageData.data[index + 2] = (r * .272) + (g * .534) + (b * .131);
-    imageData.data[index + 3] = a;
-}
-
-
 //Saturacion
 
 document.getElementById("saturacion").addEventListener("change", saturacionFilter);
@@ -444,19 +429,10 @@ function setPixel(imageData, x, y, r, g, b) {
     imageData.data[index + 3] = a;
 }
 
-//Falta hacer andar el de brillo
-//Opcion : volver al metodo anterior, con dos botones, uno que sume 1 a brillo y otro que reste 1
-//Logica : sumar uno o restar uno a los valores rgb.
-
-//anotacion
-//Trabajar con el canvas al aplicar los filtros, o trabajar con los pixeles de la foto y aplicarlos al canvas sin modificar la foto?
 
 //promedio matriz
 
 document.getElementById("blur").addEventListener("click", blurFilter);
-
-
-
 
 function blurFilter() {
     let mat = [[1 / 9, 1 / 9, 1 / 9],
@@ -541,7 +517,7 @@ function applyDeBordesFilter(imageData, matX, matY) {
             pixelY = pixelY[0] = pixelY[1] + pixelY[2];
             let magnitud = Math.sqrt((pixelX * pixelX) + (pixelY * pixelY));
             magnitud = (magnitud / 1000) * 255;
-            setPixel(filtro, x, y, magnitud, magnitud, magnitud, 255);
+            setPixel(filtro, x, y, magnitud, magnitud, magnitud);
         }
     }
     return filtro;
@@ -550,3 +526,23 @@ function devolverValorEnMatriz(mat, x, y) {
     return mat[x][y];
 }
 
+document.getElementById("restoreImage").addEventListener("click", restoreImage);
+
+function restoreImage() {
+    ctx.putImageData(imageDataRestore, 0, 0) * 4;
+
+}
+function backupImage(pictureData) {
+    let backupPicture = new ImageData(pictureData.width, pictureData.height);
+    for (let x = 0; x < pictureData.width; x++) {
+        for (let y = 0; y < pictureData.height; y++) {
+            let index = (x + y * pictureData.width) * 4
+            let r = pictureData.data[index + 0];
+            let g = pictureData.data[index + 1];
+            let b = pictureData.data[index + 2];
+            setPixel(backupPicture, x, y, r, g, b, 255);
+        }
+    }
+
+    return backupPicture;
+}
