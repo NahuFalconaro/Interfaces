@@ -8,6 +8,8 @@ let a = 255;
 let imageDataRestore = ctx.getImageData(0, 0, width, height);
 let imageRestore = backupImage(imageDataRestore);
 
+
+//pinta de blanco el canvas por primera vez
 fillWhite();
 
 
@@ -41,6 +43,9 @@ window.addEventListener("mouseup", () => {
     mouseDown = false;
 })
 
+
+//esta funcion se utiliza para dibujar en el canvas utilizando las herramientas de ctx y la clase pencil
+//clientX,clientY: proporciona la coordenada horizontal y vertical dentro de la ventana grafica donde ocurrio el evento
 function draw(e) {
 
     let color = document.getElementById("color").value;
@@ -56,8 +61,8 @@ function draw(e) {
 
     pencil.setColor(color);
     ctx.strokeStyle = pencil.getColor();
-    let c = canvas.getBoundingClientRect();
-    ctx.lineTo(e.clientX - c.left, e.clientY - c.top);
+    let c = canvas.getBoundingClientRect();    //devuelve el tamaño de un elemento y su posicion relativa respecto a la ventana
+    ctx.lineTo(e.clientX - c.left, e.clientY - c.top); //se utilizo para obtener la posicion exacta del mouse
     ctx.stroke();
 
 }
@@ -69,8 +74,7 @@ let closePop = document.getElementById("close-pop-up");
 closePop.addEventListener("click", close_popUp);
 
 
-//Documentacion
-//https://es.stackoverflow.com/questions/326168/saber-si-se-hizo-click-dentro-fuera-del-div
+
 //Le agrego un listener al evento en toda la ventana
 
 window.addEventListener('click', function (e) {
@@ -110,12 +114,14 @@ let fileModal = document.getElementById('archivoModal');
 file.addEventListener('change', subirImagen);
 fileModal.addEventListener('change', subirImagen);
 
+
+
 function subirImagen(event) {
     close_popUp();
     borrar_canvas();
-    let reader = new FileReader();
+    let reader = new FileReader(); //permite que las aplicaciones lean ficheros almacenados de manera asincronica
     let fileReader = event.target.files[0];
-    reader.readAsDataURL(fileReader);
+    reader.readAsDataURL(fileReader); //comienza la lectura y una vez terminada el atributo result contiene un url que representa los datos del fichero
     reader.onloadend = (event) => {
         let contenido = event.target.result;
         let image = new Image();
@@ -123,6 +129,7 @@ function subirImagen(event) {
         image.onload = () => {
             //Sacando el if y el else todas las imagenes se adaptarian al tamaño del canvas
             if ((canvas.width < image.width) || (canvas.height < image.height)) {
+                //cuenta matematica que utilizamos para adaptar la imagen al canvas
                 var hRatio = canvas.width / image.width;
                 var vRatio = canvas.height / image.height;
                 var ratio = Math.min(hRatio, vRatio);
@@ -135,6 +142,7 @@ function subirImagen(event) {
                 canvas.height = image.height
                 ctx.drawImage(image, 0, 0);
             }
+            //realizamos un backup de la imagen inicial
             imageDataRestore = ctx.getImageData(0, 0, width, height);
             imageRestore = backupImage(imageDataRestore)
         }
@@ -176,6 +184,8 @@ function negativeFilter() {
     ctx.putImageData(imageData, 0, 0) * 4;
 }
 
+//funcion para aplicar el filtro negativo
+//se determina el valor inverso de un color restando del valor máximo el valor del color original => (255 - r/g/b)
 function applyNegative(imageData, a) {
     for (let x = 0; x < width; x++) {
         for (let y = 0; y < height; y++) {
@@ -202,7 +212,8 @@ function brightnessFilter(e) {
     applyBrightnessFilter(imageData, a, e);
     ctx.putImageData(imageData, 0, 0) * 4;
 }
-
+//funcion para aplicar brillo
+//dependiendo si el boton que se aprieta es + 0 - se suma o resta 5 puntos al rgb
 function applyBrightnessFilter(imageData, a, e) {
     if (e.target.id === "masBrillo") {
         for (let x = 0; x < canvas.width; x++) {
@@ -233,7 +244,9 @@ function setPixelMore(imageData, x, y, a) {
     imageData.data[index + 2] = imageData.data[index + 2] + 5;
     imageData.data[index + 3] = a;
 }
+
 //greyscale
+
 document.getElementById("greyScale").addEventListener("click", greyScaleFilter);
 
 function greyScaleFilter() {
@@ -243,6 +256,8 @@ function greyScaleFilter() {
     ctx.putImageData(imageData, 0, 0) * 4;
 }
 
+//funcion para aplicar escala de grises
+//para averiguar el gris de un pixel se suman los valores rgb y se los divide por 3
 function applyGreyScale(imageData) {
     for (let x = 0; x < width; x++) {
         for (let y = 0; y < height; y++) {
@@ -268,6 +283,7 @@ function binarizacionFilter() {
     ctx.putImageData(imageData, 0, 0) * 4;
 }
 
+//primero se aplica el gris al pixel=>si el pixel resultante es menor a la mitad de 255 se transforma en negro,sino se transforma en blanco
 function applyBinarizacion(imageData) {
     for (let x = 0; x < width; x++) {
         for (let y = 0; y < height; y++) {
@@ -292,6 +308,13 @@ function sepiaFilter() {
     ctx.putImageData(imageData, 0, 0) * 4;
 }
 
+
+//primero se le aplica a cada r,g y b el negativo
+//luego se realiza el siguiente calculo matematico
+//r se vuelve (r * .393) + (g * .769) + (b * .189)
+//g se vuelve (r * .349) + (g * .686) + (b * .168)
+//b se vuelve (r * .272) + (g * .534) + (b * .131)
+//fuente: https://www.etnassoft.com/2016/11/03/manipulacion-de-imagenes-con-javascript-parte-1/
 function applySepia(imageData) {
     for (let x = 0; x < width; x++) {
         for (let y = 0; y < height; y++) {
@@ -331,6 +354,10 @@ function saturacionFilter() {
     ctx.putImageData(imageData, 0, 0) * 4;
 }
 
+
+//para aplicar una determinada saturacion se tiene que pasar
+//el rgb a notacion hsl, subir o bajar la cantidad de contraste deseada en s
+//y luego volver a transformar a rgb
 function applySaturacion(imageData, a, sat) {
     for (let x = 0; x < canvas.width; x++) {
         for (let y = 0; y < canvas.height; y++) {
@@ -360,6 +387,8 @@ function applySaturacion(imageData, a, sat) {
     }
 }
 
+
+//cuenta matematica sacada de internet
 function rgbToHsl(r, g, b) {
     r /= 255, g /= 255, b /= 255;
 
@@ -384,7 +413,7 @@ function rgbToHsl(r, g, b) {
     return [h, s, l];
 }
 
-
+//cuenta matematica sacada de internet
 function hslToRgb(h, s, l) {
     var r, g, b;
 
@@ -411,6 +440,8 @@ function hslToRgb(h, s, l) {
     return [r * 255, g * 255, b * 255];
 }
 
+
+//devuelve un arreglo con el rgb de un pixel
 function getRgb(imageData, x, y) {
 
     let index = (x + y * imageData.width) * 4;
@@ -421,6 +452,8 @@ function getRgb(imageData, x, y) {
     return arr;
 }
 
+
+//reemplaza el rgb un pixel de una imagen
 function setPixel(imageData, x, y, r, g, b) {
     let index = (x + y * imageData.width) * 4;
     imageData.data[index + 0] = r;
