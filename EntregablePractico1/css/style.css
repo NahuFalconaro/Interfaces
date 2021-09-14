@@ -20,9 +20,9 @@ body{
     position: absolute;
     z-index: 100;
     margin-left: 25%;
-    transition: all 1s;
     background: black;
-}
+    
+}        
 nav{
     background-color: rgb(255, 251, 245);
 
