@@ -8,6 +8,7 @@ let a = 255;
 let imageDataRestore = ctx.getImageData(0, 0, width, height);
 let imageRestore = backupImage(imageDataRestore);
 
+
 fillWhite();
 
 
@@ -42,7 +43,6 @@ window.addEventListener("mouseup", () => {
 })
 
 function draw(e) {
-
     let color = document.getElementById("color").value;
     let grosor = document.getElementById("grosor").value;
     pencil.setGrosor(grosor);
@@ -430,7 +430,7 @@ function setPixel(imageData, x, y, r, g, b) {
 }
 
 
-//promedio matriz
+//blur
 
 document.getElementById("blur").addEventListener("click", blurFilter);
 
@@ -443,16 +443,20 @@ function blurFilter() {
     applyBlur(imageData, mat, a);
     ctx.putImageData(imageData, 0, 0) * 4;
 }
+//Esta funcion, aplica el filtro blur, el cual en cada iteracion obtiene un promedio de los pixeles vecinos al que estoy situado
 
 function applyBlur(imageData, mat, a) {
-    let param = imageData.data;
+    let data = imageData.data;
     for (let x = 1; x < canvas.width - 1; x++) {
         for (let y = 1; y < canvas.height - 1; y++) {
-            let rgb = averageMatrix(param, mat, x, y);
+            let rgb = averageMatrix(data, mat, x, y);
             setPixel(imageData, x, y, rgb[0], rgb[1], rgb[2], a);
         }
     }
 }
+//La funcion averageMatrix, devuelve un arreglo con los valores en r,g,b
+//Los valores contienen, el resultado de recorrer la matriz dada, y la matriz definidas por las posiciones dadas de la imagen (x ,y )
+
 function averageMatrix(imageData, mat, x, y) {
     let r = 0;
     let g = 0;
@@ -471,7 +475,8 @@ function averageMatrix(imageData, mat, x, y) {
     }
     return [r, g, b]
 }
-
+//La funcion getValor, devuelve el valor en forma de arreglo, en una posicion dada de la imagen.
+// Definiendo que si el indice es null, se vuelve 0
 function getValor(data, x, y, indice) {
     if (indice === null)
         indice = 0;
@@ -480,6 +485,8 @@ function getValor(data, x, y, indice) {
 //deteccion de bordes
 
 document.getElementById("deteccionBordes").addEventListener("click", deteccionDeBordesFilter);
+//funcion inicial que define las matrices del operador de sobel para realizar el filtro 
+//de deteccion de bordes
 function deteccionDeBordesFilter() {
     let matX = [[-1, 0, 1],
     [-2, 0, 2],
@@ -492,6 +499,8 @@ function deteccionDeBordesFilter() {
     let returnData = applyDeBordesFilter(imageData, matX, matY);
     ctx.putImageData(returnData, 0, 0);
 }
+
+//COn esta funcion retorno en forma de arreglo los valores en tonalidad gris de la imagen.
 function valoresGrisEnArrayDeImagen(data) {
     let retorno = [];
     for (y = 0; y < height; y++) {
@@ -503,12 +512,19 @@ function valoresGrisEnArrayDeImagen(data) {
     }
     return retorno;
 }
+//Funcion que aplica el filtro de deteccion de bordes
+//Se le pasa la imagen cargada, y los dos kernels de 3x3 del operador de sobel para realizar el filtro
+//Definimos un array grey_scale para obtener los valores en tonalidad gris de la imagen sin setearselos.
+//Con el metodo valoresGrisEnArrayDeImagen, obtenemos dichos valores para trabajar sobre ellos.
+//Dentro de la iteracion, se realiza la multiplicacion de los kernels por una matriz 3x3 de la imagen en la posicion obtenida por la iteracion
+//Luego de obtener el promedio, se realiza la combinacion de resultados para calcular la magnitud del gradiente.\
+//Pasando asi, a obtener un gradiente mas optimo y luego devolver los valores de la imag
 function applyDeBordesFilter(imageData, matX, matY) {
     let filtro = imageData;
-    let gray_scale = [];
+    let grey_scale = [];
     let data = imageData;
-    gray_scale = valoresGrisEnArrayDeImagen(data);
-    data = gray_scale;
+    grey_scale = valoresGrisEnArrayDeImagen(data);
+    data = grey_scale;
     for (y = 0; y < canvas.height; y++) {
         for (x = 0; x < canvas.width; x++) {
             let pixelX = averageMatrix(data, matX, x, y);
@@ -522,16 +538,19 @@ function applyDeBordesFilter(imageData, matX, matY) {
     }
     return filtro;
 }
+//Devuelve un valor numerico de la matriz en la posicion x e y pasadas por parametros.
 function devolverValorEnMatriz(mat, x, y) {
     return mat[x][y];
 }
 
 document.getElementById("restoreImage").addEventListener("click", restoreImage);
-
+///Funcion que vuelve al estado original la imagen
 function restoreImage() {
     ctx.putImageData(imageDataRestore, 0, 0) * 4;
 
 }
+//La funcion backupImage, recibe la imagen cargada, y crea un punto de restauracion de dicha imagen
+
 function backupImage(pictureData) {
     let backupPicture = new ImageData(pictureData.width, pictureData.height);
     for (let x = 0; x < pictureData.width; x++) {
@@ -543,6 +562,5 @@ function backupImage(pictureData) {
             setPixel(backupPicture, x, y, r, g, b, 255);
         }
     }
-
     return backupPicture;
 }
