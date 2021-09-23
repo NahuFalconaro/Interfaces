@@ -1,25 +1,26 @@
 class Juego {
 
-    constructor(jugador1, jugador2, maxTime, x, y, ctx, canvas, imgTablero, imgFicha, col, fil) {
+    constructor(jugador1, jugador2, maxTime, x, y, ctx, canvas, imgTablero, imgFicha1, imgFicha2, col, fil) {
         this.tablero = new Tablero(x, y, ctx, canvas, imgTablero);
         this.jugador1 = jugador1;
         this.jugador2 = jugador2;
         this.turno = jugador1;
+
         //this.timer = setTimeout(tiempoTerminado(), maxTime * 1000);
-        this.nuevasFichas(col, fil, ctx, imgFicha);
+        this.nuevasFichas(col, fil, ctx, imgFicha1,imgFicha2);
     }
 
-    nuevasFichas(col, fil, img) {
-        this.ponerFichas(col, fil, img, 200, 200, this.jugador1)
-        this.ponerFichas(col, fil, img, 1500, 200, this.jugador2)
+    nuevasFichas(col, fil,ctx, imgFicha1, imgFicha2) {
+        this.ponerFichas(col, fil, imgFicha1, 50, 100, this.jugador1)
+        this.ponerFichas(col, fil, imgFicha2, 1200, 100, this.jugador2)
     }
 
-    ponerFichas(col, fil, img, inicioX, inicioY, jugador) {
+    ponerFichas(col, fil, imgFicha, inicioX, inicioY, jugador) {
         let i = 0;
         let cantFichas = 0;
-        for (let y = inicioY; cantFichas < ((col * fil) / 2); y += 100) {
-            for (let x = inicioX; i < 3; x += 100) {
-                let nuevaFicha = new Ficha(img, jugador)
+        for (let y = inicioY; cantFichas < ((col * fil) / 2); y += 85) {
+            for (let x = inicioX; i < 4; x += 80) {
+                let nuevaFicha = new Ficha(imgFicha, jugador)
                 nuevaFicha.drawFicha(x, y, ctx)
                 cantFichas++;
                 i++;

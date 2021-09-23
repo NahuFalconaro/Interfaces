@@ -27,7 +27,7 @@ class Tablero{
         }
     
         function myDrawImage(image){
-            ctx.drawImage(image,canvas.width / 2 - image.width / 2,canvas.height  - image.height );
+            ctx.drawImage(image,canvas.width / 2 - image.width / 2, 50 );
         }
     }
     
