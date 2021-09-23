@@ -1,31 +1,33 @@
 class Tablero{
-    constructor(img,maxX,maxY,ctx){
-        //this.matrizTablero=[];
-        this.fondo=img;
-        //inicMatriz(maxX,maxY);
-        dibujarTablero(ctx);
+    constructor(x,y,ctx,canvas,img){
+        this.matrizTablero=[];
+        this.maxX=x;
+        this.maxY=y
+        this.inicMatriz();
+        this.dibujarTablero(ctx,canvas,img)
     }
 
-    inicMatriz(maxX,maxY){
-        for (let i = 0; i < maxX; i++) {
+    inicMatriz(){
+        for (let i = 0; i < this.maxX; i++) {
             matrizTablero[i] = [];
-            for (let j = 0; j < maxY; j++) {
+            for (let j = 0; j < this.maxY; j++) {
                 matrizTablero[i][j] = null;
             }
         }
     }
-    dibujarTablero(ctx){
+    
+    dibujarTablero(ctx,canvas,img){
 
         let image = new Image();
 
-        image.src = fondo;
-
+        image.src = img;
+    
         image.onload = function() {
             myDrawImage(this);
         }
-
+    
         function myDrawImage(image){
-            ctx.drawImage(image, 0, 0);
+            ctx.drawImage(image,canvas.width / 2 - image.width / 2,canvas.height  - image.height );
         }
     }
     

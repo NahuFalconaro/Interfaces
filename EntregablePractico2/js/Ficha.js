@@ -1,20 +1,22 @@
-class Ficha{
+class Ficha {
 
-    constructor(ctx, img){
-        this.ctx = ctx;
+    constructor(img, jugador) {
         this.img = img;
-        this.pertenece = "";
+        this.pertenece = jugador;
     }
 
-    setPertenece(jugador){
+    setPertenece(jugador) {
         this.pertenece = jugador
     }
-    getPertenece(){
+    getPertenece() {
         return this.pertenece;
     }
 
-    drawFicha(x,y){
-        //Dibujo un circulo con metodos de canvas.arc
-        //Dibujo la imagen arriba de la posicion de la ficha
+    drawFicha(x, y, ctx) {
+        ctx.beginPath();
+        ctx.arc(x, y, 36, 0, 2 * Math.PI);
+        ctx.strokeStyle = "#FFFFFF0"
+            //despues falta poner con imagen
+        ctx.stroke();
     }
 }
