@@ -1,0 +1,13 @@
+.hidden{
+    display: none;
+}
+#pop-up{
+    position: absolute;
+    z-index: 100;
+    margin-left: 25%;
+    background: rgb(92, 89, 89);
+    
+} 
+.my_btn:hover{
+    transform: scale(1.1) !important;
+}

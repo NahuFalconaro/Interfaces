@@ -1,47 +1,86 @@
+const RADIO = 36;
 class Ficha {
 
-    constructor(img, jugador) {
-        this.img = img;
+    constructor(img, jugador, posX, posY, ctx, color) {
+        this.img = img; //Guarda la ruta de la imagen que le paso
+        this.imagen = new Image(); //Defino el atributo que sea una iamgen, asi no crea una imagen cada vez que renderiza
         this.pertenece = jugador;
+        this.posX = posX;
+        this.posY = posY;
+        this.resaltado = false;
+        this.ctx = ctx;
+        this.color = color;
     }
-
+    setPosition(x, y) {
+        this.posX = x;
+        this.posY = y;
+    }
     setPertenece(jugador) {
         this.pertenece = jugador
     }
     getPertenece() {
         return this.pertenece;
     }
-
-    drawFicha(x, y, ctx) {
+    isPointInside(x, y) {
+        let _x = this.posX - x;
+        let _y = this.posY - y;
+        return Math.sqrt(_x * _x + _y * _y) < RADIO;
+    }
+    setResaltado(res) {
+        this.resaltado = res;
+    }
+    renderizar() {
+        this.drawFicha(this.posX, this.posY);
+    }
+    drawFicha(x, y) {
         let imgX = x - 36;
         let imgY = y - 36;
-        ctx.beginPath();
-        ctx.arc(x, y, 36, 0, 2 * Math.PI);
-        let imagen = new Image();
-        imagen.src = this.img;
-        imagen.onload = function (){
-            ctx.save();
-            ctx.beginPath();
-            ctx.arc(x, y, 36, 0, 2 * Math.PI);
-            ctx.closePath();
-            ctx.clip();
-            console.log(imagen.width)
-            ctx.drawImage(imagen, imgX, imgY, 70, 70);
+        this.ctx.beginPath();
+        this.ctx.arc(x, y, RADIO, 0, 2 * Math.PI);
+        if (this.img == "") {
+            this.ctx.fillStyle = this.color;
+            this.ctx.fill();
+            //this.ctx.closePath();
+        } else {
+            if (this.imagen.src === "") { //Si la imagen no tiene una foto definida, entra y le setea la foto, lo hace solo a la primera.
+                this.imagen.src = this.img; //le seteo en src, la imagen que me pasan por paorametro
+                let onloadImage = function() {
+                    ctx.save();
+                    ctx.beginPath();
+                    ctx.arc(x, y, RADIO, 0, 2 * Math.PI);
+                    ctx.closePath();
+                    ctx.clip();
+                    ctx.drawImage(this.imagen, imgX, imgY, 70, 70);
+                    ctx.beginPath();
+                    ctx.arc(x, y, RADIO, 0, 2 * Math.PI);
+                    ctx.clip();
+                    ctx.closePath();
+                    ctx.restore();
+                }
+                this.imagen.onload = onloadImage.bind(this); //La funcion .bind(this), recibe el objeto sobre el que estoy parado, o con el que deseo trabajar
+                //Trabaja sobre la variable o un elemento que recibe una funcion, como en este caso onloadImage.
+                //Si no recibe el objeto this, la funcion asignada a onloadImage no conoce los this. y dara error.
 
-            ctx.beginPath();
-            ctx.arc(x, y, 36, 0, 2 * Math.PI);
-            ctx.clip();
-            ctx.closePath();
-            ctx.restore();
+
+            } else { //Si no es vacio, dibuja el circulo con la foto ya guardada, sin crear una instancia de new Image, cada vez que se dibuje
+                ctx.save();
+                ctx.beginPath();
+                ctx.arc(x, y, RADIO, 0, 2 * Math.PI);
+                ctx.closePath();
+                ctx.clip();
+                ctx.drawImage(this.imagen, imgX, imgY, 70, 70);
+                ctx.beginPath();
+                ctx.arc(x, y, RADIO, 0, 2 * Math.PI);
+                ctx.clip();
+                ctx.closePath();
+                ctx.restore();
+            }
         }
-        ctx.strokeStyle = "#FFFFFF0"
-        ctx.stroke();
+        if (this.resaltado === true) {
+            this.ctx.strokeStyle = "#262626";
+            this.ctx.lineWidth = 7;
+            this.ctx.stroke();
+        }
     }
+
 }
-
-
-
-   
-
-
-    
