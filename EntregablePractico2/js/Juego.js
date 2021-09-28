@@ -3,34 +3,33 @@ var isMouseDown = false;
 class Juego {
 
     constructor(jugador1, jugador2, maxTime, x, y, ctx, canvas, imgTablero, imgFicha1, imgFicha2, col, fil, colorImg1, colorImg2) {
-        this.tablero = new Tablero(x, y, ctx, canvas, imgTablero);
+        this.tablero = new Tablero(x, y, ctx, canvas, imgTablero, col, fil);
         this.jugador1 = jugador1;
         this.jugador2 = jugador2;
         this.turno = jugador1;
         this.fichas = [];
         this.ctx = ctx;
         this.canvas = canvas;
+        this.col = col;
+        this.fil = fil;
         //this.timer = setTimeout(tiempoTerminado(), maxTime * 1000);
         this.nuevasFichas(col, fil, ctx, imgFicha1, imgFicha2, colorImg1, colorImg2);
     }
 
     nuevasFichas(col, fil, ctx, imgFicha1, imgFicha2, colorImg1, colorImg2) {
-        this.ponerFichas(col, fil, imgFicha1, 50, 100, this.jugador1, colorImg1)
+        this.ponerFichas(col, fil, imgFicha1, 100, 100, this.jugador1, colorImg1)
         this.ponerFichas(col, fil, imgFicha2, 1200, 100, this.jugador2, colorImg2)
     }
 
     ponerFichas(col, fil, imgFicha, inicioX, inicioY, jugador, colorImg) {
         let i = 0;
         let cantFichas = 0;
-        for (let y = inicioY; cantFichas < ((col * fil) / 2); y += 85) {
-            for (let x = inicioX; i < 4; x += 80) {
-                let nuevaFicha = new Ficha(imgFicha, jugador, x, y, ctx, colorImg)
-                nuevaFicha.drawFicha(x, y)
-                this.fichas.push(nuevaFicha);
-                cantFichas++;
-                i++;
-            }
-            i = 0;
+        let mitadTotalFichas = (col * fil) / 2;
+        for (let y = inicioY; cantFichas < mitadTotalFichas; y++) {
+            let nuevaFicha = new Ficha(imgFicha, jugador, inicioX, y, ctx, colorImg)
+            nuevaFicha.drawFicha(inicioX, y)
+            this.fichas.push(nuevaFicha);
+            cantFichas++;
         }
     }
 
@@ -118,7 +117,7 @@ class Juego {
         }
     }
     drawTablero() {
-        this.tablero.dibujarTablero(ctx, canvas, imgTablero);
+        this.tablero.dibujarTablero(ctx, canvas, imgTablero, this.col, this.fil);
     }
 
     clearCanvas() {

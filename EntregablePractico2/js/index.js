@@ -1,6 +1,7 @@
 let canvas = document.getElementById("myCanvas");
 let ctx = canvas.getContext("2d");
-let imgTablero;
+let imgTablero = './img/celda.png';
+
 let filas;
 let columnas;
 let juego;
@@ -18,9 +19,6 @@ let seisEnLinea = document.getElementById('6linea');
 let sieteEnLinea = document.getElementById('7linea');
 
 cuatroEnLinea.addEventListener('click', startCuatroEnLinea)
-cincoEnLinea.addEventListener('click', startCincoEnLinea)
-seisEnLinea.addEventListener('click', startSeisEnLinea)
-sieteEnLinea.addEventListener('click', startSieteEnLinea)
 
 let img1 = document.getElementById('elegirImagen1');
 img1.addEventListener('change', obtenerRuta);
@@ -49,9 +47,8 @@ function obtenerRuta2(event) {
 
 function startCuatroEnLinea() {
 
-    imgTablero = './img/4enLinea(6x5).png';
-    columnas = 6;
-    filas = 5;
+    columnas = 4;
+    filas = 3;
     colorImg1 = document.getElementById("elegirColor1").value;
     colorImg2 = document.getElementById("elegirColor2").value;
     jugador1 = document.getElementById("nombreJugador1").value;
@@ -60,60 +57,26 @@ function startCuatroEnLinea() {
     juego = new Juego(jugador1, jugador2, 10000, 0, 0, ctx, canvas, imgTablero, imgFicha1, imgFicha2, columnas, filas, colorImg1, colorImg2)
 }
 
-function startCincoEnLinea() {
-    imgTablero = './img/5enLinea(7x6).png';
-    columnas = 7;
-    filas = 6;
-    imgFicha1 = document.getElementById("elegirImagen1").value;
-    imgFicha2 = document.getElementById("elegirImagen2").value;
-    colorImg1 = document.getElementById("elegirColor1").value;
-    colorImg2 = document.getElementById("elegirColor2").value;
-    jugador1 = document.getElementById("nombreJugador1").value;
-    jugador2 = document.getElementById("nombreJugador2").value;
-    closePopUp();
-    juego = new Juego(jugador1, jugador2, 10000, 0, 0, ctx, canvas, imgTablero, imgFicha1, imgFicha2, columnas, filas, colorImg1, colorImg2)
-}
-
-function startSeisEnLinea() {
-    imgTablero = './img/6enLinea(8x7).png';
-    columnas = 8;
-    filas = 7;
-    imgFicha1 = document.getElementById("elegirImagen1").value;
-    imgFicha2 = document.getElementById("elegirImagen2").value;
-    colorImg1 = document.getElementById("elegirColor1").value;
-    colorImg2 = document.getElementById("elegirColor2").value;
-    jugador1 = document.getElementById("nombreJugador1").value;
-    jugador2 = document.getElementById("nombreJugador2").value;
-    closePopUp();
-    juego = new Juego(jugador1, jugador2, 10000, 0, 0, ctx, canvas, imgTablero, imgFicha1, imgFicha2, columnas, filas, colorImg1, colorImg2)
-}
-
-function startSieteEnLinea() {
-    imgTablero = './img/7enLinea(9x8).png';
-    columnas = 9;
-    filas = 8;
-    imgFicha1 = document.getElementById("elegirImagen1").value;
-    imgFicha2 = document.getElementById("elegirImagen2").value;
-    colorImg1 = document.getElementById("elegirColor1").value;
-    colorImg2 = document.getElementById("elegirColor2").value;
-    jugador1 = document.getElementById("nombreJugador1").value;
-    jugador2 = document.getElementById("nombreJugador2").value;
-    closePopUp();
-    juego = new Juego(jugador1, jugador2, 10000, 0, 0, ctx, canvas, imgTablero, imgFicha1, imgFicha2, columnas, filas, colorImg1, colorImg2)
-}
 
 
 
 canvas.addEventListener("mousedown", function(e) {
-    juego.onMouseDown(e);
+    if (juego != null) {
+        juego.onMouseDown(e);
+    }
 });
 
 canvas.addEventListener("mousemove", function(e) {
-    juego.onMouseMove(e);
+    if (juego != null) {
+        juego.onMouseMove(e);
+    }
 });
 
 canvas.addEventListener("mouseup", function(e) {
-    juego.onMouseUp(e);
+    if (juego != null) {
+        juego.onMouseUp(e);
+    }
+
 });
 
 document.getElementById("imagen").addEventListener('click', mostrarModalImagen);
