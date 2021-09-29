@@ -161,18 +161,19 @@ class Juego {
             }
         }
     }
+     
     colocarFicha(x, y) {
-
         let medidasCelda = this.tablero.getMedidasImgTablero()
-
-        let posX = (this.tablero.getPosComienzoTableroX() + (x * medidasCelda.height)) + 37.5;
-        let posY = (this.tablero.getPosComienzoTableroY() + (y * medidasCelda.width)) + 36;
+        let valorX = this.posiciones[x];
+        valorX = (valorX.posI + valorX.posF)/2;
+        let posX = valorX + 3;
+        console.log(medidasCelda.height * y)
+        let posY = (this.tablero.getPosComienzoTableroY() + (y * medidasCelda.height)) + 35;
         let newFicha = new Ficha(ultimaFichaClickeada.getId(), ultimaFichaClickeada.getImg(), ultimaFichaClickeada.getPertenece(), posX, posY, ultimaFichaClickeada.getCtx(), ultimaFichaClickeada.getColor());
         let result = this.arrayRemove(this.fichas, ultimaFichaClickeada);
         this.fichas = result;
         this.fichas.push(newFicha);
         newFicha.setResaltado(false);
-        //newFicha.drawFicha(posX, posY);
         this.drawFichasYTablero()
     }
     arrayRemove(arr, value) {
@@ -184,8 +185,11 @@ class Juego {
 
     drawFichasYTablero() {
         this.clearCanvas();
+        //pintarBackground
         this.drawTablero();
         this.drawFichas();
+        //pintar boton de resetGame
+        //pintar timer
         this.drawUserName(jugador1, 105, 400);
         this.drawUserName(jugador2, 1250, 400);
     }
