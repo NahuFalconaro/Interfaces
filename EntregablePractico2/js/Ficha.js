@@ -1,4 +1,4 @@
-const RADIO = 36;
+const RADIO = 28;
 class Ficha {
 
     constructor(img, jugador, posX, posY, ctx, color) {

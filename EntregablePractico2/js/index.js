@@ -12,13 +12,15 @@ let imgFicha2 = "";
 let colorImg1;
 let colorImg2;
 
-//hacer panel configuracion, donde cargue nombre de jugadores, imagenes a usar, y tablero a utilizar.
 let cuatroEnLinea = document.getElementById('4linea');
 let cincoEnLinea = document.getElementById('5linea');
 let seisEnLinea = document.getElementById('6linea');
 let sieteEnLinea = document.getElementById('7linea');
 
 cuatroEnLinea.addEventListener('click', startCuatroEnLinea)
+cincoEnLinea.addEventListener('click', startCincoEnLinea)
+seisEnLinea.addEventListener('click', startSeisEnLinea)
+sieteEnLinea.addEventListener('click', startSieteEnLinea)
 
 let img1 = document.getElementById('elegirImagen1');
 img1.addEventListener('change', obtenerRuta);
@@ -46,9 +48,8 @@ function obtenerRuta2(event) {
 }
 
 function startCuatroEnLinea() {
-
-    columnas = 4;
-    filas = 3;
+    columnas = 6;
+    filas = 7;
     colorImg1 = document.getElementById("elegirColor1").value;
     colorImg2 = document.getElementById("elegirColor2").value;
     jugador1 = document.getElementById("nombreJugador1").value;
@@ -58,7 +59,36 @@ function startCuatroEnLinea() {
 }
 
 
-
+function startCincoEnLinea() {
+    columnas = 7;
+    filas = 8;
+    colorImg1 = document.getElementById("elegirColor1").value;
+    colorImg2 = document.getElementById("elegirColor2").value;
+    jugador1 = document.getElementById("nombreJugador1").value;
+    jugador2 = document.getElementById("nombreJugador2").value;
+    closePopUp();
+    juego = new Juego(jugador1, jugador2, 10000, 0, 0, ctx, canvas, imgTablero, imgFicha1, imgFicha2, columnas, filas, colorImg1, colorImg2)
+}
+function startSeisEnLinea() {
+    columnas = 8;
+    filas = 9;
+    colorImg1 = document.getElementById("elegirColor1").value;
+    colorImg2 = document.getElementById("elegirColor2").value;
+    jugador1 = document.getElementById("nombreJugador1").value;
+    jugador2 = document.getElementById("nombreJugador2").value;
+    closePopUp();
+    juego = new Juego(jugador1, jugador2, 10000, 0, 0, ctx, canvas, imgTablero, imgFicha1, imgFicha2, columnas, filas, colorImg1, colorImg2)
+}
+function startSieteEnLinea() {
+    columnas = 9;
+    filas = 10;
+    colorImg1 = document.getElementById("elegirColor1").value;
+    colorImg2 = document.getElementById("elegirColor2").value;
+    jugador1 = document.getElementById("nombreJugador1").value;
+    jugador2 = document.getElementById("nombreJugador2").value;
+    closePopUp();
+    juego = new Juego(jugador1, jugador2, 10000, 0, 0, ctx, canvas, imgTablero, imgFicha1, imgFicha2, columnas, filas, colorImg1, colorImg2)
+}
 
 canvas.addEventListener("mousedown", function(e) {
     if (juego != null) {

@@ -19,7 +19,7 @@ class Tablero {
     }
 
     dibujarTablero(ctx, canvas, img, col, fil) {
-        let posX = 400;
+        let posX = 500;
         let posY = 100;
         if (this.imgTablero.src === "") {
             this.imgTablero.src = img;
@@ -29,20 +29,19 @@ class Tablero {
                         ctx.drawImage(this.imgTablero, posX, posY, 75, 72);
                         posX += 75;
                     }
-                    posX = 400;
+                    posX = 500;
                     posY += 72;
                 }
                 posY = 100;
             }
             this.imgTablero.onload = cargarImagen.bind(this);
         } else {
-            this.imgTablero.src = img;
             for (let x = 0; x < fil; x++) {
                 for (let y = 0; y < col; y++) {
                     ctx.drawImage(this.imgTablero, posX, posY, 75, 72);
                     posX += 75;
                 }
-                posX = 400;
+                posX = 500;
                 posY += 72;
             }
             posY = 100;
