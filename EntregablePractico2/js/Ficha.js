@@ -1,7 +1,8 @@
 const RADIO = 28;
 class Ficha {
 
-    constructor(img, jugador, posX, posY, ctx, color) {
+    constructor(id, img, jugador, posX, posY, ctx, color) {
+        this.id = id;
         this.img = img; //Guarda la ruta de la imagen que le paso
         this.imagen = new Image(); //Defino el atributo que sea una iamgen, asi no crea una imagen cada vez que renderiza
         this.pertenece = jugador;
@@ -18,8 +19,20 @@ class Ficha {
     setPertenece(jugador) {
         this.pertenece = jugador
     }
+    getId() {
+        return this.id;
+    }
     getPertenece() {
         return this.pertenece;
+    }
+    getColor() {
+        return this.color;
+    }
+    getImg() {
+        return this.img;
+    }
+    getCtx() {
+        return this.ctx;
     }
     isPointInside(x, y) {
         let _x = this.posX - x;
@@ -35,8 +48,8 @@ class Ficha {
     drawFicha(x, y) {
         let imgX = x - 36;
         let imgY = y - 36;
-        this.ctx.beginPath();
-        this.ctx.arc(x, y, RADIO, 0, 2 * Math.PI);
+        ctx.beginPath();
+        ctx.arc(x, y, RADIO, 0, 2 * Math.PI);
         if (this.img == "") {
             this.ctx.fillStyle = this.color;
             this.ctx.fill();

@@ -12,6 +12,8 @@ class Juego {
         this.canvas = canvas;
         this.col = col;
         this.fil = fil;
+        this.posiciones = [];
+        //this.posiciones = this.completarPosiciones()
         //this.timer = setTimeout(tiempoTerminado(), maxTime * 1000);
         this.drawUserName(jugador1, 105, 400);
         this.drawUserName(jugador2, 1250, 400);
@@ -28,10 +30,11 @@ class Juego {
         let cantFichas = 0;
         let mitadTotalFichas = (col * fil) / 2;
         for (let y = inicioY; cantFichas < mitadTotalFichas; y++) {
-            let nuevaFicha = new Ficha(imgFicha, jugador, inicioX, inicioY, ctx, colorImg)
+            let nuevaFicha = new Ficha(i, imgFicha, jugador, inicioX, inicioY, ctx, colorImg)
             nuevaFicha.drawFicha(inicioX, inicioY)
             this.fichas.push(nuevaFicha);
             cantFichas++;
+            i++;
         }
     }
 
@@ -64,6 +67,7 @@ class Juego {
             }
         }
     }
+
     ponerFicha(x, y, ficha) {
         this.tablero.addFicha(x, y, ficha)
         checkear4EnLinea();
@@ -91,27 +95,99 @@ class Juego {
         if (clickFicha != null) {
             clickFicha.setResaltado(true); //la resalto
             ultimaFichaClickeada = clickFicha;
-
         }
         this.drawFichasYTablero();
     }
+
+    //Checkea si la ficha arrastrada esta dentro del tablero
+    cursorEnTablero(e, widthMax, heightMax, minWidth) {
+
+        return (e.layerX >= minWidth && e.layerX <= widthMax && e.layerY >= 0 && e.layerY <= heightMax)
+    }
+    completarPosiciones() {
+        this.posiciones = []
+        let posInicial = 500; //se cambia por el valor inicial del tablero, con la funcion getPosInicialTablero
+        for (let i = 0; i < this.col; i++) {
+            let pos = {
+                posI: posInicial,
+                posF: posInicial + 70
+            }
+            this.posiciones.push(pos)
+            posInicial += 75
+        }
+    }
+
+
     onMouseMove(e) {
         if (isMouseDown && ultimaFichaClickeada != null) {
-            //if layerX layerY == algunapostablero
+
             ultimaFichaClickeada.setPosition(e.layerX, e.layerY);
             this.drawFichasYTablero();
         }
     }
 
+    getPosX(e) {
+        for (let x = 0; x < this.posiciones.length; x++) {
+            if ((e.layerX >= this.posiciones[x].posI) && (e.layerX <= this.posiciones[x].posF)) {
+
+                return x;
+            }
+        }
+    }
+    getPosY(posX) {
+        let matrizTablero = this.tablero.getMatrizTablero();
+        for (let i = this.fil - 1; i >= 0; i--) {
+            if (matrizTablero[i][posX] == null) {
+                return i;
+            }
+        }
+        return -1 // todas las posiciones en Y estan ocupadas
+    }
     onMouseUp(e) {
         isMouseDown = false;
+        this.completarPosiciones();
+        let heightMax = this.tablero.getHeight();
+        let widthMax = this.tablero.getWidth() + this.tablero.getPosComienzoTableroX();
+        let minWidth = this.tablero.getPosComienzoTableroX();
+        if (this.cursorEnTablero(e, widthMax, heightMax, minWidth)) {
+            let posX = this.getPosX(e) //devuelve una posicion del arreglo a partir de la posicion del cursor
+            let posY = this.getPosY(posX) //devuelve una posicion para Y checkeando la cantidad de fichas que hay colocadas en la matriz
+            if (posY != -1) { //si no hay posiciones ocupadas
+                this.tablero.colocarFichaMatriz(posX, posY, ultimaFichaClickeada.getPertenece())
+                this.colocarFicha(posX, posY); //esto es para el canvas 
+                //  if (this.checkearSiAlguienGano){
+                //      this.mostrarGanador
+                //  }
+            }
+        }
+    }
+    colocarFicha(x, y) {
+
+        let medidasCelda = this.tablero.getMedidasImgTablero()
+
+        let posX = (this.tablero.getPosComienzoTableroX() + (x * medidasCelda.height)) + 37.5;
+        let posY = (this.tablero.getPosComienzoTableroY() + (y * medidasCelda.width)) + 36;
+        let newFicha = new Ficha(ultimaFichaClickeada.getId(), ultimaFichaClickeada.getImg(), ultimaFichaClickeada.getPertenece(), posX, posY, ultimaFichaClickeada.getCtx(), ultimaFichaClickeada.getColor());
+        let result = this.arrayRemove(this.fichas, ultimaFichaClickeada);
+        this.fichas = result;
+        this.fichas.push(newFicha);
+        newFicha.setResaltado(false);
+        //newFicha.drawFicha(posX, posY);
+        this.drawFichasYTablero()
+    }
+    arrayRemove(arr, value) {
+
+        return arr.filter(function(ele) {
+            return (ele.getId() != value.getId()) || (ele.getPertenece() != value.getPertenece());
+        });
     }
 
     drawFichasYTablero() {
         this.clearCanvas();
         this.drawTablero();
         this.drawFichas();
-        this.drawUserName();
+        this.drawUserName(jugador1, 105, 400);
+        this.drawUserName(jugador2, 1250, 400);
     }
     drawFichas() {
         for (let i = 0; i < this.fichas.length; i++) {
@@ -121,9 +197,9 @@ class Juego {
     drawTablero() {
         this.tablero.dibujarTablero(ctx, canvas, imgTablero, this.col, this.fil);
     }
-    drawUserName(jugador, x, y){
-        this.ctx.fillStyle = "black"; 
-        this.ctx.font = "bold 25px Arial"; 
+    drawUserName(jugador, x, y) {
+        this.ctx.fillStyle = "black";
+        this.ctx.font = "bold 25px Arial";
         this.ctx.fillText(jugador, x, y);
     }
     clearCanvas() {

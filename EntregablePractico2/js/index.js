@@ -48,8 +48,8 @@ function obtenerRuta2(event) {
 }
 
 function startCuatroEnLinea() {
-    columnas = 6;
-    filas = 7;
+    columnas = 6; //6
+    filas = 7; //7
     colorImg1 = document.getElementById("elegirColor1").value;
     colorImg2 = document.getElementById("elegirColor2").value;
     jugador1 = document.getElementById("nombreJugador1").value;
@@ -69,6 +69,7 @@ function startCincoEnLinea() {
     closePopUp();
     juego = new Juego(jugador1, jugador2, 10000, 0, 0, ctx, canvas, imgTablero, imgFicha1, imgFicha2, columnas, filas, colorImg1, colorImg2)
 }
+
 function startSeisEnLinea() {
     columnas = 8;
     filas = 9;
@@ -79,6 +80,7 @@ function startSeisEnLinea() {
     closePopUp();
     juego = new Juego(jugador1, jugador2, 10000, 0, 0, ctx, canvas, imgTablero, imgFicha1, imgFicha2, columnas, filas, colorImg1, colorImg2)
 }
+
 function startSieteEnLinea() {
     columnas = 9;
     filas = 10;
