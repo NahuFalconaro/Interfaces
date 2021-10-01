@@ -168,12 +168,14 @@ class Juego {
         valorX = (valorX.posI + valorX.posF)/2;
         let posX = valorX + 3;
         console.log(medidasCelda.height * y)
-        let posY = (this.tablero.getPosComienzoTableroY() + (y * medidasCelda.height)) + 35;
+        let posY = (this.tablero.getPosComienzoTableroY() + (y * medidasCelda.height)) + 37;
         let newFicha = new Ficha(ultimaFichaClickeada.getId(), ultimaFichaClickeada.getImg(), ultimaFichaClickeada.getPertenece(), posX, posY, ultimaFichaClickeada.getCtx(), ultimaFichaClickeada.getColor());
         let result = this.arrayRemove(this.fichas, ultimaFichaClickeada);
         this.fichas = result;
         this.fichas.push(newFicha);
         newFicha.setResaltado(false);
+        
+        //newFicha.drawFicha(posX, posY);
         this.drawFichasYTablero()
     }
     arrayRemove(arr, value) {
