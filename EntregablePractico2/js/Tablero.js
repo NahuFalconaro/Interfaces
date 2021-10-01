@@ -89,7 +89,7 @@ class Tablero {
         this.matrizTablero[y][x] = jugador;
     }
     hayEnLinea(posX, posY, jugador) {
-        return this.busquedaDiagonal(posX, posY, jugador);
+        return this.busquedaVertical(posX, posY, jugador) || this.busquedaHorizontal(posY, jugador);
     }
     busquedaVertical(posX, posY, jugador) {
         //posX estatico, posY busca hacia abajo
@@ -124,8 +124,8 @@ class Tablero {
         //dos doble for?
         //arrancado las diagonales desde la pos de la ficha
         //this.busquedaIzqSuperiorADerInferior(posX, posY, jugador)
-        return this.busquedaDerSuperiorAIzqInferior(posX, posY, jugador)
-            //this.busquedaIzqInfADerSup(posX, posY, jugador)
+        //return this.busquedaDerSuperiorAIzqInferior(posX, posY, jugador)
+        //this.busquedaIzqInfADerSup(posX, posY, jugador)
     }
     busquedaIzqSuperiorADerInferior(posX, posY, jugador) {
         let posInicial = {
