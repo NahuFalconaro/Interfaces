@@ -18,6 +18,7 @@ class Juego {
         this.drawUserName(jugador1, 105, 400);
         this.drawUserName(jugador2, 1250, 400);
         this.nuevasFichas(col, fil, ctx, imgFicha1, imgFicha2, colorImg1, colorImg2);
+        this.completarPosiciones();
     }
 
     nuevasFichas(col, fil, ctx, imgFicha1, imgFicha2, colorImg1, colorImg2) {
@@ -46,8 +47,12 @@ class Juego {
         this.jugador2 = jugador2;
     }
 
-    setTurno(jugador) {
-        this.turno = jugador;
+    cambiarTurno() {
+        if (this.turno == this.jugador1) {
+            this.turno = this.jugador2;
+        } else {
+            this.turno = this.jugador1;
+        }
     }
 
     reiniciarJuego() {
@@ -62,7 +67,7 @@ class Juego {
     buscarFichaClickeada(x, y) {
         for (let i = 0; i < this.fichas.length; i++) {
             let f = this.fichas[i];
-            if (f.isPointInside(x, y)) {
+            if (f.isPointInside(x, y) && f.getPuedeMover() && f.getPertenece() == this.turno) {
                 return f;
             }
         }
@@ -82,7 +87,6 @@ class Juego {
     mostrarGanador() {
 
     }
-
     onMouseDown(e) {
         isMouseDown = true;
 
@@ -90,7 +94,6 @@ class Juego {
             ultimaFichaClickeada.setResaltado(false); //a la ultima figura seleccionada, le saca el resaltado
             ultimaFichaClickeada = null;
         }
-
         let clickFicha = this.buscarFichaClickeada(e.layerX, e.layerY);
         if (clickFicha != null) {
             clickFicha.setResaltado(true); //la resalto
@@ -98,6 +101,7 @@ class Juego {
         }
         this.drawFichasYTablero();
     }
+
 
     //Checkea si la ficha arrastrada esta dentro del tablero
     cursorEnTablero(e, widthMax, heightMax, minWidth) {
@@ -145,38 +149,43 @@ class Juego {
     }
     onMouseUp(e) {
         isMouseDown = false;
-        this.completarPosiciones();
         let heightMax = this.tablero.getHeight();
         let widthMax = this.tablero.getWidth() + this.tablero.getPosComienzoTableroX();
         let minWidth = this.tablero.getPosComienzoTableroX();
         if (this.cursorEnTablero(e, widthMax, heightMax, minWidth)) {
             let posX = this.getPosX(e) //devuelve una posicion del arreglo a partir de la posicion del cursor
             let posY = this.getPosY(posX) //devuelve una posicion para Y checkeando la cantidad de fichas que hay colocadas en la matriz
-            if (posY != -1) { //si no hay posiciones ocupadas
+            if (posY != -1 && (ultimaFichaClickeada != null)) { //si no hay posiciones ocupadas
+
                 this.tablero.colocarFichaMatriz(posX, posY, ultimaFichaClickeada.getPertenece())
-                this.colocarFicha(posX, posY); //esto es para el canvas 
-                //  if (this.checkearSiAlguienGano){
-                //      this.mostrarGanador
-                //  }
+                this.colocarFicha(posX, posY); //esto es para el canvas
+                let turnoActual = this.turno;
+                this.cambiarTurno();
+                if (this.tablero.hayEnLinea(posX, posY, turnoActual)) {
+                    console.log("GANASTE JOEPUTAAAAAAAAAAA", turnoActual)
+                }
+
             }
         }
     }
-     
+
     colocarFicha(x, y) {
         let medidasCelda = this.tablero.getMedidasImgTablero()
         let valorX = this.posiciones[x];
-        valorX = (valorX.posI + valorX.posF)/2;
+        valorX = (valorX.posI + valorX.posF) / 2;
         let posX = valorX + 3;
-        console.log(medidasCelda.height * y)
+
         let posY = (this.tablero.getPosComienzoTableroY() + (y * medidasCelda.height)) + 37;
+
         let newFicha = new Ficha(ultimaFichaClickeada.getId(), ultimaFichaClickeada.getImg(), ultimaFichaClickeada.getPertenece(), posX, posY, ultimaFichaClickeada.getCtx(), ultimaFichaClickeada.getColor());
         let result = this.arrayRemove(this.fichas, ultimaFichaClickeada);
         this.fichas = result;
         this.fichas.push(newFicha);
         newFicha.setResaltado(false);
-        
+
         //newFicha.drawFicha(posX, posY);
-        this.drawFichasYTablero()
+        this.drawFichasYTablero();
+        newFicha.setPuedeMover(false);
     }
     arrayRemove(arr, value) {
 

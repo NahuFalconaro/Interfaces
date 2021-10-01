@@ -48,8 +48,8 @@ function obtenerRuta2(event) {
 }
 
 function startCuatroEnLinea() {
-    columnas = 6; //6
-    filas = 7; //7
+    columnas = 4; //6
+    filas = 5; //7
     colorImg1 = document.getElementById("elegirColor1").value;
     colorImg2 = document.getElementById("elegirColor2").value;
     jugador1 = document.getElementById("nombreJugador1").value;

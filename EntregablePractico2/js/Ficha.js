@@ -11,6 +11,7 @@ class Ficha {
         this.resaltado = false;
         this.ctx = ctx;
         this.color = color;
+        this.puedeMover = true;
     }
     setPosition(x, y) {
         this.posX = x;
@@ -41,6 +42,12 @@ class Ficha {
     }
     setResaltado(res) {
         this.resaltado = res;
+    }
+    getPuedeMover() {
+        return this.puedeMover;
+    }
+    setPuedeMover(puedeMover) {
+        this.puedeMover = puedeMover;
     }
     renderizar() {
         this.drawFicha(this.posX, this.posY);
@@ -94,6 +101,7 @@ class Ficha {
             this.ctx.lineWidth = 7;
             this.ctx.stroke();
         }
+
     }
 
 }

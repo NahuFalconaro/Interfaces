@@ -64,12 +64,6 @@ class Tablero {
         this.matrizTablero[x][y] = ficha;
     }
 
-    hayEnLinea() {
-
-    }
-    busquedaVertical() {}
-    busquedaHorizontal() {}
-    busquedaDiagonal() {}
     getWidth() {
         let width = 0;
         for (let i = 0; i < this.col; i++) {
@@ -93,5 +87,96 @@ class Tablero {
     colocarFichaMatriz(x, y, jugador) {
 
         this.matrizTablero[y][x] = jugador;
+    }
+    hayEnLinea(posX, posY, jugador) {
+        return this.busquedaDiagonal(posX, posY, jugador);
+    }
+    busquedaVertical(posX, posY, jugador) {
+        //posX estatico, posY busca hacia abajo
+        let cont = 0;
+        for (let y = posY; y < this.fil; y++) {
+            if (this.matrizTablero[y][posX] == jugador) {
+                cont++;
+                if (cont == 4)
+                    return true
+            } else
+                cont = 0
+        }
+
+        return false
+    }
+    busquedaHorizontal(posY, jugador) {
+        //posY estatico,posX busca hacia los costados
+        //empezando de un borde
+        let cont = 0;
+        for (let x = 0; x < this.col; x++) {
+            if (this.matrizTablero[posY][x] == jugador) {
+                cont++;
+                if (cont == 4)
+                    return true
+            } else
+                cont = 0
+        }
+
+        return false
+    }
+    busquedaDiagonal(posX, posY, jugador) {
+        //dos doble for?
+        //arrancado las diagonales desde la pos de la ficha
+        //this.busquedaIzqSuperiorADerInferior(posX, posY, jugador)
+        return this.busquedaDerSuperiorAIzqInferior(posX, posY, jugador)
+            //this.busquedaIzqInfADerSup(posX, posY, jugador)
+    }
+    busquedaIzqSuperiorADerInferior(posX, posY, jugador) {
+        let posInicial = {
+            x: posX,
+            y: posY,
+        }
+
+        while (posX > 0 && posY > 0) {
+            posInicial.x--;
+            posInicial.y--;
+            posX--;
+            posY--;
+        }
+        let x = posInicial.x;
+        let y = posInicial.y;
+        let cont = 0;
+        while (x <= this.fil && y <= this.col) {
+            if (this.matrizTablero[y][x] == jugador) {
+                cont++
+                if (cont == 4)
+                    return true;
+            } else
+                cont = 0;
+            x++;
+            y++;
+        }
+        return false
+
+    }
+    busquedaDerSuperiorAIzqInferior(posX, posY, jugador) {
+        let cont = 0;
+        let posInicial = {
+            x: posX,
+            y: posY,
+        };
+        while (posY > 0 && posX < this.col) {
+            posInicial.x++;
+            posInicial.y--;
+        }
+        while (posInicial.x >= this.fil && posInicial.y <= this.col) {
+            if (this.matrizTablero[y][x] == jugador) {
+                cont++;
+                console.log(cont)
+                if (cont == 4)
+                    return true
+            } else
+                cont = 0
+            posInicial.x--;
+            posInicial.y++;
+        }
+
+        return false
     }
 }
