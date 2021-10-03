@@ -163,7 +163,9 @@ reinicio.addEventListener("click", () =>{
                     //Controlar si es mejor llamar y obtener los datos, en la clase juego.
     reiniciarJuego();
     mostrarPopUp()
-})
+})//ej, en el index solo quede: let/var juego, new juego();
+                            // juego.empezarJuego() e
+    //y los metodos que se necesiten para los eventos mouseMove, up, click
 let clonacionPopUp = document.getElementById("pop-up").cloneNode(true);
 // document.addEventListener("DOMContentLoaded", ()=>{
 
