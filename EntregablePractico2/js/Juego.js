@@ -2,7 +2,7 @@ var ultimaFichaClickeada = null;
 var isMouseDown = false;
 class Juego {
 
-    constructor(jugador1, jugador2, maxTime, x, y, ctx, canvas, imgTablero, imgFicha1, imgFicha2, col, fil, colorImg1, colorImg2) {
+    constructor(jugador1, jugador2, x, y, ctx, canvas, imgTablero, imgFicha1, imgFicha2, col, fil, colorImg1, colorImg2) {
         this.tablero = new Tablero(x, y, ctx, canvas, imgTablero, col, fil);
         this.jugador1 = jugador1;
         this.jugador2 = jugador2;
@@ -20,7 +20,9 @@ class Juego {
         this.nuevasFichas(col, fil, ctx, imgFicha1, imgFicha2, colorImg1, colorImg2);
         this.completarPosiciones();
     }
-
+    nuevoJuego(){
+        
+    }
     nuevasFichas(col, fil, ctx, imgFicha1, imgFicha2, colorImg1, colorImg2) {
         this.ponerFichas(col, fil, imgFicha1, 125, 500, this.jugador1, colorImg1)
         this.ponerFichas(col, fil, imgFicha2, 1300, 500, this.jugador2, colorImg2)
@@ -55,14 +57,7 @@ class Juego {
         }
     }
 
-    reiniciarJuego() {
-        tablero.vaciar();
-        mostrarPopUp(); //para elegir color de ficha etc
-    }
 
-    mostrarPopUp() {
-
-    }
 
     buscarFichaClickeada(x, y) {
         for (let i = 0; i < this.fichas.length; i++) {

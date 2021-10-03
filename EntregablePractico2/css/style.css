@@ -11,3 +11,10 @@
 .my_btn:hover{
     transform: scale(1.1) !important;
 }
+
+.selected{
+    background-color: lightgreen !important;
+}
+.noSelected{
+    background-color: lightgray !important;
+}

@@ -11,6 +11,7 @@ class Tablero {
         this.widthImg = 75;
         this.imgTablero = new Image();
         this.dibujarTablero(ctx, canvas, img, col, fil)
+        
     }
 
     inicMatriz() {
@@ -20,7 +21,6 @@ class Tablero {
                 this.matrizTablero[i][j] = null;
             }
         }
-
     }
     getMedidasImgTablero() {
         let medidas = { height: this.heightImg, width: this.widthImg }
@@ -89,7 +89,7 @@ class Tablero {
         this.matrizTablero[y][x] = jugador;
     }
     hayEnLinea(posX, posY, jugador) {
-        return this.busquedaVertical(posX, posY, jugador) || this.busquedaHorizontal(posY, jugador);
+        return this.busquedaVertical(posX, posY, jugador) || this.busquedaHorizontal(posY, jugador) || this.busquedaDiagonal(posX, posY, jugador);
     }
     busquedaVertical(posX, posY, jugador) {
         //posX estatico, posY busca hacia abajo
@@ -121,62 +121,58 @@ class Tablero {
         return false
     }
     busquedaDiagonal(posX, posY, jugador) {
-        //dos doble for?
-        //arrancado las diagonales desde la pos de la ficha
-        //this.busquedaIzqSuperiorADerInferior(posX, posY, jugador)
-        //return this.busquedaDerSuperiorAIzqInferior(posX, posY, jugador)
-        //this.busquedaIzqInfADerSup(posX, posY, jugador)
+        return  this.busquedaIzqInferiorADerSuperior(posX, posY, jugador) || this.busquedaIzqSuperiorADerInferior(posX, posY, jugador);
     }
     busquedaIzqSuperiorADerInferior(posX, posY, jugador) {
+
         let posInicial = {
             x: posX,
             y: posY,
         }
-
-        while (posX > 0 && posY > 0) {
+        
+        while (posInicial.x > 0 && posInicial.y > 0) {
             posInicial.x--;
             posInicial.y--;
-            posX--;
-            posY--;
         }
-        let x = posInicial.x;
-        let y = posInicial.y;
         let cont = 0;
-        while (x <= this.fil && y <= this.col) {
-            if (this.matrizTablero[y][x] == jugador) {
+        while ( posInicial.x <= this.fil && posInicial.y <= this.col) {
+            if (this.matrizTablero[posInicial.y][ posInicial.x] == jugador) {
                 cont++
                 if (cont == 4)
                     return true;
-            } else
+            } else{
                 cont = 0;
-            x++;
-            y++;
+            }
+                posInicial.x++;
+                posInicial.y++;
+            
         }
         return false
-
     }
-    busquedaDerSuperiorAIzqInferior(posX, posY, jugador) {
-        let cont = 0;
+    busquedaIzqInferiorADerSuperior(posX, posY, jugador) {
         let posInicial = {
             x: posX,
             y: posY,
-        };
-        while (posY > 0 && posX < this.col) {
-            posInicial.x++;
-            posInicial.y--;
         }
-        while (posInicial.x >= this.fil && posInicial.y <= this.col) {
-            if (this.matrizTablero[y][x] == jugador) {
-                cont++;
-                console.log(cont)
-                if (cont == 4)
-                    return true
-            } else
-                cont = 0
-            posInicial.x--;
-            posInicial.y++;
-        }
+        console.log(posInicial.x, posInicial.y)
+        console.table(this.matrizTablero);
+         let cont = 0;
 
-        return false
+         while((posInicial.x >= 0) && (posInicial.y <= this.fil - 1)){
+            //  console.log(posInicial.x + "col" + this.col);
+            //  console.log(posInicial.y + "fil" + this.fil);
+             if (this.matrizTablero[posInicial.y][posInicial.x] == jugador) {
+                cont++
+                console.log(cont)
+                 if(cont==4){
+                     return true;
+                 }
+
+             }else{
+                 cont=0;
+             }
+             posInicial.x--;
+             posInicial.y++;
+         }
     }
 }

@@ -11,23 +11,52 @@
 
 <body>
     <div id="pop-up" class="container w-50 text-center bg-light border border-2 border-dark mt-2">
-        <p class="fs-3 bg-light">Bienvenido, con que tablero desea jugar?</p>
-        <!--<button class="btn btn-dark m-lg-4 bg-light my_btn" style="color: black;" id="close-pop-up" type="button">Cerrar</button>-->
-        <button class="btn btn-dark m-lg-4 bg-light my_btn" style="color: black;" id="4linea" type="button">4 en linea</button>
-        <button class="btn btn-dark m-lg-4 bg-light my_btn" style="color: black;" id="5linea" type="button">5 en linea</button>
-        <button class="btn btn-dark m-lg-4 bg-light my_btn" style="color: black;" id="6linea" type="button">6 en linea</button>
-        <button class="btn btn-dark m-lg-4 bg-light my_btn" style="color: black;" id="7linea" type="button">7 en linea</button>
-        <p class="fs-3 bg-light">Nombre de los jugadores</p>
-        <input type="text" value="NombreJugador1" id="nombreJugador1">
-        <input type="text" value="NombreJugador2" id="nombreJugador2">
-        <p class="fs-3 bg-light">Personalizar fichas</p>
-        <button class="btn btn-dark m-lg-4 bg-light my_btn" style="color: black;" id="imagen" type="button">Imagen</button>
-        <button class="btn btn-dark m-lg-4 bg-light my_btn" style="color: black;" id="color" type="button">Color</button>
-        <input type="file" id="elegirImagen1" class="hidden">
-        <input type="file" id="elegirImagen2" class="hidden">
-        <input type="color" id="elegirColor1" class="hidden">
-        <input type="color" id="elegirColor2" class="hidden">
+        <h4 class="fs-3 bg-light">Bienvenido, con que tablero desea jugar?</h4>
+        <div id="tablero">
+            <button class="btn btn-dark m-lg-4 bg-light my_btn" style="color: black;" id="4linea" type="button">4 en linea</button>
+            <button class="btn btn-dark m-lg-4 bg-light my_btn" style="color: black;" id="5linea" type="button">5 en linea</button>
+            <button class="btn btn-dark m-lg-4 bg-light my_btn" style="color: black;" id="6linea" type="button">6 en linea</button>
+            <button class="btn btn-dark m-lg-4 bg-light my_btn" style="color: black;" id="7linea" type="button">7 en linea</button>
+        </div>
+        <div id="jugadores">
+            <h4 class="fs-3 bg-light">Nombre de los jugadores</h4>
+            <input type="text" value="NombreJugador1" id="nombreJugador1">
+            <input type="text" value="NombreJugador2" id="nombreJugador2">
+        </div>
+        <div id="personalizar">
+            <h4 class="fs-3 bg-light">Personalizar fichas</h4>
+            <button class="btn btn-dark m-lg-4 bg-light my_btn" style="color: black;" id="imagen" type="button">Imagen</button>
+            <button class="btn btn-dark m-lg-4 bg-light my_btn" style="color: black;" id="color" type="button">Color</button>
+            <input type="file" id="elegirImagen1" class="hidden">
+            <input type="file" id="elegirImagen2" class="hidden">
+            <input type="color" id="elegirColor1" class="hidden">
+            <input type="color" id="elegirColor2" class="hidden">
+        </div>
+ 
+        <div id="formatos">
+            <h4 class="fs-3 bg-light">O jugar con alguno de nuestros formatos</h4>
+            <button class="btn btn-dark m-lg-4 bg-light my_btn" style="color: black;" id="verImagenes" type="button">Ver tematicas</button>
+            <button class="btn btn-dark m-lg-4 bg-light my_btn" style="color: black;" id="verColores" type="button">Ver colores</button>
+    
+            <button class="btn btn-dark m-lg-4 bg-light my_btn hidden" style="color: black;" id="leagueOfLegends" type="button">League Of Legends</button>
+            <button class="btn btn-dark m-lg-4 bg-light my_btn hidden" style="color: black;" id="naruto" type="button">Naruto</button>
+            <button class="btn btn-dark m-lg-4 bg-light my_btn hidden" style="color: black;" id="harryPotter" type="button">Harry Potter</button>
+            <!-- <input type="color" id="red" value="#ff0000" class="hidden">
+            <input type="color" id="green" value="#00ff00" class="hidden">
+            <input type="color" id="blue" value="#0000ff" class="hidden"> -->
+            <button class="btn btn-dark m-lg-4 bg-light my_btn hidden" style="color: black;" id="red" type="button">Red & Black</button>
+            <button class="btn btn-dark m-lg-4 bg-light my_btn hidden" style="color: black;" id="green" type="button">Green & Violet</button>
+            <button class="btn btn-dark m-lg-4 bg-light my_btn hidden" style="color: black;" id="blue" type="button">Blue & Yellow</button>
+        </div>
+        <button id="comenzar" class="btn btn-dark m-lg-4 bg-light my_btn" style="color: black;" >Comenzar Juego</button>
     </div>
+    <section class="restartAndTime">
+        <button id="reiniciarJuego">Reiniciar Juego</button>
+        <p id="timer">Timer</p>
+    </section>
+    <div class="hidden">Muestra el ganador</div>
+    <div class="hidden">Muestra que se termino el tiempo</div>
+    <!-- Mostramos que no quedan mas espacios en la amtriz? -->
     <canvas id="myCanvas" width="1500" height="900">
        
     </canvas>
