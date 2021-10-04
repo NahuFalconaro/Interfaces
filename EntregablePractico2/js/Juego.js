@@ -20,8 +20,8 @@ class Juego {
         this.nuevasFichas(col, fil, ctx, imgFicha1, imgFicha2, colorImg1, colorImg2);
         this.completarPosiciones();
     }
-    nuevoJuego(){
-        
+    nuevoJuego() {
+
     }
     nuevasFichas(col, fil, ctx, imgFicha1, imgFicha2, colorImg1, colorImg2) {
         this.ponerFichas(col, fil, imgFicha1, 125, 500, this.jugador1, colorImg1)
@@ -157,12 +157,22 @@ class Juego {
                 let turnoActual = this.turno;
                 this.cambiarTurno();
                 if (this.tablero.hayEnLinea(posX, posY, turnoActual)) {
-                    console.log("GANASTE JOEPUTAAAAAAAAAAA", turnoActual)
+                    this.mostrarGanador(turnoActual)
+                        //console.log("GANASTE JOEPUTAAAAAAAAAAA", turnoActual)
                 }
 
             }
         }
     }
+    mostrarGanador(ganador) {
+        let pGanador = document.getElementById("showGanador");
+        pGanador.innerHTML = ganador;
+        document.getElementById("ganador").classList.remove("hidden")
+    }
+
+
+
+
 
     colocarFicha(x, y) {
         let medidasCelda = this.tablero.getMedidasImgTablero()

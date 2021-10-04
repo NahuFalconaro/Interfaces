@@ -2,20 +2,22 @@ let canvas = document.getElementById("myCanvas");
 let ctx = canvas.getContext("2d");
 let imgTablero = './img/celda.png';
 
-let filas;
-let columnas;
-let juego;
-let jugador1;
-let jugador2;
+let filas = 0;
+let columnas = 0;
+let juego = "";
+let jugador1 = "";
+let jugador2 = "";
 let imgFicha1 = "";
 let imgFicha2 = "";
-let colorImg1;
-let colorImg2;
+let colorImg1 = "";
+let colorImg2 = "";
+let timer = 60 * 3;
+let reloj = document.getElementById("timer");
 
 
 // Mostrar tablero vacio    v
 // mostrar dos grupos de fichas    v   
-// las piezas de cada jugador se dibujan con una imagen en lugar de un color solido    r//subir imagen de color rojo?
+// las piezas de cada jugador se dibujan con una imagen en lugar de un color solido   v
 // cada jugador va seleccionando sus fichas y las ubica en las columnas del tablero    v
 // se debe implementar logica de juego, implementando los turnos    v
 // el juego termina cuando el jugador consigue ubicar cuatro fichas en linea    r//falta terminar el juego una vez haya ganado
@@ -54,19 +56,19 @@ function obtenerRuta2(event) {
 }
 
 let lol = document.getElementById('leagueOfLegends');
-lol.addEventListener('click', ()=>{
+lol.addEventListener('click', () => {
     marcarSeleccionado(lol.parentNode, lol)
     imgFicha1 = "./img/anivia.jfif"
     imgFicha2 = "./img/gnar.jfif"
 });
 let naruto = document.getElementById('naruto');
-naruto.addEventListener('click', ()=>{
+naruto.addEventListener('click', () => {
     marcarSeleccionado(naruto.parentNode, naruto)
     imgFicha1 = "./img/naruto.jfif"
     imgFicha2 = "./img/sasuke.jfif"
 });
 let harryPotter = document.getElementById('harryPotter');
-harryPotter.addEventListener('click', ()=>{
+harryPotter.addEventListener('click', () => {
     marcarSeleccionado(harryPotter.parentNode, harryPotter)
     imgFicha1 = "./img/harryPotter.jfif"
     imgFicha2 = "./img/voldemort.jfif"
@@ -74,45 +76,45 @@ harryPotter.addEventListener('click', ()=>{
 
 
 let red = document.getElementById('red');
-red.addEventListener('click', ()=>{
+red.addEventListener('click', () => {
     marcarSeleccionado(red.parentNode, red)
     colorImg1 = "red"
     colorImg2 = "black"
-    
+
 });
 let green = document.getElementById('green');
-green.addEventListener('click', ()=>{
+green.addEventListener('click', () => {
     marcarSeleccionado(green.parentNode, green)
     colorImg1 = "green"
     colorImg2 = "violet"
 });
 let blue = document.getElementById('blue');
-blue.addEventListener('click', ()=>{
+blue.addEventListener('click', () => {
     marcarSeleccionado(blue.parentNode, blue)
     colorImg1 = "blue"
     colorImg2 = "yellow"
-    
+
 });
 let colorPersonalizado1 = document.getElementById("elegirColor1");
-colorPersonalizado1.addEventListener("change", ()=>{
+colorPersonalizado1.addEventListener("change", () => {
     colorImg1 = colorPersonalizado1.value;
     colorImg2 = colorPersonalizado2.value;
 })
 let colorPersonalizado2 = document.getElementById("elegirColor2");
-colorPersonalizado2.addEventListener("change", ()=>{
+colorPersonalizado2.addEventListener("change", () => {
     colorImg2 = colorPersonalizado2.value;
     colorImg1 = colorPersonalizado1.value;
 })
 
 
-function marcarSeleccionado(padre, elemento){
-    if(padre.hasChildNodes()){
+function marcarSeleccionado(padre, elemento) {
+    if (padre.hasChildNodes()) {
         let hijos = padre.childNodes;
         let i = 0;
-        while(i < hijos.length){
-            if(hijos[i].id != elemento.id && hijos[i].nodeName == "BUTTON"){
+        while (i < hijos.length) {
+            if (hijos[i].id != elemento.id && hijos[i].nodeName == "BUTTON") {
                 hijos[i].classList.add("noSelected");
-            }else{
+            } else {
                 elemento.classList.remove("noSelected");
                 elemento.classList.add("selected");
             }
@@ -122,25 +124,25 @@ function marcarSeleccionado(padre, elemento){
 }
 
 let cuatroEnLinea = document.getElementById('4linea');
-cuatroEnLinea.addEventListener('click', ()=>{
+cuatroEnLinea.addEventListener('click', () => {
     marcarSeleccionado(cuatroEnLinea.parentNode, cuatroEnLinea)
     columnas = 6;
     filas = 7;
 })
 let cincoEnLinea = document.getElementById('5linea');
-cincoEnLinea.addEventListener('click', ()=>{
+cincoEnLinea.addEventListener('click', () => {
     marcarSeleccionado(cincoEnLinea.parentNode, cincoEnLinea)
     columnas = 7;
     filas = 8;
 })
 let seisEnLinea = document.getElementById('6linea');
-seisEnLinea.addEventListener('click', ()=>{
+seisEnLinea.addEventListener('click', () => {
     marcarSeleccionado(seisEnLinea.parentNode, seisEnLinea)
     columnas = 8;
     filas = 9;
 })
 let sieteEnLinea = document.getElementById('7linea');
-sieteEnLinea.addEventListener('click', ()=>{
+sieteEnLinea.addEventListener('click', () => {
     marcarSeleccionado(sieteEnLinea.parentNode, sieteEnLinea)
     columnas = 9;
     filas = 10;
@@ -150,62 +152,105 @@ sieteEnLinea.addEventListener('click', ()=>{
 jugador1 = document.getElementById("nombreJugador1").value;
 jugador2 = document.getElementById("nombreJugador2").value;
 
-let reinicio = document.getElementById("reiniciarJuego");
-reinicio.addEventListener("click", () =>{
-    // timer = 120;
-    juego  = "" ;
-    jugador1  = "";
-    jugador2  = "";
+document.getElementById("reiniciarJuego").addEventListener("click", reiniciar);
+document.getElementById("reiniciarJuego2").addEventListener("click", reiniciar);
+document.getElementById("reiniciarJuego3").addEventListener("click", reiniciar);
+
+function reiniciar() {
+    juego = "";
     imgFicha1 = "";
     imgFicha2 = "";
-    colorImg1  = "";
-    colorImg2  = "";//Hay que hacer el reiniciar juego, en la clase juego, dibujando tablero, fichas, todo de nuevo
-                    //Controlar si es mejor llamar y obtener los datos, en la clase juego.
+    colorImg1 = "";
+    colorImg2 = "";
     reiniciarJuego();
-    mostrarPopUp()
-})//ej, en el index solo quede: let/var juego, new juego();
-                            // juego.empezarJuego() e
-    //y los metodos que se necesiten para los eventos mouseMove, up, click
-let clonacionPopUp = document.getElementById("pop-up").cloneNode(true);
-// document.addEventListener("DOMContentLoaded", ()=>{
 
-//     console.log(clonacionPopUp)
-//     console.log(pop_up )
-// })
+}
+
 
 
 function reiniciarJuego() {
     ctx.fillStyle = "#FFFFFF"
     ctx.fillRect(0, 0, canvas.width, canvas.height);
+    juego = "";
+    imgFicha1 = "";
+    imgFicha2 = "";
+    colorImg1 = "";
+    colorImg2 = "";
+    timer = 60 * 3;
+    document.getElementById("pop-up").classList.remove("hidden");
+    document.getElementById("tablero").classList.remove("hidden");
+    document.getElementById("jugadores").classList.remove("hidden");
+    document.getElementById("personalizar").classList.remove("hidden");
+    document.getElementById("formatos").classList.remove("hidden");
+    document.getElementById("imagen").classList.remove("hidden");
+    document.getElementById("color").classList.remove("hidden");
+    document.getElementById("verImagenes").classList.remove("hidden");
+    document.getElementById("verColores").classList.remove("hidden");
+
+    document.getElementById("elegirImagen1").classList.add("hidden");
+    document.getElementById("elegirImagen2").classList.add("hidden");
+    document.getElementById("elegirColor1").classList.add("hidden");
+    document.getElementById("elegirColor2").classList.add("hidden");
+    document.getElementById("leagueOfLegends").classList.add("hidden");
+    document.getElementById("naruto").classList.add("hidden");
+    document.getElementById("harryPotter").classList.add("hidden");
+    document.getElementById("green").classList.add("hidden");
+    document.getElementById("red").classList.add("hidden");
+    document.getElementById("blue").classList.add("hidden");
+    document.getElementById("ganador").classList.add("hidden");
 
 }
-function mostrarPopUp(){
-    let padrePopUp = pop_up.parentNode;
-    padrePopUp.replaceChild(clonacionPopUp, pop_up);
-}
+
 let comenzar = document.getElementById("comenzar");
 comenzar.addEventListener("click", comenzarJuego);
 
-function comenzarJuego() { 
-    closePopUp();
-    juego = new Juego(jugador1, jugador2, 0, 0, ctx, canvas, imgTablero, imgFicha1, imgFicha2, columnas, filas, colorImg1, colorImg2)
-  
+
+function comenzarJuego() {
+
+    if (((imgFicha1 != "" && imgFicha2 != "") || (colorImg1 != "" && colorImg2 != "")) && filas != 0 && columnas != 0) {
+        juego = new Juego(jugador1, jugador2, 0, 0, ctx, canvas, imgTablero, imgFicha1, imgFicha2, columnas, filas, colorImg1, colorImg2)
+        closePopUp();
+        let interval = setInterval(() => {
+            if (timer >= 0) {
+                reloj.innerHTML = convertMinSec(timer).toString();
+                timer--;
+            } else {
+                reiniciarJuego();
+
+                clearInterval(interval);
+
+            }
+        }, 1000);
+
+    }
+}
+
+function convertMinSec(value) {
+    let minutes = Math.floor((value) / 60);
+    let seconds = value - (minutes * 60);
+    if (minutes < 10) {
+        minutes = "0" + minutes;
+    }
+    if (seconds < 10) {
+        seconds = "0" + seconds;
+    }
+    return minutes + ':' + seconds;
 }
 
 canvas.addEventListener("mousedown", function(e) {
-    if (juego != null) {
+    if (juego != "") {
         juego.onMouseDown(e);
     }
 });
 
 canvas.addEventListener("mousemove", function(e) {
-    if (juego != null) {
+    if (juego != "") {
         juego.onMouseMove(e);
     }
 });
 
 canvas.addEventListener("mouseup", function(e) {
-    if (juego != null) {
+    if (juego != "") {
         juego.onMouseUp(e);
     }
 
@@ -258,7 +303,7 @@ let pop_up = document.getElementById("pop-up");
 function closePopUp() {
     pop_up.classList.add("hidden");
 }
- 
+
 // //Empieza codigo modal inicio
 
 // let closePop = document.getElementById("close-pop-up");

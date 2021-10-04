@@ -32,12 +32,11 @@
             <input type="color" id="elegirColor1" class="hidden">
             <input type="color" id="elegirColor2" class="hidden">
         </div>
- 
+
         <div id="formatos">
             <h4 class="fs-3 bg-light">O jugar con alguno de nuestros formatos</h4>
             <button class="btn btn-dark m-lg-4 bg-light my_btn" style="color: black;" id="verImagenes" type="button">Ver tematicas</button>
             <button class="btn btn-dark m-lg-4 bg-light my_btn" style="color: black;" id="verColores" type="button">Ver colores</button>
-    
             <button class="btn btn-dark m-lg-4 bg-light my_btn hidden" style="color: black;" id="leagueOfLegends" type="button">League Of Legends</button>
             <button class="btn btn-dark m-lg-4 bg-light my_btn hidden" style="color: black;" id="naruto" type="button">Naruto</button>
             <button class="btn btn-dark m-lg-4 bg-light my_btn hidden" style="color: black;" id="harryPotter" type="button">Harry Potter</button>
@@ -48,14 +47,20 @@
             <button class="btn btn-dark m-lg-4 bg-light my_btn hidden" style="color: black;" id="green" type="button">Green & Violet</button>
             <button class="btn btn-dark m-lg-4 bg-light my_btn hidden" style="color: black;" id="blue" type="button">Blue & Yellow</button>
         </div>
-        <button id="comenzar" class="btn btn-dark m-lg-4 bg-light my_btn" style="color: black;" >Comenzar Juego</button>
+        <button id="comenzar" class="btn btn-dark m-lg-4 bg-light my_btn" style="color: black;">Comenzar Juego</button>
     </div>
     <section class="restartAndTime">
         <button id="reiniciarJuego">Reiniciar Juego</button>
-        <p id="timer">Timer</p>
+        <p id="timer">03:00</p>
     </section>
-    <div class="hidden">Muestra el ganador</div>
-    <div class="hidden">Muestra que se termino el tiempo</div>
+    <div class="hidden" id="timerOver">
+        <p id="showTimeOver">Muestra que se termino el tiempo</p>
+        <button id="reiniciarJuego2">volver a jugar</button>
+    </div>
+    <div class="hidden" id="ganador">
+        <p id="showGanador">Muestra el ganador</p>
+        <button id="reiniciarJuego3">volver a jugar</button>
+    </div>
     <!-- Mostramos que no quedan mas espacios en la amtriz? -->
     <canvas id="myCanvas" width="1500" height="900">
        
