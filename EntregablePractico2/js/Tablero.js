@@ -1,5 +1,5 @@
 class Tablero {
-    constructor(ctx, canvas, img, col, fil) {
+    constructor(ctx, img, col, fil) {
         this.matrizTablero = [];
         this.col = col;
         this.fil = fil;
@@ -7,9 +7,8 @@ class Tablero {
         this.img = img;
         this.heightImg = 72;
         this.widthImg = 75;
-        this.ctx = ctx;
         this.imgTablero = new Image();
-        this.dibujarTablero(canvas, img, col, fil)
+        this.dibujarTablero(ctx, img, col, fil)
     }
 
     //Inicia la matriz tablero con valores nulos
@@ -37,7 +36,7 @@ class Tablero {
     //Si ya se habia dibujado, no precarga la imagen.
 
     //el bind me permite pasarle el objeto que quiero utilizar en al funcion que lo llama.
-    dibujarTablero(img, col, fil) {
+    dibujarTablero(ctx, img, col, fil) {
         let posX = 500;
         let posY = 100;
         if (this.imgTablero.src === "") {

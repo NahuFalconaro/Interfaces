@@ -212,5 +212,5 @@ let comenzar = document.getElementById("comenzar");
 comenzar.addEventListener("click", comenzarJuego);
 //Comienzo un nuevo juego
 function comenzarJuego() {
-    juego.comenzarJuego(jugador1, jugador2, imgTablero, imgFicha1, imgFicha2, columnas, filas, colorImg1, colorImg2, xEnLinea);
+    juego.comenzarJuego(imgTablero, imgFicha1, imgFicha2, columnas, filas, colorImg1, colorImg2, xEnLinea);
 }

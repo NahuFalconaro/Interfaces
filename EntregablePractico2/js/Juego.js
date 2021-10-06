@@ -1,5 +1,6 @@
 let ultimaFichaClickeada = null;
 let isMouseDown = false;
+let turnoHtml = document.getElementById("turno");
 class Juego {
 
     constructor(ctx, canvas) {
@@ -57,7 +58,12 @@ class Juego {
         }
     }
 
-
+    turnoActual(){
+        if(this.turno == this.jugador1)
+            return this.jugador2
+        else
+            return this.jugador1;
+    }
     //Recorre el arreglo de fichas disponibles y busca sobre cual se hizo click.
     buscarFichaClickeada(x, y) {
         for (let i = 0; i < this.fichas.length; i++) {
@@ -147,8 +153,10 @@ class Juego {
             let posY = this.getPosY(posX) //devuelve una posicion para Y checkeando la cantidad de fichas que hay colocadas en la matriz
             if (posY != -1 && (ultimaFichaClickeada != null)) { //si no hay posiciones ocupadas
                 this.tablero.colocarFichaMatriz(posX, posY, ultimaFichaClickeada.getPertenece())
-                this.colocarFicha(posX, posY); //esto es para el canvas
                 let turnoActual = this.turno;
+                turnoHtml.innerHTML = "Turno de " + this.turnoActual();
+                this.colocarFicha(posX, posY); //esto es para el canvas
+
                 this.cambiarTurno();
                 if (this.tablero.hayEnLinea(posX, posY, turnoActual, this.xEnLinea)) {
                     this.mostrarGanador(turnoActual)
@@ -175,9 +183,7 @@ class Juego {
         let valorX = this.posiciones[x];
         valorX = (valorX.posI + valorX.posF) / 2;
         let posX = valorX + 3;
-
         let posY = (this.tablero.getPosComienzoTableroY() + (y * medidasCelda.height)) + 37;
-
         let newFicha = new Ficha(ultimaFichaClickeada.getId(), ultimaFichaClickeada.getImg(), ultimaFichaClickeada.getPertenece(), posX, posY, ultimaFichaClickeada.getCtx(), ultimaFichaClickeada.getColor());
         let result = this.arrayRemove(this.fichas, ultimaFichaClickeada);
         this.fichas = result;
@@ -213,7 +219,7 @@ class Juego {
 
     //Dibuja el tablero
     drawTablero() {
-        this.tablero.dibujarTablero(imgTablero, this.col, this.fil);
+        this.tablero.dibujarTablero(ctx, imgTablero, this.col, this.fil);
     }
 
     //dibuja el nombre del jugador
@@ -241,7 +247,7 @@ class Juego {
 
     //Inicia los metodos necesarios para comenzar el juego
     comenzar() {
-        this.tablero = new Tablero(this.canvas, this.imgTablero, this.col, this.fil);
+        this.tablero = new Tablero(this.ctx, this.imgTablero, this.col, this.fil);
         this.drawUserName(this.jugador1, 105, 400);
         this.drawUserName(this.jugador2, 1250, 400);
         this.nuevasFichas(this.col, this.fil, this.ctx, this.imgFicha1, this.imgFicha2, this.colorImg1, this.colorImg2);
@@ -249,13 +255,14 @@ class Juego {
     }
 
     //Inicia el juego y el reloj 
-    comenzarJuego(jugador1, jugador2, imgTablero, imgFicha1, imgFicha2, columnas, filas, colorImg1, colorImg2, xEnLinea) {
+    comenzarJuego(imgTablero, imgFicha1, imgFicha2, columnas, filas, colorImg1, colorImg2, xEnLinea) {
 
         let timeOver = document.getElementById("timerOver");
         this.jugador1 = document.getElementById("nombreJugador1").value;
         this.jugador2 = document.getElementById("nombreJugador2").value;
         this.imgTablero = imgTablero;
         if (((imgFicha1 != "" && imgFicha2 != "") || (colorImg1 != "" && colorImg2 != "")) && filas != 0 && columnas != 0 && xEnLinea != "") {
+            turnoHtml.innerHTML = "Turno de " + this.turnoActual();
             this.imgTablero = imgTablero;
             this.imgFicha1 = imgFicha1;
             this.imgFicha2 = imgFicha2;
@@ -288,12 +295,14 @@ class Juego {
             ctx.fillStyle = "#FFFFFF"
             ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
             this.tablero = null;
+            this.fichas = [];
             this.imgFicha1 = "";
             this.imgFicha2 = "";
             this.colorImg1 = "";
             this.colorImg2 = "";
             this.timer = 60 * 3;
             reloj.innerHTML = "03:00";
+            turnoHtml.innerHTML = "Turno de " + this.turnoActual();
             this.showPopUp();
             this.stopIntervalTimer(this.interval);
         }
