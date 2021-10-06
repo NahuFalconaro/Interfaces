@@ -1,6 +1,9 @@
 let ultimaFichaClickeada = null;
-let isMouseDown = false;
 let turnoHtml = document.getElementById("turno");
+window.addEventListener("mouseup", () => {
+    isMouseDown = false;
+})
+
 class Juego {
 
     constructor(ctx, canvas) {
@@ -58,13 +61,13 @@ class Juego {
         }
     }
 
-    turnoActual(){
-        if(this.turno == this.jugador1)
-            return this.jugador2
-        else
-            return this.jugador1;
-    }
-    //Recorre el arreglo de fichas disponibles y busca sobre cual se hizo click.
+    turnoActual() {
+            if (this.turno == this.jugador1)
+                return this.jugador2
+            else
+                return this.jugador1;
+        }
+        //Recorre el arreglo de fichas disponibles y busca sobre cual se hizo click.
     buscarFichaClickeada(x, y) {
         for (let i = 0; i < this.fichas.length; i++) {
             let f = this.fichas[i];
@@ -103,9 +106,9 @@ class Juego {
         let posInicial = 500;
         for (let i = 0; i < this.col; i++) {
             let pos = {
-                posI: posInicial,
-                posF: posInicial + 70
-            }
+                    posI: posInicial + 3,
+                    posF: posInicial + 72
+                } //[celda1, posi 500, posF 572]
             this.posiciones.push(pos)
             posInicial += 75
         }
@@ -120,14 +123,15 @@ class Juego {
         }
     }
 
+
     //Obtiene la posicion x de la matriz (a partir de la posicion x del mouse) para colocar la ficha
     getPosX(e) {
         for (let x = 0; x < this.posiciones.length; x++) {
             if ((e.layerX >= this.posiciones[x].posI) && (e.layerX <= this.posiciones[x].posF)) {
-
                 return x;
             }
         }
+        return -1;
     }
 
     //Obtiene la posicion y de la matriz tablero para colocar la ficha
@@ -140,18 +144,22 @@ class Juego {
         }
         return -1 // todas las posiciones en Y estan ocupadas
     }
+    onMouseOut() {
+            if (ultimaFichaClickeada != null)
+                this.retornarFichaAlFichero();
 
-    //Cuando suelta el mouse, se obtiene las posiciones donde colocar la ficha y si es posible colocar al ficha,
-    //se comprueba si hay un ganador
+        }
+        //Cuando suelta el mouse, se obtiene las posiciones donde colocar la ficha y si es posible colocar al ficha,
+        //se comprueba si hay un ganador
     onMouseUp(e) {
         isMouseDown = false;
-        let heightMax = this.tablero.getHeight();
+        let heightMax = 100;
         let widthMax = this.tablero.getWidth() + this.tablero.getPosComienzoTableroX();
         let minWidth = this.tablero.getPosComienzoTableroX();
         if (this.cursorEnTablero(e, widthMax, heightMax, minWidth)) {
             let posX = this.getPosX(e) //devuelve una posicion del arreglo a partir de la posicion del cursor
             let posY = this.getPosY(posX) //devuelve una posicion para Y checkeando la cantidad de fichas que hay colocadas en la matriz
-            if (posY != -1 && (ultimaFichaClickeada != null)) { //si no hay posiciones ocupadas
+            if (posY != -1 && posX != -1 && (ultimaFichaClickeada != null)) { //si no hay posiciones ocupadas
                 this.tablero.colocarFichaMatriz(posX, posY, ultimaFichaClickeada.getPertenece())
                 let turnoActual = this.turno;
                 turnoHtml.innerHTML = "Turno de " + this.turnoActual();
@@ -162,8 +170,23 @@ class Juego {
                     this.mostrarGanador(turnoActual)
                     this.turno = "";
                 }
-
+            } else {
+                if (ultimaFichaClickeada != null)
+                    this.retornarFichaAlFichero();
             }
+        } else {
+            if (ultimaFichaClickeada != null)
+                this.retornarFichaAlFichero();
+        }
+    }
+
+    retornarFichaAlFichero() {
+        if (this.turno == this.jugador1) {
+            ultimaFichaClickeada.setPosition(125, 500);
+            this.drawFichasYTablero();
+        } else {
+            ultimaFichaClickeada.setPosition(1300, 500);
+            this.drawFichasYTablero();
         }
     }
 
@@ -174,15 +197,12 @@ class Juego {
         document.getElementById("ganador").classList.remove("hidden")
     }
 
-
-
-
     //error, se coloca la ficha aunque no tenga posI valida, osea en el medio de una celda jajaj te puse
     colocarFicha(x, y) {
         let medidasCelda = this.tablero.getMedidasImgTablero()
         let valorX = this.posiciones[x];
         valorX = (valorX.posI + valorX.posF) / 2;
-        let posX = valorX + 3;
+        let posX = valorX;
         let posY = (this.tablero.getPosComienzoTableroY() + (y * medidasCelda.height)) + 37;
         let newFicha = new Ficha(ultimaFichaClickeada.getId(), ultimaFichaClickeada.getImg(), ultimaFichaClickeada.getPertenece(), posX, posY, ultimaFichaClickeada.getCtx(), ultimaFichaClickeada.getColor());
         let result = this.arrayRemove(this.fichas, ultimaFichaClickeada);

@@ -45,18 +45,25 @@ lol.addEventListener('click', () => {
     marcarSeleccionado(lol.parentNode, lol)
     imgFicha1 = "./img/anivia.jfif"
     imgFicha2 = "./img/gnar.jfif"
+    colorImg1 = ""
+    colorImg2 = ""
+
 });
 let naruto = document.getElementById('naruto');
 naruto.addEventListener('click', () => {
     marcarSeleccionado(naruto.parentNode, naruto)
     imgFicha1 = "./img/naruto.jfif"
     imgFicha2 = "./img/sasuke.jfif"
+    colorImg1 = ""
+    colorImg2 = ""
 });
 let harryPotter = document.getElementById('harryPotter');
 harryPotter.addEventListener('click', () => {
     marcarSeleccionado(harryPotter.parentNode, harryPotter)
     imgFicha1 = "./img/harryPotter.jfif"
     imgFicha2 = "./img/voldemort.jfif"
+    colorImg1 = ""
+    colorImg2 = ""
 });
 
 
@@ -65,6 +72,8 @@ red.addEventListener('click', () => {
     marcarSeleccionado(red.parentNode, red)
     colorImg1 = "red"
     colorImg2 = "black"
+    imgFicha1 = ""
+    imgFicha2 = ""
 
 });
 let green = document.getElementById('green');
@@ -72,13 +81,16 @@ green.addEventListener('click', () => {
     marcarSeleccionado(green.parentNode, green)
     colorImg1 = "green"
     colorImg2 = "violet"
+    imgFicha1 = ""
+    imgFicha2 = ""
 });
 let blue = document.getElementById('blue');
 blue.addEventListener('click', () => {
     marcarSeleccionado(blue.parentNode, blue)
     colorImg1 = "blue"
     colorImg2 = "yellow"
-
+    imgFicha1 = ""
+    imgFicha2 = ""
 });
 let colorPersonalizado1 = document.getElementById("elegirColor1");
 colorPersonalizado1.addEventListener("change", () => {
@@ -138,9 +150,11 @@ sieteEnLinea.addEventListener('click', () => {
 })
 
 
+canvas.addEventListener("mouseout", function(e) {
+    juego.onMouseOut(e);
+});
 canvas.addEventListener("mousedown", function(e) {
     if (juego.getTablero() != null) {
-
         juego.onMouseDown(e);
     }
 });
