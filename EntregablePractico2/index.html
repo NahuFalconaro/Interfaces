@@ -49,22 +49,27 @@
         </div>
         <button id="comenzar" class="btn btn-dark m-lg-4 bg-light my_btn" style="color: black;">Comenzar Juego</button>
     </div>
-    <section class="restartAndTime">
+    <section class="container w-50 text-center  mt-2 pt-2">
         <button id="reiniciarJuego">Reiniciar Juego</button>
         <p id="timer">03:00</p>
     </section>
-    <div class="hidden" id="timerOver">
-        <p id="showTimeOver">Muestra que se termino el tiempo</p>
+    <div class="hidden container w-50 text-center  mt-2 pt-2" id="timerOver">
+        <p id="showTimeOver ">Muestra que se termino el tiempo</p>
         <button id="reiniciarJuego2">volver a jugar</button>
     </div>
-    <div class="hidden" id="ganador">
+    <div class="hidden container w-50 text-center  mt-2 pt-2" id="ganador">
+        <span>Gano</span>
         <p id="showGanador">Muestra el ganador</p>
         <button id="reiniciarJuego3">volver a jugar</button>
     </div>
     <!-- Mostramos que no quedan mas espacios en la amtriz? -->
-    <canvas id="myCanvas" width="1500" height="900">
-       
+    <canvas id="myCanvas" width="1500" height="900">   
     </canvas>
+    <footer>
+        <div>
+            <p> Desarrollado por Nahuel Falconaro y Juan Pedro Armella</p>
+        </div>
+    </footer>
 
 </body>
 <script src="js/Tablero.js"></script>
@@ -72,7 +77,6 @@
 <script src="js/Juego.js"></script>
 <script src="js/index.js"></script>
 
-<script src="js/Figura.js"></script>
 
 
 </body>

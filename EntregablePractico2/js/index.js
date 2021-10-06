@@ -4,6 +4,7 @@ let imgTablero = './img/celda.png';
 
 let filas = 0;
 let columnas = 0;
+let xEnLinea = 0;
 let juego = "";
 let jugador1 = "";
 let jugador2 = "";
@@ -128,29 +129,30 @@ cuatroEnLinea.addEventListener('click', () => {
     marcarSeleccionado(cuatroEnLinea.parentNode, cuatroEnLinea)
     columnas = 6;
     filas = 7;
+    xEnLinea = 4;
 })
 let cincoEnLinea = document.getElementById('5linea');
 cincoEnLinea.addEventListener('click', () => {
     marcarSeleccionado(cincoEnLinea.parentNode, cincoEnLinea)
     columnas = 7;
     filas = 8;
+    xEnLinea = 5;
 })
 let seisEnLinea = document.getElementById('6linea');
 seisEnLinea.addEventListener('click', () => {
     marcarSeleccionado(seisEnLinea.parentNode, seisEnLinea)
     columnas = 8;
     filas = 9;
+    xEnLinea = 6;
 })
 let sieteEnLinea = document.getElementById('7linea');
 sieteEnLinea.addEventListener('click', () => {
     marcarSeleccionado(sieteEnLinea.parentNode, sieteEnLinea)
     columnas = 9;
     filas = 10;
+    xEnLinea = 7;
 })
 
-
-jugador1 = document.getElementById("nombreJugador1").value;
-jugador2 = document.getElementById("nombreJugador2").value;
 
 document.getElementById("reiniciarJuego").addEventListener("click", reiniciar);
 document.getElementById("reiniciarJuego2").addEventListener("click", reiniciar);
@@ -162,11 +164,12 @@ function reiniciar() {
     imgFicha2 = "";
     colorImg1 = "";
     colorImg2 = "";
+
     reiniciarJuego();
+    stopIntervalTimer(interval);
+
 
 }
-
-
 
 function reiniciarJuego() {
     ctx.fillStyle = "#FFFFFF"
@@ -177,6 +180,13 @@ function reiniciarJuego() {
     colorImg1 = "";
     colorImg2 = "";
     timer = 60 * 3;
+    reloj.innerHTML = "03:00";
+    showPopUp();
+
+
+}
+
+function showPopUp() {
     document.getElementById("pop-up").classList.remove("hidden");
     document.getElementById("tablero").classList.remove("hidden");
     document.getElementById("jugadores").classList.remove("hidden");
@@ -198,31 +208,37 @@ function reiniciarJuego() {
     document.getElementById("red").classList.add("hidden");
     document.getElementById("blue").classList.add("hidden");
     document.getElementById("ganador").classList.add("hidden");
-
 }
-
 let comenzar = document.getElementById("comenzar");
 comenzar.addEventListener("click", comenzarJuego);
 
+let interval;
+let timeOver = document.getElementById("timerOver");
 
 function comenzarJuego() {
-
-    if (((imgFicha1 != "" && imgFicha2 != "") || (colorImg1 != "" && colorImg2 != "")) && filas != 0 && columnas != 0) {
-        juego = new Juego(jugador1, jugador2, 0, 0, ctx, canvas, imgTablero, imgFicha1, imgFicha2, columnas, filas, colorImg1, colorImg2)
+    jugador1 = document.getElementById("nombreJugador1").value;
+    jugador2 = document.getElementById("nombreJugador2").value;
+    if (((imgFicha1 != "" && imgFicha2 != "") || (colorImg1 != "" && colorImg2 != "")) && filas != 0 && columnas != 0 && xEnLinea != "") {
+        juego = new Juego(jugador1, jugador2, 0, 0, ctx, canvas, imgTablero, imgFicha1, imgFicha2, columnas, filas, colorImg1, colorImg2, xEnLinea)
+        timeOver.classList.add("hidden");
         closePopUp();
-        let interval = setInterval(() => {
+        interval = setInterval(() => {
             if (timer >= 0) {
                 reloj.innerHTML = convertMinSec(timer).toString();
                 timer--;
             } else {
-                reiniciarJuego();
-
-                clearInterval(interval);
+                timeOver.classList.remove("hidden");
+                stopIntervalTimer(interval)
+                    //reiniciarJuego();
 
             }
         }, 1000);
 
     }
+}
+
+function stopIntervalTimer(interval) {
+    clearInterval(interval);
 }
 
 function convertMinSec(value) {

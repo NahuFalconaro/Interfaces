@@ -2,7 +2,7 @@ var ultimaFichaClickeada = null;
 var isMouseDown = false;
 class Juego {
 
-    constructor(jugador1, jugador2, x, y, ctx, canvas, imgTablero, imgFicha1, imgFicha2, col, fil, colorImg1, colorImg2) {
+    constructor(jugador1, jugador2, x, y, ctx, canvas, imgTablero, imgFicha1, imgFicha2, col, fil, colorImg1, colorImg2, xEnLinea) {
         this.tablero = new Tablero(x, y, ctx, canvas, imgTablero, col, fil);
         this.jugador1 = jugador1;
         this.jugador2 = jugador2;
@@ -13,6 +13,7 @@ class Juego {
         this.col = col;
         this.fil = fil;
         this.posiciones = [];
+        this.xEnLinea = xEnLinea;
         //this.posiciones = this.completarPosiciones()
         //this.timer = setTimeout(tiempoTerminado(), maxTime * 1000);
         this.drawUserName(jugador1, 105, 400);
@@ -142,6 +143,7 @@ class Juego {
         }
         return -1 // todas las posiciones en Y estan ocupadas
     }
+
     onMouseUp(e) {
         isMouseDown = false;
         let heightMax = this.tablero.getHeight();
@@ -151,14 +153,13 @@ class Juego {
             let posX = this.getPosX(e) //devuelve una posicion del arreglo a partir de la posicion del cursor
             let posY = this.getPosY(posX) //devuelve una posicion para Y checkeando la cantidad de fichas que hay colocadas en la matriz
             if (posY != -1 && (ultimaFichaClickeada != null)) { //si no hay posiciones ocupadas
-
                 this.tablero.colocarFichaMatriz(posX, posY, ultimaFichaClickeada.getPertenece())
                 this.colocarFicha(posX, posY); //esto es para el canvas
                 let turnoActual = this.turno;
                 this.cambiarTurno();
-                if (this.tablero.hayEnLinea(posX, posY, turnoActual)) {
+                if (this.tablero.hayEnLinea(posX, posY, turnoActual, this.xEnLinea)) {
                     this.mostrarGanador(turnoActual)
-                        //console.log("GANASTE JOEPUTAAAAAAAAAAA", turnoActual)
+                    this.turno = "";
                 }
 
             }
@@ -201,11 +202,8 @@ class Juego {
 
     drawFichasYTablero() {
         this.clearCanvas();
-        //pintarBackground
         this.drawTablero();
         this.drawFichas();
-        //pintar boton de resetGame
-        //pintar timer
         this.drawUserName(jugador1, 105, 400);
         this.drawUserName(jugador2, 1250, 400);
     }
@@ -226,5 +224,8 @@ class Juego {
         this.ctx.fillStyle = "#FFFFFF"
         this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
     }
+
+
+
 
 }

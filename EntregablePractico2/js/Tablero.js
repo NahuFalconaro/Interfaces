@@ -11,7 +11,7 @@ class Tablero {
         this.widthImg = 75;
         this.imgTablero = new Image();
         this.dibujarTablero(ctx, canvas, img, col, fil)
-        
+
     }
 
     inicMatriz() {
@@ -88,16 +88,16 @@ class Tablero {
 
         this.matrizTablero[y][x] = jugador;
     }
-    hayEnLinea(posX, posY, jugador) {
-        return this.busquedaVertical(posX, posY, jugador) || this.busquedaHorizontal(posY, jugador) || this.busquedaDiagonal(posX, posY, jugador);
+    hayEnLinea(posX, posY, jugador, xEnLinea) {
+        return this.busquedaVertical(posX, posY, jugador, xEnLinea) || this.busquedaHorizontal(posY, jugador, xEnLinea) || this.busquedaDiagonal(posX, posY, jugador, xEnLinea);
     }
-    busquedaVertical(posX, posY, jugador) {
+    busquedaVertical(posX, posY, jugador, xEnLinea) {
         //posX estatico, posY busca hacia abajo
         let cont = 0;
         for (let y = posY; y < this.fil; y++) {
             if (this.matrizTablero[y][posX] == jugador) {
                 cont++;
-                if (cont == 4)
+                if (cont == xEnLinea)
                     return true
             } else
                 cont = 0
@@ -105,14 +105,14 @@ class Tablero {
 
         return false
     }
-    busquedaHorizontal(posY, jugador) {
+    busquedaHorizontal(posY, jugador, xEnLinea) {
         //posY estatico,posX busca hacia los costados
         //empezando de un borde
         let cont = 0;
         for (let x = 0; x < this.col; x++) {
             if (this.matrizTablero[posY][x] == jugador) {
                 cont++;
-                if (cont == 4)
+                if (cont == xEnLinea)
                     return true
             } else
                 cont = 0
@@ -120,8 +120,8 @@ class Tablero {
 
         return false
     }
-    busquedaDiagonal(posX, posY, jugador) {
-        return  this.busquedaIzqInferiorADerSuperior(posX, posY, jugador) || this.busquedaIzqSuperiorADerInferior(posX, posY, jugador);
+    busquedaDiagonal(posX, posY, jugador, xEnLinea) {
+        return this.busquedaIzqInferiorADerSuperior(posX, posY, jugador) || this.busquedaIzqSuperiorADerInferior(posX, posY, jugador);
     }
     busquedaIzqSuperiorADerInferior(posX, posY, jugador) {
 
@@ -129,23 +129,23 @@ class Tablero {
             x: posX,
             y: posY,
         }
-        
+
         while (posInicial.x > 0 && posInicial.y > 0) {
             posInicial.x--;
             posInicial.y--;
         }
         let cont = 0;
-        while ( posInicial.x <= this.fil && posInicial.y <= this.col) {
-            if (this.matrizTablero[posInicial.y][ posInicial.x] == jugador) {
+        while (posInicial.x <= this.fil && posInicial.y <= this.col) {
+            if (this.matrizTablero[posInicial.y][posInicial.x] == jugador) {
                 cont++
-                if (cont == 4)
+                if (cont == xEnLinea)
                     return true;
-            } else{
+            } else {
                 cont = 0;
             }
-                posInicial.x++;
-                posInicial.y++;
-            
+            posInicial.x++;
+            posInicial.y++;
+
         }
         return false
     }
@@ -154,25 +154,22 @@ class Tablero {
             x: posX,
             y: posY,
         }
-        console.log(posInicial.x, posInicial.y)
-        console.table(this.matrizTablero);
-         let cont = 0;
+        let cont = 0;
 
-         while((posInicial.x >= 0) && (posInicial.y <= this.fil - 1)){
+        while ((posInicial.x >= 0) && (posInicial.y <= this.fil - 1)) {
             //  console.log(posInicial.x + "col" + this.col);
             //  console.log(posInicial.y + "fil" + this.fil);
-             if (this.matrizTablero[posInicial.y][posInicial.x] == jugador) {
+            if (this.matrizTablero[posInicial.y][posInicial.x] == jugador) {
                 cont++
-                console.log(cont)
-                 if(cont==4){
-                     return true;
-                 }
+                if (cont == xEnLinea) {
+                    return true;
+                }
 
-             }else{
-                 cont=0;
-             }
-             posInicial.x--;
-             posInicial.y++;
-         }
+            } else {
+                cont = 0;
+            }
+            posInicial.x--;
+            posInicial.y++;
+        }
     }
 }
