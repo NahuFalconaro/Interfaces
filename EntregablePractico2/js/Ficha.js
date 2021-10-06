@@ -35,6 +35,8 @@ class Ficha {
     getCtx() {
         return this.ctx;
     }
+
+    //Verifica si una posicion x,y se encuentra dentro de la ficha
     isPointInside(x, y) {
         let _x = this.posX - x;
         let _y = this.posY - y;
@@ -43,15 +45,23 @@ class Ficha {
     setResaltado(res) {
         this.resaltado = res;
     }
+
     getPuedeMover() {
         return this.puedeMover;
     }
+
     setPuedeMover(puedeMover) {
         this.puedeMover = puedeMover;
     }
+
+
+    //Redibuja la ficha
     renderizar() {
         this.drawFicha(this.posX, this.posY);
+
     }
+
+    //Dibuja la ficha
     drawFicha(x, y) {
         let imgX = x - 36;
         let imgY = y - 36;

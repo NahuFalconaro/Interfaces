@@ -5,35 +5,18 @@ let imgTablero = './img/celda.png';
 let filas = 0;
 let columnas = 0;
 let xEnLinea = 0;
-let juego = "";
+let juego = new Juego(ctx, canvas);
 let jugador1 = "";
 let jugador2 = "";
 let imgFicha1 = "";
 let imgFicha2 = "";
 let colorImg1 = "";
 let colorImg2 = "";
-let timer = 60 * 3;
 let reloj = document.getElementById("timer");
-
-
-// Mostrar tablero vacio    v
-// mostrar dos grupos de fichas    v   
-// las piezas de cada jugador se dibujan con una imagen en lugar de un color solido   v
-// cada jugador va seleccionando sus fichas y las ubica en las columnas del tablero    v
-// se debe implementar logica de juego, implementando los turnos    v
-// el juego termina cuando el jugador consigue ubicar cuatro fichas en linea    r//falta terminar el juego una vez haya ganado
-// las fichas deben elegirse con el click del mouse, y el usuario debe poder arrastrar la ficha y soltarla donde quiera    v
-// se debe poder reiniciar el juego, colocar un timer que limite el tiempo    n
-
-// promocion:
-//         poder establecer la dimension del tablero, x en linea, haciendo 6 en linea etc    v
-//         agregar dif tipos de fichas, colores, formatos.    v
-
-
 
 let img1 = document.getElementById('elegirImagen1');
 img1.addEventListener('change', obtenerRuta);
-
+//obtiene la ruta del archivo que se selecciono 
 function obtenerRuta(event) {
     let reader = new FileReader();
     let fileReader = event.target.files[0];
@@ -47,6 +30,7 @@ function obtenerRuta(event) {
 let img2 = document.getElementById('elegirImagen2');
 img2.addEventListener('change', obtenerRuta2);
 
+//obtiene la ruta del archivo que se selecciono 
 function obtenerRuta2(event) {
     let reader = new FileReader();
     let fileReader = event.target.files[0];
@@ -107,7 +91,7 @@ colorPersonalizado2.addEventListener("change", () => {
     colorImg1 = colorPersonalizado1.value;
 })
 
-
+//Pinta de verde el boton que se selecciono y de gris los botones hermanos no seleccionados
 function marcarSeleccionado(padre, elemento) {
     if (padre.hasChildNodes()) {
         let hijos = padre.childNodes;
@@ -154,126 +138,28 @@ sieteEnLinea.addEventListener('click', () => {
 })
 
 
-document.getElementById("reiniciarJuego").addEventListener("click", reiniciar);
-document.getElementById("reiniciarJuego2").addEventListener("click", reiniciar);
-document.getElementById("reiniciarJuego3").addEventListener("click", reiniciar);
-
-function reiniciar() {
-    juego = "";
-    imgFicha1 = "";
-    imgFicha2 = "";
-    colorImg1 = "";
-    colorImg2 = "";
-
-    reiniciarJuego();
-    stopIntervalTimer(interval);
-
-
-}
-
-function reiniciarJuego() {
-    ctx.fillStyle = "#FFFFFF"
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    juego = "";
-    imgFicha1 = "";
-    imgFicha2 = "";
-    colorImg1 = "";
-    colorImg2 = "";
-    timer = 60 * 3;
-    reloj.innerHTML = "03:00";
-    showPopUp();
-
-
-}
-
-function showPopUp() {
-    document.getElementById("pop-up").classList.remove("hidden");
-    document.getElementById("tablero").classList.remove("hidden");
-    document.getElementById("jugadores").classList.remove("hidden");
-    document.getElementById("personalizar").classList.remove("hidden");
-    document.getElementById("formatos").classList.remove("hidden");
-    document.getElementById("imagen").classList.remove("hidden");
-    document.getElementById("color").classList.remove("hidden");
-    document.getElementById("verImagenes").classList.remove("hidden");
-    document.getElementById("verColores").classList.remove("hidden");
-
-    document.getElementById("elegirImagen1").classList.add("hidden");
-    document.getElementById("elegirImagen2").classList.add("hidden");
-    document.getElementById("elegirColor1").classList.add("hidden");
-    document.getElementById("elegirColor2").classList.add("hidden");
-    document.getElementById("leagueOfLegends").classList.add("hidden");
-    document.getElementById("naruto").classList.add("hidden");
-    document.getElementById("harryPotter").classList.add("hidden");
-    document.getElementById("green").classList.add("hidden");
-    document.getElementById("red").classList.add("hidden");
-    document.getElementById("blue").classList.add("hidden");
-    document.getElementById("ganador").classList.add("hidden");
-}
-let comenzar = document.getElementById("comenzar");
-comenzar.addEventListener("click", comenzarJuego);
-
-let interval;
-let timeOver = document.getElementById("timerOver");
-
-function comenzarJuego() {
-    jugador1 = document.getElementById("nombreJugador1").value;
-    jugador2 = document.getElementById("nombreJugador2").value;
-    if (((imgFicha1 != "" && imgFicha2 != "") || (colorImg1 != "" && colorImg2 != "")) && filas != 0 && columnas != 0 && xEnLinea != "") {
-        juego = new Juego(jugador1, jugador2, 0, 0, ctx, canvas, imgTablero, imgFicha1, imgFicha2, columnas, filas, colorImg1, colorImg2, xEnLinea)
-        timeOver.classList.add("hidden");
-        closePopUp();
-        interval = setInterval(() => {
-            if (timer >= 0) {
-                reloj.innerHTML = convertMinSec(timer).toString();
-                timer--;
-            } else {
-                timeOver.classList.remove("hidden");
-                stopIntervalTimer(interval)
-                    //reiniciarJuego();
-
-            }
-        }, 1000);
-
-    }
-}
-
-function stopIntervalTimer(interval) {
-    clearInterval(interval);
-}
-
-function convertMinSec(value) {
-    let minutes = Math.floor((value) / 60);
-    let seconds = value - (minutes * 60);
-    if (minutes < 10) {
-        minutes = "0" + minutes;
-    }
-    if (seconds < 10) {
-        seconds = "0" + seconds;
-    }
-    return minutes + ':' + seconds;
-}
-
 canvas.addEventListener("mousedown", function(e) {
-    if (juego != "") {
+    if (juego.getTablero() != null) {
+
         juego.onMouseDown(e);
     }
 });
 
 canvas.addEventListener("mousemove", function(e) {
-    if (juego != "") {
+    if (juego.getTablero() != null) {
         juego.onMouseMove(e);
     }
 });
 
 canvas.addEventListener("mouseup", function(e) {
-    if (juego != "") {
+    if (juego.getTablero() != null) {
         juego.onMouseUp(e);
     }
 
 });
 
 document.getElementById("imagen").addEventListener('click', mostrarModalImagen);
-
+//Muestra la seccion para elegir imagenes locales. y oculta el resto de opciones.
 function mostrarModalImagen() {
     document.getElementById("imagen").classList.toggle("hidden");
     document.getElementById("color").classList.toggle("hidden");
@@ -283,7 +169,7 @@ function mostrarModalImagen() {
 }
 
 document.getElementById("color").addEventListener('click', mostrarModalColor);
-
+//Muestra la seccion para elegir colores desde la paleta de colores. y oculta el resto de opciones.
 function mostrarModalColor() {
     document.getElementById("imagen").classList.toggle("hidden");
     document.getElementById("color").classList.toggle("hidden");
@@ -292,9 +178,9 @@ function mostrarModalColor() {
     document.getElementById("elegirColor2").classList.toggle("hidden");
 }
 
-document.getElementById("verImagenes").addEventListener('click', mostrarImagenes);
-
-function mostrarImagenes() {
+document.getElementById("verImagenes").addEventListener('click', mostrarFormatosImagenes);
+//Muestra la seccion para elegir imagenes precargadas y asi cambiar el formato de las fichas. y oculta el resto de opciones.
+function mostrarFormatosImagenes() {
     document.getElementById("verImagenes").classList.toggle("hidden");
     document.getElementById("verColores").classList.toggle("hidden");
     document.getElementById("personalizar").classList.toggle("hidden");
@@ -303,9 +189,9 @@ function mostrarImagenes() {
     document.getElementById("harryPotter").classList.toggle("hidden");
 }
 
-document.getElementById("verColores").addEventListener('click', mostrarColores);
-
-function mostrarColores() {
+document.getElementById("verColores").addEventListener('click', mostrarFormatosColores);
+//Muestra la seccion para elegir colores precargados y asi cambiar el formato de las fichas. y oculta el resto de opciones.
+function mostrarFormatosColores() {
     document.getElementById("verImagenes").classList.toggle("hidden");
     document.getElementById("verColores").classList.toggle("hidden");
     document.getElementById("personalizar").classList.toggle("hidden");
@@ -314,26 +200,17 @@ function mostrarColores() {
     document.getElementById("blue").classList.toggle("hidden");
 }
 
-let pop_up = document.getElementById("pop-up");
-
-function closePopUp() {
-    pop_up.classList.add("hidden");
+document.getElementById("reiniciarJuego").addEventListener("click", reiniciar);
+document.getElementById("reiniciarJuego2").addEventListener("click", reiniciar);
+document.getElementById("reiniciarJuego3").addEventListener("click", reiniciar);
+//Reinicia el juego al darle click al boton con id reiniciar juego
+function reiniciar() {
+    juego.reiniciarJuego(reloj);
 }
 
-// //Empieza codigo modal inicio
-
-// let closePop = document.getElementById("close-pop-up");
-
-// closePop.addEventListener("click", close_popUp);
-
-
-
-// //Le agrego un listener al evento en toda la ventana
-
-// window.addEventListener('click', function(e) {
-//     //si el div no contiene el target lo oculta
-//     if (!(pop_up.contains(e.target))) {
-//         pop_up.classList.add("hidden");
-
-//     }W
-// })
+let comenzar = document.getElementById("comenzar");
+comenzar.addEventListener("click", comenzarJuego);
+//Comienzo un nuevo juego
+function comenzarJuego() {
+    juego.comenzarJuego(jugador1, jugador2, imgTablero, imgFicha1, imgFicha2, columnas, filas, colorImg1, colorImg2, xEnLinea);
+}
