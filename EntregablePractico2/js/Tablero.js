@@ -37,8 +37,8 @@ class Tablero {
 
     //el bind me permite pasarle el objeto que quiero utilizar en al funcion que lo llama.
     dibujarTablero(ctx, img, col, fil) {
-        let posX = 500;
-        let posY = 100;
+        let posX = this.getPosComienzoTableroX();
+        let posY = this.getPosComienzoTableroY();
         if (this.imgTablero.src === "") {
             this.imgTablero.src = img;
             let cargarImagen = function() {
@@ -47,10 +47,10 @@ class Tablero {
                         ctx.drawImage(this.imgTablero, posX, posY, this.widthImg, this.heightImg);
                         posX += 75;
                     }
-                    posX = 500;
+                    posX = this.getPosComienzoTableroX();
                     posY += 72;
                 }
-                posY = 100;
+                posY = this.getPosComienzoTableroY();
             }
             this.imgTablero.onload = cargarImagen.bind(this);
         } else {
@@ -59,10 +59,10 @@ class Tablero {
                     ctx.drawImage(this.imgTablero, posX, posY, this.widthImg, this.heightImg);
                     posX += 75;
                 }
-                posX = 500;
+                posX = this.getPosComienzoTableroX();
                 posY += 72;
             }
-            posY = 100;
+            posY = this.getPosComienzoTableroY();
         }
     }
 

@@ -22,7 +22,7 @@ class Juego {
             this.col = "";
             this.fil = "";
             this.interval = "";
-            this.timer = 60 * 3;
+            this.timer = 3 * 60;
             this.posiciones = [];
             this.xEnLinea = "";
         }
@@ -169,6 +169,7 @@ class Juego {
                 if (this.tablero.hayEnLinea(posX, posY, turnoActual, this.xEnLinea)) {
                     this.mostrarGanador(turnoActual)
                     this.turno = "";
+                    this.stopIntervalTimer(this.interval);
                 }
             } else {
                 if (ultimaFichaClickeada != null)
@@ -221,6 +222,14 @@ class Juego {
         });
     }
 
+    drawFondo() {
+        let fondo = "../img/fondo.jpg";
+        let imgFondo = new Image();
+        imgFondo.src = fondo;
+        imgF
+
+    }
+
     //Dibuja el tablero, las fichas, y los nombres de los jguadores
     drawFichasYTablero() {
         this.clearCanvas();
@@ -244,14 +253,14 @@ class Juego {
 
     //dibuja el nombre del jugador
     drawUserName(jugador, x, y) {
-        this.ctx.fillStyle = "black";
-        this.ctx.font = "bold 25px Arial";
+        this.ctx.fillStyle = "white";
+        this.ctx.font = "600  25px Roboto";
         this.ctx.fillText(jugador, x, y);
     }
 
     //borra el canvas
     clearCanvas() {
-        this.ctx.fillStyle = "#FFFFFF"
+        this.ctx.fillStyle = "#05223c"
         this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
     }
 
@@ -267,11 +276,13 @@ class Juego {
 
     //Inicia los metodos necesarios para comenzar el juego
     comenzar() {
+        this.clearCanvas();
         this.tablero = new Tablero(this.ctx, this.imgTablero, this.col, this.fil);
         this.drawUserName(this.jugador1, 105, 400);
         this.drawUserName(this.jugador2, 1250, 400);
         this.nuevasFichas(this.col, this.fil, this.ctx, this.imgFicha1, this.imgFicha2, this.colorImg1, this.colorImg2);
         this.completarPosiciones();
+
     }
 
     //Inicia el juego y el reloj 
@@ -312,7 +323,7 @@ class Juego {
 
     //Reinicia el juego y el reloj
     reiniciarJuego(reloj) {
-            ctx.fillStyle = "#FFFFFF"
+            ctx.fillStyle = "#05223c"
             ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
             this.tablero = null;
             this.fichas = [];
@@ -349,6 +360,7 @@ class Juego {
         document.getElementById("red").classList.add("hidden");
         document.getElementById("blue").classList.add("hidden");
         document.getElementById("ganador").classList.add("hidden");
+        document.getElementById("timerOver").classList.add("hidden");
     }
 
     //detiene el timer

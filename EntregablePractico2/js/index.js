@@ -12,7 +12,10 @@ let imgFicha1 = "";
 let imgFicha2 = "";
 let colorImg1 = "";
 let colorImg2 = "";
+let canvasHeight = 850;
 let reloj = document.getElementById("timer");
+
+juego.clearCanvas();
 
 let img1 = document.getElementById('elegirImagen1');
 img1.addEventListener('change', obtenerRuta);
@@ -92,15 +95,18 @@ blue.addEventListener('click', () => {
     imgFicha1 = ""
     imgFicha2 = ""
 });
+let alertColoresIguales = document.getElementById("alertColoresIguales");
 let colorPersonalizado1 = document.getElementById("elegirColor1");
 colorPersonalizado1.addEventListener("change", () => {
     colorImg1 = colorPersonalizado1.value;
     colorImg2 = colorPersonalizado2.value;
+    alertColoresIguales.classList.remove("hidden");
 })
 let colorPersonalizado2 = document.getElementById("elegirColor2");
 colorPersonalizado2.addEventListener("change", () => {
     colorImg2 = colorPersonalizado2.value;
     colorImg1 = colorPersonalizado1.value;
+    alertColoresIguales.classList.remove("hidden");
 })
 
 //Pinta de verde el boton que se selecciono y de gris los botones hermanos no seleccionados
@@ -122,7 +128,8 @@ function marcarSeleccionado(padre, elemento) {
 
 let cuatroEnLinea = document.getElementById('4linea');
 cuatroEnLinea.addEventListener('click', () => {
-    marcarSeleccionado(cuatroEnLinea.parentNode, cuatroEnLinea)
+    marcarSeleccionado(cuatroEnLinea.parentNode, cuatroEnLinea);
+    canvasHeight = 650;
     columnas = 6;
     filas = 7;
     xEnLinea = 4;
@@ -130,6 +137,7 @@ cuatroEnLinea.addEventListener('click', () => {
 let cincoEnLinea = document.getElementById('5linea');
 cincoEnLinea.addEventListener('click', () => {
     marcarSeleccionado(cincoEnLinea.parentNode, cincoEnLinea)
+    canvasHeight = 700;
     columnas = 7;
     filas = 8;
     xEnLinea = 5;
@@ -137,6 +145,7 @@ cincoEnLinea.addEventListener('click', () => {
 let seisEnLinea = document.getElementById('6linea');
 seisEnLinea.addEventListener('click', () => {
     marcarSeleccionado(seisEnLinea.parentNode, seisEnLinea)
+    canvasHeight = 760;
     columnas = 8;
     filas = 9;
     xEnLinea = 6;
@@ -144,6 +153,7 @@ seisEnLinea.addEventListener('click', () => {
 let sieteEnLinea = document.getElementById('7linea');
 sieteEnLinea.addEventListener('click', () => {
     marcarSeleccionado(sieteEnLinea.parentNode, sieteEnLinea)
+    canvasHeight = 850;
     columnas = 9;
     filas = 10;
     xEnLinea = 7;
@@ -226,5 +236,8 @@ let comenzar = document.getElementById("comenzar");
 comenzar.addEventListener("click", comenzarJuego);
 //Comienzo un nuevo juego
 function comenzarJuego() {
+    alertColoresIguales.classList.add("hidden");
+    canvas.height = canvasHeight;
     juego.comenzarJuego(imgTablero, imgFicha1, imgFicha2, columnas, filas, colorImg1, colorImg2, xEnLinea);
+
 }
