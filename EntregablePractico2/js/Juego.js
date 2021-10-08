@@ -283,8 +283,10 @@ class Juego {
 
     }
     consultaJugadoresVacios(){
-        if(this.jugador1 == "" && this.jugador2 == ""){
+        if(this.jugador1 == "" ){
             this.jugador1 = "Jugador 1"
+        }
+        if(this.jugador2 == ""){
             this.jugador2 = "Jugador 2"
         }
     }
