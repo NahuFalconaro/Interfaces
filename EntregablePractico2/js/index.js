@@ -103,7 +103,7 @@ colorPersonalizado1.addEventListener("change", () => {
     colorImg2 = colorPersonalizado2.value;
     imgFicha1 = ""
     imgFicha2 = ""
-    alertColoresIguales.classList.remove("hidden");
+
 })
 let colorPersonalizado2 = document.getElementById("elegirColor2");
 colorPersonalizado2.addEventListener("change", () => {
@@ -111,7 +111,7 @@ colorPersonalizado2.addEventListener("change", () => {
     colorImg1 = colorPersonalizado1.value;
     imgFicha1 = ""
     imgFicha2 = ""
-    alertColoresIguales.classList.remove("hidden");
+
 })
 
 //Pinta de verde el boton que se selecciono y de gris los botones hermanos no seleccionados
@@ -215,6 +215,9 @@ function mostrarModalColor() {
     document.getElementById("formatos").classList.toggle("hidden");
     document.getElementById("elegirColor1").classList.toggle("hidden");
     document.getElementById("elegirColor2").classList.toggle("hidden");
+    colorImg1 = colorPersonalizado1.value;
+    colorImg2 = colorPersonalizado2.value;
+    alertColoresIguales.classList.remove("hidden");
 }
 
 document.getElementById("verImagenes").addEventListener('click', mostrarFormatosImagenes);
@@ -226,6 +229,7 @@ function mostrarFormatosImagenes() {
     document.getElementById("leagueOfLegends").classList.toggle("hidden");
     document.getElementById("naruto").classList.toggle("hidden");
     document.getElementById("harryPotter").classList.toggle("hidden");
+
 }
 
 document.getElementById("verColores").addEventListener('click', mostrarFormatosColores);
@@ -244,6 +248,10 @@ document.getElementById("reiniciarJuego2").addEventListener("click", reiniciar);
 document.getElementById("reiniciarJuego3").addEventListener("click", reiniciar);
 //Reinicia el juego al darle click al boton con id reiniciar juego
 function reiniciar() {
+    colorImg1 = ""
+    colorImg2 = ""
+    imgFicha1 = ""
+    imgFicha2 = ""
     juego.reiniciarJuego(reloj);
 }
 
@@ -252,7 +260,6 @@ comenzar.addEventListener("click", comenzarJuego);
 //Comienzo un nuevo juego
 function comenzarJuego() {
     alertColoresIguales.classList.add("hidden");
-    canvas.height = canvasHeight;
     juego.comenzarJuego(imgTablero, imgFicha1, imgFicha2, columnas, filas, colorImg1, colorImg2, xEnLinea, posInicialTableroX, posInicialTableroY);
 
 }
