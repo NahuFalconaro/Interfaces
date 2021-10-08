@@ -26,11 +26,13 @@ class Juego {
         this.posiciones = [];
         this.xEnLinea = "";
     }
+
     //Invoca los metodos ponerFichas, para dibujar las fichas en las posiciones indicadas
     nuevasFichas(col, fil, ctx, imgFicha1, imgFicha2, colorImg1, colorImg2) {
         this.ponerFichas(col, fil, imgFicha1, 125, 500, this.jugador1, colorImg1)
         this.ponerFichas(col, fil, imgFicha2, 1250, 500, this.jugador2, colorImg2)
     }
+
     //Dibuja las fichas para un determinado jugador
     ponerFichas(col, fil, imgFicha, inicioX, inicioY, jugador, colorImg) {
         let i = 0;
@@ -52,6 +54,7 @@ class Juego {
     setJugador2(jugador2) {
         this.jugador2 = jugador2;
     }
+
     //Cambia el turno del jugador
     cambiarTurno() {
         if (this.turno == this.jugador1) {
@@ -67,6 +70,7 @@ class Juego {
         else
             return this.jugador1;
     }
+
     //Recorre el arreglo de fichas disponibles y busca sobre cual se hizo click.
     buscarFichaClickeada(x, y) {
         for (let i = 0; i < this.fichas.length; i++) {
@@ -106,9 +110,9 @@ class Juego {
         let posInicial = this.tablero.getPosComienzoTableroX();
         for (let i = 0; i < this.col; i++) {
             let pos = {
-                posI: posInicial + 3,
-                posF: posInicial + 72
-            } //[celda1, posi 500, posF 572]
+                    posI: posInicial + 3,
+                    posF: posInicial + 72
+                } //[celda1, posi 500, posF 572]
             this.posiciones.push(pos)
             posInicial += 75
         }
@@ -149,6 +153,7 @@ class Juego {
             this.retornarFichaAlFichero();
 
     }
+
     //Cuando suelta el mouse, se obtiene las posiciones donde colocar la ficha y si es posible colocar al ficha,
     //se comprueba si hay un ganador
     onMouseUp(e) {
@@ -217,7 +222,7 @@ class Juego {
     //remueve la ficha del arreglo de fichas, si al ficha puede insertarse en el tablero
     arrayRemove(arr, value) {
 
-        return arr.filter(function (ele) {
+        return arr.filter(function(ele) {
             return (ele.getId() != value.getId()) || (ele.getPertenece() != value.getPertenece());
         });
     }
@@ -240,11 +245,11 @@ class Juego {
 
     //Dibuja las fichas
     drawFichas() {
-        for (let i = 0; i < this.fichas.length; i++) {
-            this.fichas[i].renderizar();
+            for (let i = 0; i < this.fichas.length; i++) {
+                this.fichas[i].renderizar();
+            }
         }
-    }
-    //Dibuja el tablero
+        //Dibuja el tablero
     drawTablero() {
         this.tablero.dibujarTablero(ctx, imgTablero, this.col, this.fil);
     }
@@ -282,14 +287,15 @@ class Juego {
         this.completarPosiciones();
 
     }
-    consultaJugadoresVacios(){
-        if(this.jugador1 == "" ){
+    consultaJugadoresVacios() {
+        if (this.jugador1 == "") {
             this.jugador1 = "Jugador 1"
         }
-        if(this.jugador2 == ""){
+        if (this.jugador2 == "") {
             this.jugador2 = "Jugador 2"
         }
     }
+
     //Inicia el juego y el reloj 
     comenzarJuego(imgTablero, imgFicha1, imgFicha2, columnas, filas, colorImg1, colorImg2, xEnLinea, posXTablero, posYTablero) {
 
@@ -338,11 +344,12 @@ class Juego {
         this.colorImg1 = "";
         this.colorImg2 = "";
         this.timer = 60 * 5;
-        reloj.innerHTML = "03:00";
+        reloj.innerHTML = "05:00";
         turnoHtml.innerHTML = "Turno de " + this.turnoActual();
         this.showPopUp();
         this.stopIntervalTimer(this.interval);
     }
+
     //Muestra el pop-up de configuracion inicial del juego.
     showPopUp() {
         document.getElementById("pop-up").classList.remove("hidden");

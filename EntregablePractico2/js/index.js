@@ -101,12 +101,16 @@ let colorPersonalizado1 = document.getElementById("elegirColor1");
 colorPersonalizado1.addEventListener("change", () => {
     colorImg1 = colorPersonalizado1.value;
     colorImg2 = colorPersonalizado2.value;
+    imgFicha1 = ""
+    imgFicha2 = ""
     alertColoresIguales.classList.remove("hidden");
 })
 let colorPersonalizado2 = document.getElementById("elegirColor2");
 colorPersonalizado2.addEventListener("change", () => {
     colorImg2 = colorPersonalizado2.value;
     colorImg1 = colorPersonalizado1.value;
+    imgFicha1 = ""
+    imgFicha2 = ""
     alertColoresIguales.classList.remove("hidden");
 })
 
