@@ -287,7 +287,6 @@ class Juego {
 
     //Inicia el juego y el reloj 
     comenzarJuego(imgTablero, imgFicha1, imgFicha2, columnas, filas, colorImg1, colorImg2, xEnLinea) {
-
         let timeOver = document.getElementById("timerOver");
         this.jugador1 = document.getElementById("nombreJugador1").value;
         this.jugador2 = document.getElementById("nombreJugador2").value;
