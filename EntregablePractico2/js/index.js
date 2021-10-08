@@ -14,7 +14,8 @@ let colorImg1 = "";
 let colorImg2 = "";
 let canvasHeight = 850;
 let reloj = document.getElementById("timer");
-
+let posInicialTableroX;
+let posInicialTableroY;
 juego.clearCanvas();
 
 let img1 = document.getElementById('elegirImagen1');
@@ -129,39 +130,49 @@ function marcarSeleccionado(padre, elemento) {
 let cuatroEnLinea = document.getElementById('4linea');
 cuatroEnLinea.addEventListener('click', () => {
     marcarSeleccionado(cuatroEnLinea.parentNode, cuatroEnLinea);
+    posInicialTableroX = 500;
+    posInicialTableroY = 100;
     canvasHeight = 650;
-    columnas = 6;
-    filas = 7;
+    columnas = 7;
+    filas = 6;
     xEnLinea = 4;
 })
 let cincoEnLinea = document.getElementById('5linea');
 cincoEnLinea.addEventListener('click', () => {
     marcarSeleccionado(cincoEnLinea.parentNode, cincoEnLinea)
+    posInicialTableroX = 400;
+    posInicialTableroY = 100;
     canvasHeight = 700;
-    columnas = 7;
-    filas = 8;
+    columnas = 8;
+    filas = 7;
     xEnLinea = 5;
 })
 let seisEnLinea = document.getElementById('6linea');
 seisEnLinea.addEventListener('click', () => {
     marcarSeleccionado(seisEnLinea.parentNode, seisEnLinea)
+    posInicialTableroX = 400;
+    posInicialTableroY = 70;
     canvasHeight = 760;
-    columnas = 8;
-    filas = 9;
+    columnas = 9;
+    filas = 8;
     xEnLinea = 6;
 })
 let sieteEnLinea = document.getElementById('7linea');
 sieteEnLinea.addEventListener('click', () => {
     marcarSeleccionado(sieteEnLinea.parentNode, sieteEnLinea)
+    posInicialTableroX = 400;
+    posInicialTableroY = 70;
     canvasHeight = 850;
-    columnas = 9;
-    filas = 10;
+    columnas = 10;
+    filas = 9;
     xEnLinea = 7;
 })
 
 
 canvas.addEventListener("mouseout", function(e) {
-    juego.onMouseOut(e);
+    if (juego.getTablero() != null) {
+        juego.onMouseOut(e);
+    }
 });
 canvas.addEventListener("mousedown", function(e) {
     if (juego.getTablero() != null) {
@@ -238,6 +249,6 @@ comenzar.addEventListener("click", comenzarJuego);
 function comenzarJuego() {
     alertColoresIguales.classList.add("hidden");
     canvas.height = canvasHeight;
-    juego.comenzarJuego(imgTablero, imgFicha1, imgFicha2, columnas, filas, colorImg1, colorImg2, xEnLinea);
+    juego.comenzarJuego(imgTablero, imgFicha1, imgFicha2, columnas, filas, colorImg1, colorImg2, xEnLinea, posInicialTableroX, posInicialTableroY);
 
 }
