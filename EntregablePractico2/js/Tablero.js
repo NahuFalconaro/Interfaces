@@ -1,5 +1,5 @@
 class Tablero {
-    constructor(ctx, img, col, fil) {
+    constructor(ctx, img, col, fil, posXinicial, posYinicial) {
         this.matrizTablero = [];
         this.col = col;
         this.fil = fil;
@@ -8,6 +8,8 @@ class Tablero {
         this.heightImg = 72;
         this.widthImg = 75;
         this.imgTablero = new Image();
+        this.posXinicial = posXinicial;
+        this.posYinicial = posYinicial;
         this.dibujarTablero(ctx, img, col, fil)
     }
 
@@ -83,15 +85,14 @@ class Tablero {
         }
         return height;
     }
-
     //retorna la posicion X donde se comienza a dibujar el tablero canvas
     getPosComienzoTableroX() {
-        return 500;
+        return this.posXinicial;
     }
 
     //retorna la posicion Y donde se comienza a dibujar el tablero canvas
     getPosComienzoTableroY() {
-        return 100;
+        return this.posYinicial;
     }
 
     //Coloca el duenio de la ficha en la matriz logica
@@ -156,16 +157,16 @@ class Tablero {
             posInicial.y--;
         }
         let cont = 0;
-        while (posInicial.x <= this.fil && posInicial.y <= this.col) {
+        while (posInicial.x <= this.col && posInicial.y <= this.fil - 1) {
             if (this.matrizTablero[posInicial.y][posInicial.x] == jugador) {
                 cont++
                 if (cont == xEnLinea)
                     return true;
             } else {
                 cont = 0;
-            }
+           }
             posInicial.x++;
-            posInicial.y++;
+           posInicial.y++;
 
         }
         return false
