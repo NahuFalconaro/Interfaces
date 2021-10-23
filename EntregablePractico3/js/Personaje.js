@@ -36,8 +36,11 @@ class Personaje {
 
     moverAvatar() {
         this.pj.style.animationName = "walkRight";
+        this.pj.style.backgroundPositionX = '0px';
+        this.pj.style.backgroundPositionY = '0px';
+        this.pj.style.height = '131px'
         this.pj.style.width = '90px';
-        this.pj.style.top = '420px'
+        this.pj.style.top = '425px'
         this.pj.style.background = this.imgPj;
         this.pj.style.animationDuration = ".8s";
         this.pj.style.animationTimingFunction = "steps(11)";

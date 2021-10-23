@@ -78,6 +78,7 @@ function step(timestamp) {
     }
     const elapsed = timestamp - start;
     if (previousTimeStamp !== timestamp) {
+
         if (keyDown) {
             if (ev.key == 'ArrowDown') {
                 personaje.agacharAvatar();
@@ -93,7 +94,9 @@ function step(timestamp) {
         }
         if (detectarColision()) {
             frenarJuego();
+            elapsed = 0;
         }
+
         if (elapsed < 100000) {
             previousTimeStamp = timestamp;
             window.requestAnimationFrame(step);

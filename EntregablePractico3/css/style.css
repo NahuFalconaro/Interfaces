@@ -19,7 +19,6 @@ body {
     top: 425px;
     right: 450px;
     padding: 0px;
-    border: 1px solid black;
 }
 
 .obstaculo {
@@ -30,6 +29,5 @@ body {
     padding: 0px;
     top: 280px;
     left: 600px;
-    border: 1px solid black;
     animation: obstaculo .8s steps(7) infinite, moverObstaculo 3s linear infinite;
 }
