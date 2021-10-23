@@ -3,25 +3,33 @@ html,
 body {
     margin: 0;
     background-color: black;
+    overflow: hidden;
 }
 
 .bgmove {
-    height: 600px;
+    height: 800px;
 }
 
 .personaje {
-    height: 200px;
-    width: 200px;
+    height: 131px;
+    width: 80px;
     margin: auto;
     position: relative;
     z-index: 1;
-    top: 390px;
+    top: 425px;
     right: 450px;
-    border: 4px solid black;
     padding: 0px;
+    border: 1px solid black;
 }
 
 .obstaculo {
-    background-color: red;
-    animation: obstaculo 5s linear forwards;
+    margin: auto;
+    position: relative;
+    height: 148px;
+    width: 55px;
+    padding: 0px;
+    top: 280px;
+    left: 600px;
+    border: 1px solid black;
+    animation: obstaculo .8s steps(7) infinite, moverObstaculo 3s linear infinite;
 }

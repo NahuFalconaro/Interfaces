@@ -13,7 +13,7 @@ class Fondo {
     iniciarFondo() {
         this.fondos.forEach((f) => {
             f.style.backgroundSize = '1080px';
-            f.style.backgroundRepeat = 'repeat-x'
+            f.style.backgroundRepeat = 'repeat-x';
             f.style.animationTimingFunction = "linear";
             f.style.animationIterationCount = "infinite"
             f.style.animationPlayState = "initial";
@@ -25,9 +25,9 @@ class Fondo {
         fondos.forEach((f) => {
             f.style.animationPlayState = "initial";
             f.style.animationName = "moveBackgroundLeft";
-
             f.style.animationDuration = "" + i + "s";
-            i--;
+            i = i - 1.3;
+
         })
     }
 }

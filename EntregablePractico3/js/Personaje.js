@@ -13,12 +13,16 @@ class Personaje {
         this.pj.style.backgroundRepeat = "no-repeat";
     }
     detenerAvatar() {
-        this.pj.style.background = personajeParado;
-        this.pj.style.animationDuration = "0s";
+        this.pj.style.animationPlayState = "paused";
     }
 
     agacharAvatar() {
         this.pj.style.background = "url(../img/Angel1/Sliding/0_Fallen_Angels_Sliding_001.png)";
+        this.pj.style.backgroundPositionX = '-10px';
+        this.pj.style.backgroundPositionY = '-60px';
+        this.pj.style.height = '120px'
+        this.pj.style.top = '450px'
+        this.pj.style.width = '110px';
         this.pj.style.animationName = "";
     }
 
@@ -32,6 +36,9 @@ class Personaje {
 
     moverAvatar() {
         this.pj.style.animationName = "walkRight";
+        this.pj.style.width = '90px';
+        this.pj.style.top = '420px'
+        this.pj.style.background = this.imgPj;
         this.pj.style.animationDuration = ".8s";
         this.pj.style.animationTimingFunction = "steps(11)";
         this.pj.style.animationIterationCount = "infinite";

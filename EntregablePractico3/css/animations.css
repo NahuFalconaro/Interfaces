@@ -9,19 +9,28 @@
 
 @keyframes walkRight {
     0% {
-        background-position-x: 0
+        background-position-x: -50px
     }
     100% {
-        background-position-x: -2200px
+        background-position-x: -2250px
     }
 }
 
 @keyframes obstaculo {
     0% {
-        background-position-x: 100vw;
+        background-position-x: -45px;
     }
     100% {
-        background-position-x: 0;
+        background-position-x: -460px;
+    }
+}
+
+@keyframes moverObstaculo {
+    0% {
+        left: 950px;
+    }
+    100% {
+        left: -950px;
     }
 }
 
@@ -32,11 +41,21 @@
 @keyframes salto {
     0% {
         transform: translateY(0px);
+        background-position-x: -45px;
+        background-position-y: -40px;
+    }
+    25% {
+        transform: translateY(-250px);
     }
     50% {
-        transform: translateY(-200px);
+        transform: translateY(-300px);
+    }
+    75% {
+        transform: translateY(-250px);
     }
     100% {
         transform: translateY(0px);
+        background-position-x: -45px;
+        background-position-y: -40px;
     }
 }

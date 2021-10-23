@@ -54,9 +54,16 @@ window.addEventListener("keyup", (e) => {
 })
 
 let divPersonaje = document.getElementById("personaje");
+
 let personaje = new Personaje(divPersonaje, imgPersonaje);
 let escenario = new Fondo(fondos);
+let obstaculo = new Obstaculo()
+obstaculo.create();
+let divObstaculo = document.getElementById("obstaculo")
+escenario.iniciarFondo();
 let start, previousTimeStamp;
+
+
 
 //tiempo total
 
@@ -74,28 +81,46 @@ function step(timestamp) {
         if (keyDown) {
             if (ev.key == 'ArrowDown') {
                 personaje.agacharAvatar();
+                escenario.moverFondoIzquierda();
             }
             if (ev.key == 'ArrowUp') {
                 personaje.saltarAvatar();
+                escenario.moverFondoIzquierda()
             }
         } else {
             personaje.moverAvatar();
             escenario.moverFondoIzquierda();
-            /*  let animaciones = pj.getAnimations();
-        if (animaciones[0].animationName === "salto") {
-            console.log("entre")
-            pj.style.animationDelay = "8s";
-        } else {
-            pj.style.animationDelay = "0s";
-
-        } */
-
         }
+        if (detectarColision()) {
+            frenarJuego();
+        }
+        if (elapsed < 100000) {
+            previousTimeStamp = timestamp;
+            window.requestAnimationFrame(step);
+        } else {
+            frenarJuego();
+            console.log("juego terminado")
+        }
+
     }
-    if (elapsed < 1000000) {
-        previousTimeStamp = timestamp;
-        window.requestAnimationFrame(this.step);
-    } else {
-        //terminar juego
+}
+
+function frenarJuego() {
+    personaje.detenerAvatar();
+    escenario.detenerFondo();
+    obstaculo.detenerObstaculo(divObstaculo);
+}
+
+function detectarColision() {
+    var rect1 = { x: divPersonaje.getBoundingClientRect().x, y: divPersonaje.getBoundingClientRect().y, width: divPersonaje.getBoundingClientRect().width, height: divPersonaje.getBoundingClientRect().height }
+    var rect2 = { x: divObstaculo.getBoundingClientRect().x, y: divObstaculo.getBoundingClientRect().y, width: divObstaculo.getBoundingClientRect().width, height: divObstaculo.getBoundingClientRect().height }
+
+    if (rect1.x < rect2.x + rect2.width &&
+        rect1.x + rect1.width > rect2.x &&
+        rect1.y < rect2.y + rect2.height &&
+        rect1.height + rect1.y > rect2.y) {
+        return true;
     }
+    return false;
+
 }
