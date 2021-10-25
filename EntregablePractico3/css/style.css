@@ -19,6 +19,7 @@ body {
     top: 425px;
     right: 450px;
     padding: 0px;
+    border: 1px solid black;
 }
 
 .obstaculo {
