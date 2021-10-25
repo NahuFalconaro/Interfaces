@@ -1,6 +1,6 @@
 class Fondo {
-    constructor(fondos) {
-        this.fondos = fondos
+    constructor() {
+        this.fondos = document.querySelectorAll('.bgmove');
     }
 
     detenerFondo() {
@@ -11,6 +11,7 @@ class Fondo {
     }
 
     iniciarFondo() {
+
         this.fondos.forEach((f) => {
             f.style.backgroundSize = '1080px';
             f.style.backgroundRepeat = 'repeat-x';
@@ -21,6 +22,7 @@ class Fondo {
     }
 
     moverFondoIzquierda() {
+
         let i = 9;
         fondos.forEach((f) => {
             f.style.animationPlayState = "initial";

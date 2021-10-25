@@ -19,16 +19,50 @@ body {
     top: 425px;
     right: 450px;
     padding: 0px;
-    border: 1px solid black;
 }
 
 .obstaculo {
     margin: auto;
-    position: relative;
+    position: absolute;
     height: 148px;
     width: 55px;
     padding: 0px;
-    top: 280px;
-    left: 600px;
+    top: 410px;
+    left: 1080px;
     animation: obstaculo .8s steps(7) infinite, moverObstaculo 3s linear infinite;
+}
+
+#pop-up {
+    position: absolute;
+    z-index: 100;
+    margin-left: 25%;
+    background-color: #0D4D86 !important;
+    box-shadow: 0px 0px 15px #c7c5c5;
+    border: 1px solid white;
+    border-radius: 5px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+}
+
+.hidden {
+    display: none;
+}
+
+.img-pj {
+    height: 100px;
+    padding: 5px;
+}
+
+.img-fondo {
+    height: 200px;
+}
+
+.my_btn {
+    background: transparent;
+    text-decoration: none;
+    margin: 20px;
+    box-shadow: 0px 0px 40px -6px #CBC1BB;
+    border: 2px solid hsla(0, 0%, 100%, .5);
+    color: black;
+    padding: 0;
 }

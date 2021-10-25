@@ -5,7 +5,7 @@ class Obstaculo {
         this.coordenadas = {};
         this.height = 0;
         this.width = 0;
-        this.img = "url(../img/photoroom-removebg-preview.png) repeat-x";
+        this.img = "url(../img/obstaculoTierra.png) repeat-x";
     }
 
 
@@ -14,14 +14,25 @@ class Obstaculo {
         obstaculo.classList.toggle("obstaculo");
         obstaculo.style.background = this.img;
         obstaculo.id = "obstaculo";
-        this.id = obstaculo.id;
+        this.id = obstaculo;
         let divFondo = document.getElementById("fondo5");
         divFondo.appendChild(obstaculo);
+    }
+
+    esconderObstaculo() {
+        this.id.classList.add("hidden");
+    }
+    mostrarObstaculo() {
+        this.id.classList.remove("hidden");
     }
 
     detenerObstaculo(id) {
         id.style.animationPlayState = 'paused';
     }
+    moverObstaculo(id) {
+        id.style.animationPlayState = 'running';
+    }
+
 
 
 }
