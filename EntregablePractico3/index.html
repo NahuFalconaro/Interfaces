@@ -10,12 +10,9 @@
     <link rel="stylesheet" href="css/animations.css">
     <title>Document</title>
 </head>
-
-
-
 <body>
 
-    <div id="pop-up" class="container w-50 text-center bg-light border border-2 border-dark mt-2">
+    <div id="pop-up" class="text-center bg-light border border-2 border-dark mt-2">
         <h4 class="fs-3 ">¡Bienvenido! ¿Con que personaje desea jugar?</h4>
         <div id="personajes">
             <button class="my_btn" id="Angel1" type="button"><img class="img-pj"src="img\Angel1\Start\start.png" alt=""></button>
@@ -24,8 +21,8 @@
         </div>
         <h4 class="fs-3 ">Elige el fondo:</h4>
         <div id="fondos">
-            <button class="my_btn" id="fondo2" type="button "><img class="img-fondo "src="img\Escenario\fondo2\fondo1.png " alt=" "></button>
-            <button class="my_btn " id="fondo3" type="button"><img class="img-fondo" src="img\Escenario\fondo3\Fondo2.png" alt=""></button>
+            <button class="my_btn" id="fondo2" type="button "><img class="img-fondo "src="img\Escenario\fondo2\layers\Fondo.png" alt=" "></button>
+            <button class="my_btn" id="fondo3" type="button"><img class="img-fondo" src="img\Escenario\fondo3\layers\Fondo.png" alt=""></button>
         </div>
 
         <button id="comenzar" class="btn btn-dark m-lg-4">Comenzar Juego</button>
@@ -39,6 +36,8 @@
                         <div id="fondo5" class="bgmove">
                             <div class="personaje" id="personaje">
                             </div>
+                            <div class="enemigo" id="enemigo">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -47,6 +46,7 @@
     </div>
     <script src="js/Personaje.js"></script>
     <script src="js/Obstaculo.js"></script>
+    <script src="js/Enemigo.js"></script>
 
     <script src="js/Fondo.js"></script>
     <script src="js/Coleccionable.js"></script>

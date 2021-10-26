@@ -1,5 +1,6 @@
 class Fondo {
-    constructor() {
+    constructor(layers) {
+        this.layers = layers;
         this.fondos = document.querySelectorAll('.bgmove');
     }
 
@@ -11,13 +12,15 @@ class Fondo {
     }
 
     iniciarFondo() {
-
+        let i = 0;
         this.fondos.forEach((f) => {
-            f.style.backgroundSize = '1080px';
+            f.style.background = 'url(' + layers[i] + ') ';
+            f.style.backgroundSize = '1080px 720px';
             f.style.backgroundRepeat = 'repeat-x';
             f.style.animationTimingFunction = "linear";
             f.style.animationIterationCount = "infinite"
             f.style.animationPlayState = "initial";
+            i++;
         })
     }
 

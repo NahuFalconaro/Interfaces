@@ -4,9 +4,7 @@ class Obstaculo {
 
 
     constructor() {
-        this.coordenadas = {};
-        this.height = 0;
-        this.width = 0;
+        
         this.img = "url(" + obstaculos[Math.floor(Math.random() * 2)] + ") repeat-x";
     }
 
