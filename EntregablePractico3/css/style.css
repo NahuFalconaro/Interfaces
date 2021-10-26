@@ -21,7 +21,7 @@ body {
     padding: 0px;
 }
 
-.obstaculo {
+.obstaculoTierra {
     margin: auto;
     position: absolute;
     height: 148px;
@@ -29,7 +29,19 @@ body {
     padding: 0px;
     top: 410px;
     left: 1080px;
-    animation: obstaculo .8s steps(7) infinite, moverObstaculo 3s linear infinite;
+    animation: obstaculoTierra .8s steps(7) infinite, moverObstaculo 3s linear infinite;
+}
+
+.obstaculoAire {
+    margin: auto;
+    position: absolute;
+    transform: rotateY(180deg);
+    height: 58px;
+    width: 90px;
+    padding: 0px;
+    top: 385px;
+    left: 1080px;
+    animation: obstaculoAire .5s steps(4) infinite, moverObstaculo 3s linear infinite;
 }
 
 #pop-up {

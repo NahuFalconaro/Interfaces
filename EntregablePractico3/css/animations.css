@@ -16,7 +16,16 @@
     }
 }
 
-@keyframes obstaculo {
+@keyframes obstaculoTierra {
+    0% {
+        background-position-x: -45px;
+    }
+    100% {
+        background-position-x: -460px;
+    }
+}
+
+@keyframes obstaculoAire {
     0% {
         background-position-x: -45px;
     }
@@ -43,13 +52,13 @@
         transform: translateY(0px);
     }
     25% {
-        transform: translateY(-250px);
+        transform: translateY(-100px);
     }
     50% {
-        transform: translateY(-300px);
+        transform: translateY(-100px);
     }
     75% {
-        transform: translateY(-250px);
+        transform: translateY(-100px);
     }
     100% {
         transform: translateY(0px);

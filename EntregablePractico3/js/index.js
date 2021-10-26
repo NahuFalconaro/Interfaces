@@ -63,19 +63,31 @@ let escenario;
 let obstaculo;
 let divPersonaje;
 let divObstaculo;
+let intervaObs;
 
 function comenzarJuego() {
     divPersonaje = document.getElementById("personaje");
 
     personaje = new Personaje(divPersonaje, carpetaAngel);
     escenario = new Fondo();
-    obstaculo = new Obstaculo();
-    obstaculo.create();
+
     popup.classList.add("hidden");
     personaje.mostrarAvatar();
-    obstaculo.mostrarObstaculo();
-    divObstaculo = document.getElementById("obstaculo")
-    obstaculo.moverObstaculo(divObstaculo);
+    obstaculo = new Obstaculo();
+    obstaculo.create();
+    divObstaculo = document.getElementById("obstaculo");
+    intervaObs = setInterval(() => {
+        obstaculo.borrarObstaculo();
+        obstaculo = new Obstaculo();
+        obstaculo.create();
+        obstaculo.mostrarObstaculo();
+        divObstaculo = document.getElementById("obstaculo");
+
+        obstaculo.moverObstaculo(divObstaculo);
+
+    }, 3000)
+
+
     escenario.iniciarFondo();
     window.requestAnimationFrame(step);
 }
@@ -143,18 +155,20 @@ function frenarJuego() {
     personaje.detenerAvatar();
     escenario.detenerFondo();
     obstaculo.detenerObstaculo(divObstaculo);
+    clearInterval(intervaObs);
 }
 
 function detectarColision() {
+    console.log(divObstaculo);
+    console.log(divPersonaje)
     var rect1 = { x: divPersonaje.getBoundingClientRect().x, y: divPersonaje.getBoundingClientRect().y, width: divPersonaje.getBoundingClientRect().width, height: divPersonaje.getBoundingClientRect().height }
     var rect2 = { x: divObstaculo.getBoundingClientRect().x, y: divObstaculo.getBoundingClientRect().y, width: divObstaculo.getBoundingClientRect().width, height: divObstaculo.getBoundingClientRect().height }
 
     if ((rect1.x + 50) < (rect2.x + rect2.width) &&
-        rect1.x + rect1.width > rect2.x &&
+        (rect1.x + rect1.width) - 50 > rect2.x &&
         rect1.y < rect2.y + rect2.height &&
         (rect1.height + rect1.y) - 50 > rect2.y) {
         return true;
     }
     return false;
-
 }
