@@ -196,8 +196,6 @@ function countDown() {
     }, 1000)
 }
 
-//Queda intrucciones, opcional: mensaje seleccion, aumento velocidad
-
 
 
 
