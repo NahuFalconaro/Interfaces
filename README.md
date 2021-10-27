@@ -4,9 +4,9 @@ Aclaraciones:
             </ul>
 Keyframes:
             <ul>
-                        <li>1.El personaje corriendo</li>
-                        <li>2.El personaje saltando</li>
-                        <li>3.El personaje cuando muere</li>
-                        <li>4.El personaje cuando se agacha</li>
-                        <li>5.La moneda cuando se colecciona</li>
+                        <li>El personaje corriendo</li>
+                        <li>El personaje saltando</li>
+                        <li>El personaje cuando muere</li>
+                        <li>El personaje cuando se agacha</li>
+                        <li>La moneda cuando se colecciona</li>
             </ul>
