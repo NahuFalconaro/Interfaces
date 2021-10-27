@@ -4,13 +4,14 @@ class Fondo {
         this.fondos = document.querySelectorAll('.bgmove');
     }
 
+    //Pausa la animacion de todos los fondos
     detenerFondo() {
         this.fondos.forEach((f) => {
-            // f.style.animationDuration = "0s";
             f.style.animationPlayState = "paused";
         })
     }
 
+    //Setea la animacion a todos los fondos
     iniciarFondo() {
         let i = 0;
         this.fondos.forEach((f) => {
@@ -24,6 +25,7 @@ class Fondo {
         })
     }
 
+    //Setea la animacion a los layers, la cual hace efecto parallax
     moverFondoIzquierda() {
         let i = 9;
         this.fondos.forEach((f) => {

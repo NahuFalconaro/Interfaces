@@ -12,6 +12,7 @@ class Personaje {
         this.pj.classList.remove("hidden");
     }
 
+    //Crea el avatar
     iniciarAvatar() {
         this.pj.style.background = "url(" + this.imgPj + "/Running/SpriteSheetRunning.png)"
         this.pj.style.backgroundRepeat = "no-repeat";
@@ -20,6 +21,7 @@ class Personaje {
         this.pj.style.animationPlayState = "paused";
     }
 
+    //Crea la animacion de agachar 
     agacharAvatar() {
         this.pj.style.background = "url(" + this.imgPj + "/Sliding/Sliding.png) no-repeat";
         this.pj.style.backgroundPositionY = '0px';
@@ -29,6 +31,7 @@ class Personaje {
         this.pj.style.animationName = "";
     }
 
+    //Crea la animacion de saltar 
     saltarAvatar() {
         this.pj.style.animationName = "salto";
         this.pj.style.background = "url(" + this.imgPj + "/JumpStart/salto.png)";
@@ -40,6 +43,7 @@ class Personaje {
         this.pj.style.top = '425px'
     }
 
+    //Crea la animacion de correr 
     moverAvatar() {
         this.pj.style.animationName = "walkRight";
         this.pj.style.height = '131px'
@@ -50,7 +54,9 @@ class Personaje {
         this.pj.style.animationTimingFunction = "steps(11)";
         this.pj.style.animationIterationCount = "infinite";
     }
-    morir(){
+
+    //Crea la animacion de agachar el personaje
+    morir() {
         this.pj.style.background = "url(" + this.imgPj + "/Dying/MuerteAire.png) no-repeat";
         this.pj.style.animationName = "";
         this.pj.style.height = '131px'
