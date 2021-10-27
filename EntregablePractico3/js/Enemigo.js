@@ -20,5 +20,6 @@ class Enemigo {
         this.pj.style.animationDuration = ".8s";
         this.pj.style.animationTimingFunction = "steps(11)";
         this.pj.style.animationIterationCount = "infinite";
+        this.pj.style.animationPlayState = "initial";
     }
 }

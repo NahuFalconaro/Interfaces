@@ -36,4 +36,8 @@ class Coleccionable{
         id.style.animationPlayState = 'running';
     }
 
+    animar(){
+        this.id.classList.add("animacionColeccionable")
+    }
+
 }

@@ -1,4 +1,5 @@
 @import 'animations.css';
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 html,
 body {
     margin: 0;
@@ -27,12 +28,12 @@ body {
     margin: auto;
     position: absolute;
     z-index: 1;
-    top: 510px;
-    bottom: 0;
-    right: 1150px;
+    top: 530px;
+    left: 80px;
     padding: 0px;
     
 }
+
 
 .obstaculoTierra {
     margin: auto;
@@ -67,26 +68,31 @@ body {
     left: 1080px;
     animation: coleccionable .8s steps(11) infinite, moverColeccionable 5s linear infinite;
 }
-
+.animacionColeccionable{
+    left:350px;
+    animation: agarrarColeccionable .5s forwards;
+}
 #pop-up {
     position: absolute;
     z-index: 100;
-    top: 50px;
+    top: 35px;
     margin-left: 20%;
-    width: 60vw;
-    background-color: #0D4D86 !important;
-    box-shadow: 0px 0px 15px #c7c5c5;
-    border: 1px solid white;
+    width: 62vw;
+    background-color: rgb(36, 36, 36);
+    border: 16px double black;
     border-radius: 5px;
-    font-family: 'Roboto', sans-serif;
     font-weight: 600;
+    padding-top: 15px;
+}
+#pop-up p{
+    color: white;
+    font-size: 25px;
+    font-family: 'Press Start 2P', cursive;
 }
 #fondos{
     display: flex;
 }
-.hidden {
-    display: none;
-}
+
 
 .img-pj {
     height: 100px;
@@ -113,4 +119,109 @@ body {
 .my_btn:hover{
     transform: scale(1.2, 1.2);
     
+}
+
+.mensajePantalla{
+    z-index:200;
+    height:35px;
+    position: absolute;
+    display:flex;
+    left: 32vw;
+    top: 5vh;
+}
+#tablero p{
+    color: white;
+    margin-right: 25px;
+    font-family: 'Press Start 2P', cursive;
+}
+.msjDerrota{
+    color: whitesmoke ;
+    width: 490px;
+    background-color: rgb(36, 36, 36);
+    border: 16px double black;
+    height: 190px;
+    padding: 0px 15px;
+    position: absolute;
+    top: 50px;
+    font-size: 20px;
+    font-family: 'Press Start 2P', cursive;
+}
+.buttonLoss{
+    position: relative;
+    top: 250px;
+    left: 12vw;
+    border-radius: 50px;
+    padding-top: 3px;
+    width: 150px;
+    height: 40px;
+    background-color: transparent;
+    border: 5px solid black;
+    transition: .8s;
+}
+.buttonLoss:hover{
+    background-color: rgb(36, 36, 36);
+    transform: scale(1.1, 1.1);
+    animation: box-shadow 3s linear infinite;
+}
+.buttonLoss p{
+    font-family: 'Press Start 2P', cursive;
+    font-size: 18px;
+    color: whitesmoke;
+}
+.btnComenzar{
+    margin-bottom:10px;
+    background-color: transparent;
+    border: 5px double white;
+    border-radius: 50px;
+    color: white;
+    padding: 0px 10px;
+    font-family: 'Press Start 2P', cursive;
+}
+.hidden {
+    display: none;
+}
+.btnInstrucciones{
+    background-color: transparent;
+    border: 3px solid white;
+    color: white;
+    padding-right: 5px;
+    font-family: 'Press Start 2P', cursive;
+    position: absolute;
+    z-index: 1;
+}
+.btnControles{
+    left: 1060px;
+    top: 120px;
+}
+.btnReglas{
+    left: 1080px;
+    top: 190px;
+}
+.arrowIntrucciones{
+ position: absolute;
+}
+.arrowControles{
+    left: 1209px;
+    top: 119px;
+}
+.arrowReglas{
+    left: 1180px;
+    top: 189px;
+}
+.divControles{
+    transition: .8s;
+}
+.divReglas{
+    transition: .8s;
+}
+.divControles:hover{
+    transform: translateX(50px);
+}
+
+.divReglas:hover{
+    transform: translateX(35px);
+}
+
+@media only screen and (min-width: 600px) {
+
 }

@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+<!-- 
+    Preguntas:
+        Modificar responsive.
+        Donde ubicaar donde se aplico los keyframe del punto 2
+    
+    Opcionles:
+        Aumentar velocidad
+        Colocar enemiggo al seleccionr escenario
 
+ -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,23 +20,57 @@
     <title>Document</title>
 </head>
 <body>
-
-    <div id="pop-up" class="text-center bg-light border border-2 border-dark mt-2">
-        <h4 class="fs-3 ">¡Bienvenido! ¿Con que personaje desea jugar?</h4>
+    <div class="mensajePantalla" id="tablero">
+        <p id="reloj">Tiempo restante: </p>
+        <p id="puntaje">Puntaje: 0</p>
+     </div>
+     <div id="loss" class="hidden mensajePantalla">
+        <p id="msgLoss" class="msjDerrota"></p>
+        <button id="buttonLoss1" class="buttonLoss"><p>Retry</p></button>
+     </div>
+     <div id="sinTiempo" class="hidden mensajePantalla">
+        <p id="msgSinTiempo" class="msjDerrota"></p>
+        <button id="buttonLoss2" class="buttonLoss"><p>Retry</p></button>
+     </div>
+    <div id="pop-up" class="text-center  mt-2">
+        <p>¡Bienvenido! ¿Con que personaje desea jugar?</p>
         <div id="personajes">
             <button class="my_btn" id="Angel1" type="button"><img class="img-pj"src="img\Angel1\Start\start.png" alt=""></button>
             <button class="my_btn" id="Angel2" type="button"><img class="img-pj"src="img\Angel2\Start\start.png" alt=""></button>
             <button class="my_btn" id="Angel3" type="button"><img class="img-pj"src="img\Angel3\Start\start.png" alt=""></button>
         </div>
-        <h4 class="fs-3 ">Elige el fondo:</h4>
+        <p>Elige el fondo:</p>
         <div id="fondos">
-            <button class="my_btn" id="fondo2" type="button "><img class="img-fondo "src="img\Escenario\fondo2\layers\Fondo.png" alt=" "></button>
-            <button class="my_btn" id="fondo3" type="button"><img class="img-fondo" src="img\Escenario\fondo3\layers\Fondo.png" alt=""></button>
+            <button class="my_btn" id="showFondo2" type="button "><img class="img-fondo "src="img\Escenario\fondo2\layers\Fondo.png" alt=" "></button>
+            <button class="my_btn" id="showFondo3" type="button"><img class="img-fondo" src="img\Escenario\fondo3\layers\Fondo.png" alt=""></button>
         </div>
-
-        <button id="comenzar" class="btn btn-dark m-lg-4">Comenzar Juego</button>
+        <button id="comenzar" class="btnComenzar">Comenzar Juego</button>
+    </div> 
+    <div id="divControles" class="divControles">
+        <button id="btnControles"class="btnInstrucciones btnControles">Controles</button>
+        <svg class="arrowIntrucciones arrowControles" width="37" height="34" viewBox="0 0 37 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M34.5761 20.9822C37.2745 22.9811 37.2745 27.0189 34.5761 29.0178L8.22617 48.5365C4.92634 50.9809 0.25 48.6253 0.25 44.5187V5.48125C0.25 1.3747 4.92634 -0.980861 8.22617 1.46349L34.5761 20.9822Z" fill="white"/>
+    </svg>
     </div>
-
+ 
+    <div id="divReglas" class="divReglas">
+        <button id="btnReglas"class="btnInstrucciones btnReglas">Reglas</button>
+        <svg class="arrowIntrucciones arrowReglas" width="37" height="34" viewBox="0 0 37 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M34.5761 20.9822C37.2745 22.9811 37.2745 27.0189 34.5761 29.0178L8.22617 48.5365C4.92634 50.9809 0.25 48.6253 0.25 44.5187V5.48125C0.25 1.3747 4.92634 -0.980861 8.22617 1.46349L34.5761 20.9822Z" fill="white"/>
+    </svg>
+    </div>
+    <div class="mensajePantalla msjDerrota" id="controles">
+        <p>
+            Flecha ⬆ Saltar
+            Flecha ⬇ Agacharse
+        </p>
+    </div>
+    
+    <div class="mensajePantalla msjDerrota" id="reglas">
+        <p>
+            Esquiva obstaculos y junta la mayor cantidad de monedas antes de que se acabe el tiempo.
+        </p>
+    </div>
     <div id="fondo" class="bgmove">
         <div id="fondo1" class="bgmove">
             <div id="fondo2" class="bgmove">

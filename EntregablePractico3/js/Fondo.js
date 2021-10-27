@@ -25,14 +25,12 @@ class Fondo {
     }
 
     moverFondoIzquierda() {
-
         let i = 9;
-        fondos.forEach((f) => {
+        this.fondos.forEach((f) => {
             f.style.animationPlayState = "initial";
             f.style.animationName = "moveBackgroundLeft";
             f.style.animationDuration = "" + i + "s";
             i = i - 1.3;
-
         })
     }
 }

@@ -50,4 +50,10 @@ class Personaje {
         this.pj.style.animationTimingFunction = "steps(11)";
         this.pj.style.animationIterationCount = "infinite";
     }
+    morir(){
+        this.pj.style.background = "url(" + this.imgPj + "/Dying/MuerteAire.png) no-repeat";
+        this.pj.style.animationName = "";
+        this.pj.style.height = '131px'
+        this.pj.style.width = '148px';
+    }
 }
