@@ -43,38 +43,38 @@ let popup = document.getElementById("pop-up");
 
 //Botones seleccionar personajes y escenarios
 angel1.addEventListener('click', () => {
-    carpetaAngel = "/img/Angel1";
+    carpetaAngel = "img/Angel1";
     angel1.classList.add('selected');
     angel2.classList.remove('selected');
     angel3.classList.remove('selected');
 });
 angel2.addEventListener('click', () => {
-    carpetaAngel = "/img/Angel2";
+    carpetaAngel = "img/Angel2";
     angel2.classList.add('selected');
     angel1.classList.remove('selected');
     angel3.classList.remove('selected');
 });
 angel3.addEventListener('click', () => {
-    carpetaAngel = "/img/Angel3";
+    carpetaAngel = "img/Angel3";
     angel3.classList.add('selected');
     angel1.classList.remove('selected');
     angel2.classList.remove('selected');
 });
 document.getElementById("Angel3").addEventListener('click', () => {
-    carpetaAngel = "/img/Angel3";
+    carpetaAngel = "img/Angel3";
 });
 fondo2.addEventListener('click', () => {
-    fondoSeleccionado = '/img/Escenario/fondo2/layers';
+    fondoSeleccionado = 'img/Escenario/fondo2/layers';
     fondo2.classList.add('selected');
     fondo3.classList.remove('selected');
-    imgEnemigo = "url(/img/Enemigo/EnemigoRojo.png) no-repeat";
+    imgEnemigo = "url(img/Enemigo/EnemigoRojo.png) no-repeat";
     previsualizacionJuego();
 });
 fondo3.addEventListener('click', () => {
-    fondoSeleccionado = '/img/Escenario/fondo3/layers';
+    fondoSeleccionado = 'img/Escenario/fondo3/layers';
     fondo2.classList.remove('selected');
     fondo3.classList.add('selected');
-    imgEnemigo = "url(/img/Enemigo/EnemigoVerde.png) no-repeat";
+    imgEnemigo = "url(img/Enemigo/EnemigoVerde.png) no-repeat";
     previsualizacionJuego();
 });
 

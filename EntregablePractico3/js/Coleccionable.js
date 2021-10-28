@@ -5,7 +5,7 @@ class Coleccionable {
     create() {
             let coleccionable = document.createElement("div");
             coleccionable.classList.add("coleccionable");
-            coleccionable.style.background = "url(../img/Coleccionable1.png) no-repeat";
+            coleccionable.style.background = "url(img/Coleccionable1.png) no-repeat";
             coleccionable.id = "coleccionable";
             this.id = coleccionable;
             let upOrDown = Math.floor(Math.random() * 2)

@@ -1,4 +1,4 @@
-let obstaculos = ["../img/obstaculoTierra.png", "../img/obstaculoAire.png"];
+let obstaculos = ["img/obstaculoTierra.png", "img/obstaculoAire.png"];
 
 class Obstaculo {
 
@@ -11,10 +11,10 @@ class Obstaculo {
     //Crea el div para el obstaculo
     create() {
         let obstaculo = document.createElement("div");
-        if (this.img == "url(../img/obstaculoTierra.png) repeat-x") {
+        if (this.img == "url(img/obstaculoTierra.png) repeat-x") {
             obstaculo.classList.add("obstaculoTierra");
         } else
-        if ((this.img == "url(../img/obstaculoAire.png) repeat-x")) {
+        if ((this.img == "url(img/obstaculoAire.png) repeat-x")) {
             obstaculo.classList.add("obstaculoAire");
         }
         obstaculo.style.background = this.img;
