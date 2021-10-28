@@ -1,7 +1,15 @@
 class Coleccionable {
-    constructor() {}
+    constructor() {
+        this.coleccionado = false;
+    }
 
-    //Crea un div para el coleccionable y se le asigna una clase que tiene animaciones
+    isColeccionado() {
+        return this.coleccionado;
+    }
+    setColeccionado() {
+            this.coleccionado = true;
+        }
+        //Crea un div para el coleccionable y se le asigna una clase que tiene animaciones
     create() {
             let coleccionable = document.createElement("div");
             coleccionable.classList.add("coleccionable");
