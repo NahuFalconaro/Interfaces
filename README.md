@@ -1,15 +1,12 @@
 Aclaraciones:
             <ul>
-                        <li>1</li>
-                        <li>2</li>
-                        <li>3</li>
-                        <li>4</li>
+                        <li>Juego testeado en resolucion 1366x760</li>
             </ul>
-
 Keyframes:
-            -1
-            -2
-            -3
-            -4
-            -5
-            -6
+            <ul>
+                        <li>El personaje corriendo</li>
+                        <li>El personaje saltando</li>
+                        <li>El personaje cuando muere</li>
+                        <li>El personaje cuando se agacha</li>
+                        <li>La moneda cuando se colecciona</li>
+            </ul>
