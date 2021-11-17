@@ -1,0 +1,67 @@
+*{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+body {
+    background-color: black;
+  }
+h1{
+    font-size: 50px;
+    text-align: center;
+    color: #fff;
+    text-shadow:/*https://css-tricks.com/how-to-create-neon-text-with-css/*/
+      0 0 7px #8A0BEE,
+      0 0 10px #8A0BEE,
+      0 0 21px #8A0BEE,
+      0 0 42px #782DB2,
+      0 0 82px #782DB2,
+      0 0 92px #782DB2,
+      0 0 102px #782DB2,
+      0 0 151px #782DB2;
+}
+li a{
+    text-decoration: none;
+    font-size: 20px;
+    color: white;
+    transition: 0.8s;
+}
+a:hover{
+    color: #8A0BEE;
+    font-size: 30px;
+    border: 1px solid white;
+    padding: 5px;
+}
+li{
+    margin-top: 15px;
+}
+
+ul{
+    text-align: center;
+    list-style: none;
+}
+.box{
+    width: 600px;
+    height: 400px;
+    background-color: white;
+    position: absolute;
+    opacity: 0.1;
+    left: 29%;
+}
+section{
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+/*El keyframe no se aplicaba al A, y la solucion fue hacerlo con transition.*/
+@keyframes scale {
+    0%{
+        transform: scale(1,1);
+        opacity: 0.5;
+    }
+    100%{
+        transform: scale(1.5,1.5);
+        opacity: 1;
+    }
+}
