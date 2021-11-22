@@ -1,0 +1,24 @@
+*{
+    font-family: 'Open Sans';
+}
+nav div{
+    padding-bottom: 10px;
+    border-bottom: 2px solid #782DB2;
+}
+.cont-pub{
+    border-bottom: 2px solid #C4C4C4;
+    margin-top: 80px;
+    padding-bottom: 10px;
+}
+.descripcion-publicacion{
+    width: 100%;
+}
+.img-publicacion{
+    width: 100%;
+    height: 145px;
+}
+
+
+
+
+
