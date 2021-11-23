@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
 *{
     font-family: 'Open Sans', sans-serif;/*'Open Sans Condensed', sans-serif*/  
-    background-color: #F5F5F5;
+    background-color: #f5f5f5;
 }
 .line-violet-bottom{
     border-bottom: 2px solid #782DB2;
@@ -22,10 +22,20 @@
 }
 .btn-follow{
   background-color: #782DB2;
+  border-radius: 5px;
+  width: 95%;
+  height: 23%;
 }
 .text-follow{
     background-color: transparent;
     color: white;
     height: 30px;
     margin: 0;
+    text-align: center;
+}
+.botonera{
+    width:100%;
+}
+.carousel-control-prev-icon, .carousel-control-next-icon{
+    background-color: transparent;
 }
