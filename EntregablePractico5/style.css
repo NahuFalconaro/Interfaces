@@ -38,16 +38,16 @@
 /* LOGIN */
 .img1{
 	/* The image used */
-	background-image: url("dog1.png");
+	background-image: url("img/dog1.png");
 
 }
 .img2{
 /* The image used */
-	background-image: url("dog2.png");
+	background-image: url("img/dog2.png");
 }
 .img3{
 /* The image used */
-	background-image: url("dog3.png");
+	background-image: url("img/dog3.png");
 }
 .propiedades-img{
 	/* Set a specific height */
