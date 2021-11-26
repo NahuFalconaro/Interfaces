@@ -1,8 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
 *{
     font-family: 'Open Sans', sans-serif;/*'Open Sans Condensed', sans-serif*/  
-    background-color: #F5F5F5;
 }
+
+
+/* HOME */
 .line-violet-bottom{
     border-bottom: 2px solid #782DB2;
 }
@@ -28,4 +30,89 @@
     color: white;
     height: 30px;
     margin: 0;
+}
+
+/* LOGIN */
+.img1{
+	/* The image used */
+	background-image: url("dog1.png");
+
+}
+.img2{
+/* The image used */
+	background-image: url("dog2.png");
+}
+.img3{
+/* The image used */
+	background-image: url("dog3.png");
+}
+.propiedades-img{
+	/* Set a specific height */
+	height: 815px; 
+	/* Create the parallax scrolling effect */
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+.texto-bienvenida{
+	position: absolute;
+	top: 20%;
+	left: 25%;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	font-size: 40px;
+	font-weight: 700;
+}
+.texto-inicio{
+	position: absolute;
+	top: 50%;
+	left: 35%;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	font-weight: 700;
+}
+.logo-inicio{
+	position: absolute;
+	top: -20%;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+
+}
+.linea-titulo{
+	border-bottom: 1px solid black;
+	width: 90%;
+
+}
+
+.input-formulario{
+	border-style: none;
+	height: 41px;
+	box-shadow: 0px 4px 7px 0px rgba(0,0,0,0.40);
+	border-radius: 9px;
+}
+form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.btn-formulario{
+	background-color: #8A0BEE;
+	color: #FFFFFF;
+	height: 44px;
+	border-radius: 6px;
+}
+.links-redireccionales{
+	text-decoration: none;
+	color: gray;
+}
+.a-ingresar{
+	text-decoration: none;
+	color: white;
 }
