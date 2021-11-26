@@ -24,6 +24,9 @@
 }
 .btn-follow{
   background-color: #782DB2;
+  border-radius: 5px;
+  width: 95%;
+  height: 23%;
 }
 .text-follow{
     background-color: transparent;
