@@ -25,7 +25,7 @@
 	</div>
 	<div>
 		<div id="contenido">
-			<section class="d-grid p-0 m-0" >
+			<section class="d-grid p-0 m-0" id="formulario">
 				<div class="text-center pt-5" id="div-nueva-pos" >
 					<svg width="100" height="100" viewBox="0 0 	100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<path d="M81.6693 70.4486C80.5991 68.8179 72.7551 57.0017 66.0509 50.7513C60.4576 45.5578 52.0857 45.4075 51.1366 45.4075C51.0503 45.4079 50.9635 45.411 50.8786 45.4175H48.8489C47.9522 45.4175 39.918 45.5652 34.0417 50.6805C26.7916 56.9991 18.7696 69.7431 18.2082 70.6413C13.9586 77.139 11.354 81.3649 11.354 86.0632C11.354 94.5294 17.7685 100 27.6955 100H72.3077C82.232 100 88.6446 94.5242 88.6446 86.0492C88.6446 81.3094 86.0337 77.0896 81.7728 70.598C81.7393 70.5473 81.705 70.4971 81.6693 70.4486ZM72.3077 93.4442H27.6955C24.1242 93.4442 18.1332 92.4853 18.1332 86.0632C18.1332 83.319 19.9979 80.1678 23.9565 74.1168C23.9697 74.0967 23.9828 74.0761 23.9959 74.0556C24.075 73.9288 31.9641 61.3172 38.5788 55.5524C42.6125 52.0411 48.7915 51.9742 48.8516 51.9738H51.1475C51.2121 51.9738 51.2758 51.972 51.34 51.9685C52.4432 52.0088 58.0013 52.365 61.3515 55.4755C67.8067 61.4946 75.9603 73.9835 76.0421 74.1089C76.0787 74.1653 76.1167 74.2199 76.1564 74.2732C80.3668 80.6971 81.8659 83.4593 81.8659 86.0484C81.8654 92.161 76.6676 93.4442 72.3077 93.4442Z" fill="#782DB3"/>
@@ -45,7 +45,7 @@
 					<input type="email" class="input-formulario px-0 col-10" id="exampleInputEmail1">
 					<label for="exampleInputPassword1" class="col-10 ps-0 mt-3">Contraseña</label>
 					<input type="password" class="input-formulario px-0 col-10" id="exampleInputPassword1">
-                    <button type="submit" class="btn-formulario mt-5 col-4"><a class="a-ingresar" href="www.google.com">Ingresar</a></button>
+                    <button type="submit" class="btn-formulario mt-5 col-4"><a class="a-ingresar" href="html/muro.html">Ingresar</a></button>
 				</form>
 				<p class="text-center mt-3">¿Olvidaste tu usuario o contraseña?</p>
 				<div class="d-flex justify-content-center pt-2 mb-3">
@@ -53,7 +53,7 @@
 					</div>
 				</div>
 				<div class="d-flex justify-content-center mt-4">
-					<p class="me-4">No tienes cuenta?</p>
+					<p class="me-4 mb-0 pt-3">No tienes cuenta?</p>
 					<button type="submit" class="btn-formulario px-3">Registrarse</button>
 				</div>
 			</section>
@@ -65,22 +65,63 @@
 		<div class="img2 propiedades-img"> 
 		</div>
 		<section id="Preguntas-Frecuentes">
-			<h1>Preguntas frecuentes</h1>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			<h1 class="text-center">Preguntas frecuentes</h1>
+			<div class="px-2">
+				<article class="pt-4">
+					<h5>¿Como inicio sesion?</h5>
+					<p>Ingresando tu correo electronico y la contraseña que utilizaste para registrarte. Si no te registraste, haz click <a href="html/registro.html">aqui</a>.</p>
+				</article>
+				<article class="pt-4">
+					<h5 class="pb-3">¿Que son los iconos que aparecen en la parte inferior de la pantalla en el celular?</h5>
+					<p><svg width="30" height="27" viewBox="0 0 30 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M0.898804 10.7222L14.6505 1L28.4021 10.7222M25.5722 9.33333L24.2377 24.1791C24.145 25.2101 23.2809 26 22.2457 26H17.9889H11.312H7.05521C6.02003 26 5.15592 25.2101 5.06324 24.1791L3.72873 9.33333" stroke="#782DB3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+						<ellipse cx="14.8321" cy="15.7059" rx="4.49459" ry="4.41177" fill="#F5F5F5" stroke="#782DB3" stroke-width="1.5"/>
+						</svg>
+						Te muestra el muro de publicaciones</p>
+					<p><svg width="30" height="27" viewBox="0 0 30 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<ellipse cx="13.7229" cy="12.6667" rx="12.9192" ry="11.6667" stroke="#782DB3" stroke-width="1.5"/>
+						<path d="M22.951 21L28.4879 26" stroke="#782DB3" stroke-width="1.5" stroke-linecap="round"/>
+						</svg>
+						Te muestra para realizar una busqueda avanzada</p>
+					<p><svg width="27" height="26" viewBox="0 0 27 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M13.2328 25.4406L13.2328 0" stroke="#782DB3" stroke-width="1.5"/>
+						<path d="M0.447266 12.6906H26.5195" stroke="#782DB3" stroke-width="1.5"/>
+						</svg>
+						 Te muestra la interfaz para subir un nuevo post</p>
+					<p><svg width="30" height="27" viewBox="0 0 30 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M6.01718 12.4853C6.01718 7.52503 10.0382 3.50397 14.9985 3.50397V3.50397V3.50397C19.9587 3.50397 23.9797 7.52503 23.9797 12.4853V13.6789L28.3471 18.4205C28.505 18.5919 28.4512 18.8673 28.2403 18.9667V18.9667C19.8544 22.9174 10.1425 22.9174 1.75662 18.9667V18.9667C1.54577 18.8673 1.49192 18.5919 1.64982 18.4205L6.01718 13.6789V12.4853Z" stroke="#782DB3" stroke-width="1.5" stroke-linejoin="round"/>
+						<path d="M20.0749 21.5485V22.1844C20.0749 24.2917 17.9769 26 15.389 26C12.8011 26 10.7031 24.2917 10.7031 22.1844V21.5485" stroke="#782DB3" stroke-width="1.5"/>
+						<path d="M17.1463 3.50397V2.43084C17.1463 1.64061 16.3596 1 15.3892 1C14.4187 1 13.632 1.64061 13.632 2.43084V3.50397" stroke="#782DB3" stroke-width="1.5"/>
+						</svg>
+						Te muestra las notificaciones</p>
+					<p><svg width="30" height="27" viewBox="0 0 30 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<ellipse cx="14.6504" cy="5.6875" rx="6.90184" ry="4.6875" stroke="#782DB3" stroke-width="1.5" stroke-linecap="round"/>
+						<path d="M28.454 21.3125C28.454 25.6272 21.0033 26 14.6504 26C8.29739 26 0.84668 25.6272 0.84668 21.3125C0.84668 16.9978 8.29739 13.5 14.6504 13.5C21.0033 13.5 28.454 16.9978 28.454 21.3125Z" stroke="#782DB3" stroke-width="1.5" stroke-linecap="round"/>
+						</svg>
+						Te direcciona a tu perfil en el que podras ver tus publicaciones, la cantidad de seguidores.</p>
+						 <p><svg width="33" height="29" viewBox="0 0 33 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M1 3.97009L14.4878 14.1554C15.6786 15.0546 17.3214 15.0546 18.5122 14.1554L32 3.97009V24.2748C32 26.119 30.5051 27.6139 28.6609 27.6139H4.33906C2.49495 27.6139 1 26.119 1 24.2748V3.97009Z" stroke="#782DB3" stroke-width="1.51257" stroke-linejoin="round"/>
+							<path d="M14.4878 15.2499L1 5.06458V4.18989C1 2.34578 2.49495 0.85083 4.33906 0.85083H28.6609C30.5051 0.85083 32 2.34578 32 4.18989V5.06458L18.5122 15.2499C17.3214 16.1491 15.6786 16.1491 14.4878 15.2499Z" stroke="#782DB3" stroke-width="1.51257"/>
+							</svg>
+							 Te muestra tu lista de mensajes y te permite enviar un nuevo mensaje/videollamada con tus contactos</p>
+				</article>
+			</div>
 		</section>
 		<div class="img3 propiedades-img"> 
 		</div>
 		<section id="Acerca-de-SocialVet">
-			<h1>Acerca de SocialVet</h1>
-			<p>SocialVet es una red social destinada a los profesionales de la veterinaria y afines. Busca conectar a personas del rubro y asi expandir la red de tus contactos. Puedes publicitar tus productos, conseguir profesionales para tus animales/mascotas, o bien puedes crearte un perfil propio para compartir momentos con tu mascota y asi conseguirl</p>
+			<h1 class="text-center">Acerca de SocialVet</h1>
+			<p class="px-2">SocialVet es una red social destinada a los profesionales de la veterinaria y afines. Busca conectar a personas del rubro y asi expandir la red de tus contactos. Puedes publicitar tus productos, conseguir profesionales para tus animales/mascotas, o bien puedes crearte un perfil propio para compartir momentos con tu mascota y asi conseguirl</p>
 		</section>
-				<div class="img"> 
+		<div class="img4 propiedades-img"> 
 		</div>
+		<footer>
+			<div class="d-grid">
+				<p class="text-center">SocialVet ® 2021 - Interfaces de usuario e interaccion</p>
+				<p class="text-center pb-0 mb-1">Diseñado y desarrollado por:</p>
+				<p class="text-center pb-2">Nahuel Falconaro - Juan Pedro Armella</p>
+			</div>
+		</footer>
 	</div>
 	<script type="text/javascript" src="script.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>

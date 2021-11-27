@@ -34,7 +34,9 @@
     height: 30px;
     margin: 0;
 }
-
+.botonera{
+    background-color: #FFFFFF;
+}
 /* LOGIN */
 .img1{
 	/* The image used */
@@ -45,9 +47,15 @@
 /* The image used */
 	background-image: url("img/dog2.png");
 }
-.img3{
+.img4{
 /* The image used */
-	background-image: url("img/dog3.png");
+	background-image: url("img/dog4.png");
+	opacity: 70%;
+}
+.img3{
+	/* The image used */
+	opacity: 70%;
+	background-image: url("img/dog3.png");	
 }
 .propiedades-img{
 	/* Set a specific height */
@@ -118,4 +126,13 @@ form{
 .a-ingresar{
 	text-decoration: none;
 	color: white;
+}
+footer{
+	background-color: #FFFFFF;
+}
+footer p{
+	color: #000000;
+}
+footer p:first-child{
+	font-size: 15px;
 }
