@@ -97,7 +97,6 @@
 .linea-titulo{
 	border-bottom: 1px solid black;
 	width: 90%;
-
 }
 
 .input-formulario{
@@ -105,6 +104,13 @@
 	height: 41px;
 	box-shadow: 0px 4px 7px 0px rgba(0,0,0,0.40);
 	border-radius: 9px;
+	text-indent: 10px;
+}
+.input-formulario:focus{
+	outline: 1px solid #782DB2;
+}
+.visited{
+	outline: 1px solid #782DB2;
 }
 form{
   display: flex;
@@ -123,9 +129,13 @@ form{
 	text-decoration: none;
 	color: gray;
 }
-.a-ingresar{
+.a-redireccion{
 	text-decoration: none;
-	color: white;
+	color: #FFFFFF;
+}
+.a-redireccion-dark{
+	text-decoration: none;
+	color: #000000;
 }
 footer{
 	background-color: #FFFFFF;
@@ -135,4 +145,73 @@ footer p{
 }
 footer p:first-child{
 	font-size: 15px;
+}
+
+/* REGISTRO */
+
+.nav-registro{
+	width: 100%;
+}
+.logo{
+	position: absolute;
+	left: 0;
+	top: -60%;
+	bottom: 0;
+	right: 0;
+	margin: auto;
+ 	animation: rebota 1s alternate infinite ease-out;
+	 border-style: none;
+	 background-color: transparent;
+}
+
+@keyframes rebota {
+	0% {
+	  bottom: 0;
+	  height: 70px;
+	}
+	100% {
+		box-shadow: 0px 91px 28px -55px rgb(214, 214, 214);
+	 	bottom: 100px;
+	}
+}
+
+.first-letter{
+ color: #782DB2;
+ font-weight: 600;
+}
+#Preguntas-Frecuentes{
+	background-color: #782db20a;
+}
+.mensaje-contraseña{
+	color: red;
+	display: none;
+}
+.btn-info-pass{
+	background-color: white;
+	padding: 0;
+	margin: 0;
+	color: black;
+	border-radius: 10px;
+	height: 25px;
+	width: 25px;
+	outline: inherit;
+	border: 1px solid black;
+}
+.modal-password{
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+	top: 25%;
+}
+.modal-password div{
+	background-color: rgb(255, 255, 255);
+	box-shadow: 0px 0px 15px 5px rgba(0,0,0,0.30);
+	width: 90%;
+    border-radius: 2px;
+}
+.modal-password div p, h4{
+	color: black;
+	text-indent: 10px;
 }
