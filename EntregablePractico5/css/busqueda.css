@@ -151,7 +151,7 @@ nav {
 nav button {
     width: 20%;
     height: 53px;
-    border: 1.5px solid rgba(120, 45, 178, 1);
+    border: 2px solid rgba(120, 45, 178, 1);
     border-left: 0;
     border-right: 0;
     border-bottom: 0;
