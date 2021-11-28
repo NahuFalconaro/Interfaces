@@ -4,7 +4,7 @@
 }
 
 
-/* HOME */
+/* MURO */
 .line-violet-bottom{
     border-bottom: 2px solid #782DB2;
 }
@@ -20,7 +20,7 @@
 }
 .img-publicacion{
     width: 100%;
-    height: 145px;
+    height: 180px;
 }
 .btn-follow{
   background-color: #782DB2;
@@ -37,6 +37,16 @@
 .botonera{
     background-color: #FFFFFF;
 }
+.nav-muro{
+	background-color: #FFFFFF;
+}
+.tarjeta-publicacion{
+	background-color: #FFFFFF;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.40);
+	border-radius: 5px;
+	width: 95%;
+}
+
 /* LOGIN */
 .img1{
 	/* The image used */

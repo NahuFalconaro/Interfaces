@@ -13,7 +13,7 @@
 
 <body>
     <div class="sticky-top">
-        <nav class="navbar navbar-light bg-light py-0">
+        <nav class="navbar nav-muro  py-0">
             <div class="container-fluid line-violet-bottom  py-1 ">
                 <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -45,120 +45,159 @@
         </nav>
     </div>
     <div class="d-grid mb-5">
-        <div class="pt-2">
-            <article class="container cont-pub pe-4">
-                <div class="row row-cols-2 row-cols-2">
-                    <div class="col-2">
-                        <svg  width="60" height="65" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <div class="pt-2 tarjeta-publicacion mb-4 container">
+            <article class="container cont-pub pe-0">
+                <div class="d-grid">
+                    <div class="d-flex justify-content-start">
+                        <svg  width="65" height="70" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <defs>
                                 <pattern id="imgpattern" x="0" y="0" width="1" height="1">
-                                  <image width="60" height="65"
-                                         xlink:href="https://picsum.photos/60/65"/>
+                                  <image width="65" height="70"
+                                         xlink:href="https://picsum.photos/65/70"/>
                                 </pattern>
                             </defs>
                             <path
                                 d="M39.5 20C39.5 30.7696 30.7696 39.5 20 39.5C9.23045 39.5 0.5 30.7696 0.5 20C0.5 9.23045 9.23045 0.5 20 0.5C30.7696 0.5 39.5 9.23045 39.5 20Z"
                                 stroke="#8A0BEE" fill="url(#imgpattern)"/>
                         </svg>
+                        <p class="d-flex align-items-center fs-5 fw-bolder">@NombreUsuario</p>
+                        <p class="d-flex align-items-center fs-6" style="color: grey;"> • 3h</p>
                     </div>
-                    <div class="col-10 text-pub">
-                        <div class="row ">
-                            <div class="col-12" style="font-weight: bolder;">@Nahuel_Falconaro</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12 descripcion-publicacion">Lorem ipsum dolor sit amet consectetur,
-                                adipisicing elit. Placeat eius consequatur</div>
-                        </div>
+                    <div>
+                        <p>Texto de publicacion, ocupando todo el ancho de la pantalla, y tiene que ubicarse debajo de la foto de perfil</p>
                     </div>
-                    <div class="col-2">
-                    </div>
-                    <div class="col-10">
-                        <div class="row">
-                            <div class="col-12">
-                                <img class="img-publicacion mt-2"
-                                    src="https://a-static.besthdwallpaper.com/perrito-adorable-papel-pintado-2880x1620-26613_52.jpg"
-                                    alt="">
+                    <div>
+                        <img class="img-publicacion mt-2"
+                        src="https://a-static.besthdwallpaper.com/perrito-adorable-papel-pintado-2880x1620-26613_52.jpg"
+                        alt=""/>
+                        <div class="mt-3 iconos-publicacion d-flex justify-content-between  ">
+                            <div class="col-4">
+                                <div class="d-inline-flex">
+                                    <svg width="24" height="24" viewBox="0 0 22 22" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <rect width="5" height="6.31579" rx="2.5"
+                                            transform="matrix(0 1 1 0 14.6842 1)" stroke="#00BA7C"
+                                            stroke-width="1.5" />
+                                        <rect width="5" height="6.31579" rx="2.5"
+                                            transform="matrix(0 1 1 0 14.6842 16)" stroke="#00BA7C"
+                                            stroke-width="1.5" />
+                                        <rect width="5" height="6.31579" rx="2.5"
+                                            transform="matrix(0 1 1 0 1 9.33325)" stroke="#00BA7C"
+                                            stroke-width="1.5" />
+                                        <path
+                                            d="M14.6842 17.6667L8.04324 13.0664C7.1821 12.4699 7.1821 11.1968 8.04324 10.6003L14.6842 6"
+                                            stroke="#00BA7C" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </svg>
+                                    <p class="ps-1" style="color:#00BA7C;">13</p>
+                                </div>
                             </div>
-                            <div class="mt-3 iconos-publicacion d-flex justify-content-between  ">
-                                <div class="col-4">
-                                    <div class="d-inline-flex">
-                                        <svg width="24" height="24" viewBox="0 0 22 22" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <rect width="5" height="6.31579" rx="2.5"
-                                                transform="matrix(0 1 1 0 14.6842 1)" stroke="#00BA7C"
-                                                stroke-width="1.5" />
-                                            <rect width="5" height="6.31579" rx="2.5"
-                                                transform="matrix(0 1 1 0 14.6842 16)" stroke="#00BA7C"
-                                                stroke-width="1.5" />
-                                            <rect width="5" height="6.31579" rx="2.5"
-                                                transform="matrix(0 1 1 0 1 9.33325)" stroke="#00BA7C"
-                                                stroke-width="1.5" />
-                                            <path
-                                                d="M14.6842 17.6667L8.04324 13.0664C7.1821 12.4699 7.1821 11.1968 8.04324 10.6003L14.6842 6"
-                                                stroke="#00BA7C" stroke-width="1.5" stroke-linecap="round"
-                                                stroke-linejoin="round" />
-                                        </svg>
-                                        <p class="ps-1" style="color:#00BA7C;">13</p>
-                                    </div>
-                                </div>
-                                <div class="col-4 text-center">
-                                    <div class="d-inline-flex">
-                                        <svg width="24" height="24" viewBox="0 0 22 22" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M12.25 21C6.72715 21 1 15.6097 1 10.4118C1 5.21379 5.47715 1 11 1C16.5228 1 21 5.21379 21 10.4118C21 15.2113 17.1829 18.0688 12.25 18.6478M12.25 21C12.6733 21 11.8405 18.6958 12.25 18.6478M12.25 21V18.6478"
-                                                stroke="#3C32FF" stroke-width="1.5" />
-                                            <path d="M8.5 8.13232H13.5" stroke="#3C32FF" stroke-width="1.5"
-                                                stroke-linecap="round" />
-                                            <path d="M7.25 12.25L16 12.25" stroke="#3C32FF" stroke-width="1.5"
-                                                stroke-linecap="round" />
-                                        </svg>
+                            <div class="col-4 text-center">
+                                <div class="d-inline-flex">
+                                    <svg width="24" height="24" viewBox="0 0 22 22" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M12.25 21C6.72715 21 1 15.6097 1 10.4118C1 5.21379 5.47715 1 11 1C16.5228 1 21 5.21379 21 10.4118C21 15.2113 17.1829 18.0688 12.25 18.6478M12.25 21C12.6733 21 11.8405 18.6958 12.25 18.6478M12.25 21V18.6478"
+                                            stroke="#3C32FF" stroke-width="1.5" />
+                                        <path d="M8.5 8.13232H13.5" stroke="#3C32FF" stroke-width="1.5"
+                                            stroke-linecap="round" />
+                                        <path d="M7.25 12.25L16 12.25" stroke="#3C32FF" stroke-width="1.5"
+                                            stroke-linecap="round" />
+                                    </svg>
 
-                                        <p class="ps-1" style="color:#3C32FF;">13</p>
-                                    </div>
+                                    <p class="ps-1" style="color:#3C32FF;">13</p>
                                 </div>
-                                <div class="col-4 d-flex justify-content-end">
-                                    <div class="d-inline-flex">
-                                        <svg width="24" height="24" viewBox="0 0 21 18" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M19.16 2.00004C18.1 0.937251 16.6948 0.288583 15.1983 0.171213C13.7019 0.0538432 12.2128 0.475509 11 1.36004C9.72766 0.413681 8.14399 -0.0154454 6.56792 0.159081C4.99185 0.333607 3.54044 1.09882 2.50597 2.30063C1.47151 3.50244 0.930823 5.05156 0.992802 6.63606C1.05478 8.22055 1.71482 9.72271 2.84 10.84L9.05 17.06C9.57002 17.5718 10.2704 17.8587 11 17.8587C11.7296 17.8587 12.43 17.5718 12.95 17.06L19.16 10.84C20.3276 9.66531 20.9829 8.07632 20.9829 6.42004C20.9829 4.76377 20.3276 3.17478 19.16 2.00004ZM17.75 9.46004L11.54 15.67C11.4693 15.7414 11.3852 15.798 11.2925 15.8367C11.1999 15.8753 11.1004 15.8953 11 15.8953C10.8996 15.8953 10.8001 15.8753 10.7075 15.8367C10.6148 15.798 10.5307 15.7414 10.46 15.67L4.25 9.43004C3.46576 8.62839 3.02661 7.55151 3.02661 6.43004C3.02661 5.30858 3.46576 4.2317 4.25 3.43004C5.04916 2.64103 6.12697 2.19861 7.25 2.19861C8.37303 2.19861 9.45085 2.64103 10.25 3.43004C10.343 3.52377 10.4536 3.59817 10.5754 3.64893C10.6973 3.6997 10.828 3.72584 10.96 3.72584C11.092 3.72584 11.2227 3.6997 11.3446 3.64893C11.4664 3.59817 11.577 3.52377 11.67 3.43004C12.4692 2.64103 13.547 2.19861 14.67 2.19861C15.793 2.19861 16.8708 2.64103 17.67 3.43004C18.465 4.22119 18.9186 5.29223 18.9335 6.41373C18.9485 7.53522 18.5236 8.61798 17.75 9.43004V9.46004Z"
-                                                fill="#F91880" />
-                                        </svg>
-
-                                        <p class="ps-1" style="color:#F91880;">13</p>
-                                    </div>
+                            </div>
+                            <div class="col-4 d-flex justify-content-end">
+                                <div class="d-inline-flex">
+                                    <svg width="24" height="24" viewBox="0 0 21 18" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M19.16 2.00004C18.1 0.937251 16.6948 0.288583 15.1983 0.171213C13.7019 0.0538432 12.2128 0.475509 11 1.36004C9.72766 0.413681 8.14399 -0.0154454 6.56792 0.159081C4.99185 0.333607 3.54044 1.09882 2.50597 2.30063C1.47151 3.50244 0.930823 5.05156 0.992802 6.63606C1.05478 8.22055 1.71482 9.72271 2.84 10.84L9.05 17.06C9.57002 17.5718 10.2704 17.8587 11 17.8587C11.7296 17.8587 12.43 17.5718 12.95 17.06L19.16 10.84C20.3276 9.66531 20.9829 8.07632 20.9829 6.42004C20.9829 4.76377 20.3276 3.17478 19.16 2.00004ZM17.75 9.46004L11.54 15.67C11.4693 15.7414 11.3852 15.798 11.2925 15.8367C11.1999 15.8753 11.1004 15.8953 11 15.8953C10.8996 15.8953 10.8001 15.8753 10.7075 15.8367C10.6148 15.798 10.5307 15.7414 10.46 15.67L4.25 9.43004C3.46576 8.62839 3.02661 7.55151 3.02661 6.43004C3.02661 5.30858 3.46576 4.2317 4.25 3.43004C5.04916 2.64103 6.12697 2.19861 7.25 2.19861C8.37303 2.19861 9.45085 2.64103 10.25 3.43004C10.343 3.52377 10.4536 3.59817 10.5754 3.64893C10.6973 3.6997 10.828 3.72584 10.96 3.72584C11.092 3.72584 11.2227 3.6997 11.3446 3.64893C11.4664 3.59817 11.577 3.52377 11.67 3.43004C12.4692 2.64103 13.547 2.19861 14.67 2.19861C15.793 2.19861 16.8708 2.64103 17.67 3.43004C18.465 4.22119 18.9186 5.29223 18.9335 6.41373C18.9485 7.53522 18.5236 8.61798 17.75 9.43004V9.46004Z"
+                                            fill="#F91880" />
+                                    </svg>
+                                    <p class="ps-1" style="color:#F91880;">13</p>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <div>
+                        <h4>Comentarios</h4>
+                    </div>
+                    <div>
+                        <div>
+                            <div class="d-flex justify-content-start">
+                                <svg  width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <defs>
+                                        <pattern id="imgpattern" x="0" y="0" width="1" height="1">
+                                          <image width="40" height="40"
+                                                 xlink:href="https://picsum.photos/40/40"/>
+                                        </pattern>
+                                    </defs>
+                                    <path
+                                        d="M39.5 20C39.5 30.7696 30.7696 39.5 20 39.5C9.23045 39.5 0.5 30.7696 0.5 20C0.5 9.23045 9.23045 0.5 20 0.5C30.7696 0.5 39.5 9.23045 39.5 20Z"
+                                        stroke="#8A0BEE" fill="url(#imgpattern)"/>
+                                </svg>
+                                <div class="d-grid">
+                                    <article class="d-flex justify-content-start">
+                                        <p class="m-0 ps-1 d-flex align-items-center fs-6 fw-bolder">@NombreUsuario</p>
+                                        <p class="m-0 d-flex align-items-center fs-6" style="color:grey;"> • 3h</p>
+                                    </article>
+                                    <article class="d-grid">
+                                        <p class="m-0 ps-1">Comentario de la persona, tal vez un poco extenso puede ser</p>
+                                        <div class="iconos-publicacion d-flex justify-content-start ">
+                                                <div  class="d-flex justify-content-center me-3">
+                                                    <svg width="24" height="24" viewBox="0 0 22 22" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M12.25 21C6.72715 21 1 15.6097 1 10.4118C1 5.21379 5.47715 1 11 1C16.5228 1 21 5.21379 21 10.4118C21 15.2113 17.1829 18.0688 12.25 18.6478M12.25 21C12.6733 21 11.8405 18.6958 12.25 18.6478M12.25 21V18.6478"
+                                                            stroke="grey" stroke-width="1.5" />
+                                                        <path d="M8.5 8.13232H13.5" stroke="grey" stroke-width="1.5"
+                                                            stroke-linecap="round" />
+                                                        <path d="M7.25 12.25L16 12.25" stroke="grey" stroke-width="1.5"
+                                                            stroke-linecap="round" />
+                                                    </svg>
+                                                    <p class="ps-1" style="color:grey;">2</p>
+                                            </div>
+                                            <div  class="d-flex justify-content-center">
+                                                    <svg width="20" height="20" viewBox="0 0 21 18" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M19.16 2.00004C18.1 0.937251 16.6948 0.288583 15.1983 0.171213C13.7019 0.0538432 12.2128 0.475509 11 1.36004C9.72766 0.413681 8.14399 -0.0154454 6.56792 0.159081C4.99185 0.333607 3.54044 1.09882 2.50597 2.30063C1.47151 3.50244 0.930823 5.05156 0.992802 6.63606C1.05478 8.22055 1.71482 9.72271 2.84 10.84L9.05 17.06C9.57002 17.5718 10.2704 17.8587 11 17.8587C11.7296 17.8587 12.43 17.5718 12.95 17.06L19.16 10.84C20.3276 9.66531 20.9829 8.07632 20.9829 6.42004C20.9829 4.76377 20.3276 3.17478 19.16 2.00004ZM17.75 9.46004L11.54 15.67C11.4693 15.7414 11.3852 15.798 11.2925 15.8367C11.1999 15.8753 11.1004 15.8953 11 15.8953C10.8996 15.8953 10.8001 15.8753 10.7075 15.8367C10.6148 15.798 10.5307 15.7414 10.46 15.67L4.25 9.43004C3.46576 8.62839 3.02661 7.55151 3.02661 6.43004C3.02661 5.30858 3.46576 4.2317 4.25 3.43004C5.04916 2.64103 6.12697 2.19861 7.25 2.19861C8.37303 2.19861 9.45085 2.64103 10.25 3.43004C10.343 3.52377 10.4536 3.59817 10.5754 3.64893C10.6973 3.6997 10.828 3.72584 10.96 3.72584C11.092 3.72584 11.2227 3.6997 11.3446 3.64893C11.4664 3.59817 11.577 3.52377 11.67 3.43004C12.4692 2.64103 13.547 2.19861 14.67 2.19861C15.793 2.19861 16.8708 2.64103 17.67 3.43004C18.465 4.22119 18.9186 5.29223 18.9335 6.41373C18.9485 7.53522 18.5236 8.61798 17.75 9.43004V9.46004Z"
+                                                            fill="grey" />
+                                                    </svg>
+                                                    <p class="ps-1" style="color:grey;">13</p>
+                                            </div>
+                                        </div>
+                                    </article>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </article>
         </div>
-        <div class="pt-2">
-            <article class="container cont-pub pe-4">
-                <div class="row row-cols-2 row-cols-2">
-                    <div class="col-2">
-                        <svg width="60" height="65" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-
-                            <path
-                                d="M39.5 20C39.5 30.7696 30.7696 39.5 20 39.5C9.23045 39.5 0.5 30.7696 0.5 20C0.5 9.23045 9.23045 0.5 20 0.5C30.7696 0.5 39.5 9.23045 39.5 20Z"
-                                stroke="#8A0BEE" fill="url(#imgpattern)" />
-                        </svg>
-                    </div>
-                    <div class="col-10 text-pub">
-                        <div class="row ">
-                            <div class="col-12 " style="font-weight: bolder;">@Nahuel_Falconaro</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12 descripcion-publicacion">Lorem ipsum dolor sit amet consectetur,
-                                adipisicing elit. Placeat eius consequatur</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12 mt-3 descripcion-publicacion"><a href="">Link de publicacion</a></div>
-                        </div>
-                    </div>
-                    <div class="col-2">
-                    </div>
+        <div class="pt-2 container tarjeta-publicacion">
+            <article class="container cont-pub pe-0">
+                <div class="d-flex justify-content-start">
+                    <svg  width="65" height="70" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <pattern id="imgpattern" x="0" y="0" width="1" height="1">
+                              <image width="65" height="70"
+                                     xlink:href="https://picsum.photos/65/70"/>
+                            </pattern>
+                        </defs>
+                        <path
+                            d="M39.5 20C39.5 30.7696 30.7696 39.5 20 39.5C9.23045 39.5 0.5 30.7696 0.5 20C0.5 9.23045 9.23045 0.5 20 0.5C30.7696 0.5 39.5 9.23045 39.5 20Z"
+                            stroke="#8A0BEE" fill="url(#imgpattern)"/>
+                    </svg>
+                    <p class="d-flex align-items-center fs-5 fw-bolder">@NombreUsuario</p>
+                    <p class="d-flex align-items-center fs-6" style="color: grey;"> • 3h</p>
+                </div>
+                <div class="d-grid">
+                    <p>Texto de publicacion, ocupando todo el ancho de la pantalla, y tiene que ubicarse debajo de la foto de perfil</p>
+                    <a href="www.google.com">Link a la redireccion</a>
+                </div>
                     <div class="col-10">
                         <div class="mt-3 iconos-publicacion d-flex justify-content-between  ">
                             <div class="col-4">
@@ -415,33 +454,176 @@
                     </div>
             </article>
         </div>
+        <div class="pt-2 tarjeta-publicacion">
+            <article class="container cont-pub pe-4">
+                <div class="d-grid">
+                    <div class="d-flex justify-content-start">
+                        <svg  width="65" height="70" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <pattern id="imgpattern" x="0" y="0" width="1" height="1">
+                                  <image width="65" height="70"
+                                         xlink:href="https://picsum.photos/65/70"/>
+                                </pattern>
+                            </defs>
+                            <path
+                                d="M39.5 20C39.5 30.7696 30.7696 39.5 20 39.5C9.23045 39.5 0.5 30.7696 0.5 20C0.5 9.23045 9.23045 0.5 20 0.5C30.7696 0.5 39.5 9.23045 39.5 20Z"
+                                stroke="#8A0BEE" fill="url(#imgpattern)"/>
+                        </svg>
+                        <p class="d-flex align-items-center fs-5">@NombreUsuario</p>
+                        <p class="d-flex align-items-center fs-5"> • 3h</p>
+                    </div>
+                    <div>
+                        <p>Texto de publicacion, ocupando todo el ancho de la pantalla, y tiene que ubicarse debajo de la foto de perfil</p>
+                    </div>
+                    <div>
+                        <img class="img-publicacion mt-2"
+                        src="https://a-static.besthdwallpaper.com/perrito-adorable-papel-pintado-2880x1620-26613_52.jpg"
+                        alt=""/>
+                        <div class="mt-3 iconos-publicacion d-flex justify-content-between  ">
+                            <div class="col-4">
+                                <div class="d-inline-flex">
+                                    <svg width="24" height="24" viewBox="0 0 22 22" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <rect width="5" height="6.31579" rx="2.5"
+                                            transform="matrix(0 1 1 0 14.6842 1)" stroke="#00BA7C"
+                                            stroke-width="1.5" />
+                                        <rect width="5" height="6.31579" rx="2.5"
+                                            transform="matrix(0 1 1 0 14.6842 16)" stroke="#00BA7C"
+                                            stroke-width="1.5" />
+                                        <rect width="5" height="6.31579" rx="2.5"
+                                            transform="matrix(0 1 1 0 1 9.33325)" stroke="#00BA7C"
+                                            stroke-width="1.5" />
+                                        <path
+                                            d="M14.6842 17.6667L8.04324 13.0664C7.1821 12.4699 7.1821 11.1968 8.04324 10.6003L14.6842 6"
+                                            stroke="#00BA7C" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </svg>
+                                    <p class="ps-1" style="color:#00BA7C;">13</p>
+                                </div>
+                            </div>
+                            <div class="col-4 text-center">
+                                <div class="d-inline-flex">
+                                    <svg width="24" height="24" viewBox="0 0 22 22" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M12.25 21C6.72715 21 1 15.6097 1 10.4118C1 5.21379 5.47715 1 11 1C16.5228 1 21 5.21379 21 10.4118C21 15.2113 17.1829 18.0688 12.25 18.6478M12.25 21C12.6733 21 11.8405 18.6958 12.25 18.6478M12.25 21V18.6478"
+                                            stroke="#3C32FF" stroke-width="1.5" />
+                                        <path d="M8.5 8.13232H13.5" stroke="#3C32FF" stroke-width="1.5"
+                                            stroke-linecap="round" />
+                                        <path d="M7.25 12.25L16 12.25" stroke="#3C32FF" stroke-width="1.5"
+                                            stroke-linecap="round" />
+                                    </svg>
+
+                                    <p class="ps-1" style="color:#3C32FF;">13</p>
+                                </div>
+                            </div>
+                            <div class="col-4 d-flex justify-content-end">
+                                <div class="d-inline-flex">
+                                    <svg width="24" height="24" viewBox="0 0 21 18" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M19.16 2.00004C18.1 0.937251 16.6948 0.288583 15.1983 0.171213C13.7019 0.0538432 12.2128 0.475509 11 1.36004C9.72766 0.413681 8.14399 -0.0154454 6.56792 0.159081C4.99185 0.333607 3.54044 1.09882 2.50597 2.30063C1.47151 3.50244 0.930823 5.05156 0.992802 6.63606C1.05478 8.22055 1.71482 9.72271 2.84 10.84L9.05 17.06C9.57002 17.5718 10.2704 17.8587 11 17.8587C11.7296 17.8587 12.43 17.5718 12.95 17.06L19.16 10.84C20.3276 9.66531 20.9829 8.07632 20.9829 6.42004C20.9829 4.76377 20.3276 3.17478 19.16 2.00004ZM17.75 9.46004L11.54 15.67C11.4693 15.7414 11.3852 15.798 11.2925 15.8367C11.1999 15.8753 11.1004 15.8953 11 15.8953C10.8996 15.8953 10.8001 15.8753 10.7075 15.8367C10.6148 15.798 10.5307 15.7414 10.46 15.67L4.25 9.43004C3.46576 8.62839 3.02661 7.55151 3.02661 6.43004C3.02661 5.30858 3.46576 4.2317 4.25 3.43004C5.04916 2.64103 6.12697 2.19861 7.25 2.19861C8.37303 2.19861 9.45085 2.64103 10.25 3.43004C10.343 3.52377 10.4536 3.59817 10.5754 3.64893C10.6973 3.6997 10.828 3.72584 10.96 3.72584C11.092 3.72584 11.2227 3.6997 11.3446 3.64893C11.4664 3.59817 11.577 3.52377 11.67 3.43004C12.4692 2.64103 13.547 2.19861 14.67 2.19861C15.793 2.19861 16.8708 2.64103 17.67 3.43004C18.465 4.22119 18.9186 5.29223 18.9335 6.41373C18.9485 7.53522 18.5236 8.61798 17.75 9.43004V9.46004Z"
+                                            fill="#F91880" />
+                                    </svg>
+                                    <p class="ps-1" style="color:#F91880;">13</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h4>Comentarios</h4>
+                    </div>
+                    <div>
+                        <div>
+                            <div class="d-flex justify-content-start">
+                                <svg  width="35" height="35" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <defs>
+                                        <pattern id="imgpattern" x="0" y="0" width="1" height="1">
+                                          <image width="35" height="35"
+                                                 xlink:href="https://picsum.photos/35/35"/>
+                                        </pattern>
+                                    </defs>
+                                    <path
+                                        d="M39.5 20C39.5 30.7696 30.7696 39.5 20 39.5C9.23045 39.5 0.5 30.7696 0.5 20C0.5 9.23045 9.23045 0.5 20 0.5C30.7696 0.5 39.5 9.23045 39.5 20Z"
+                                        stroke="#8A0BEE" fill="url(#imgpattern)"/>
+                                </svg>
+                                <div class="d-grid">
+                                    <article class="d-flex justify-content-start">
+                                        <p class="mb-1 d-flex align-items-center fs-6 ps-1">@NombreUsuario</p>
+                                        <p class="mb-1 d-flex align-items-center fs-6"> • 3h</p>
+                                    </article>
+                                    <article class="d-flex">
+                                        <p class="m-0">Comentario de la persona, tal vez un poco extenso puede ser</p>
+                                        <div class="d-flex justify-content-evenly ps-2">
+                                                <svg class="pt-1" width="20" height="20" viewBox="0 0 21 18" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M19.16 2.00004C18.1 0.937251 16.6948 0.288583 15.1983 0.171213C13.7019 0.0538432 12.2128 0.475509 11 1.36004C9.72766 0.413681 8.14399 -0.0154454 6.56792 0.159081C4.99185 0.333607 3.54044 1.09882 2.50597 2.30063C1.47151 3.50244 0.930823 5.05156 0.992802 6.63606C1.05478 8.22055 1.71482 9.72271 2.84 10.84L9.05 17.06C9.57002 17.5718 10.2704 17.8587 11 17.8587C11.7296 17.8587 12.43 17.5718 12.95 17.06L19.16 10.84C20.3276 9.66531 20.9829 8.07632 20.9829 6.42004C20.9829 4.76377 20.3276 3.17478 19.16 2.00004ZM17.75 9.46004L11.54 15.67C11.4693 15.7414 11.3852 15.798 11.2925 15.8367C11.1999 15.8753 11.1004 15.8953 11 15.8953C10.8996 15.8953 10.8001 15.8753 10.7075 15.8367C10.6148 15.798 10.5307 15.7414 10.46 15.67L4.25 9.43004C3.46576 8.62839 3.02661 7.55151 3.02661 6.43004C3.02661 5.30858 3.46576 4.2317 4.25 3.43004C5.04916 2.64103 6.12697 2.19861 7.25 2.19861C8.37303 2.19861 9.45085 2.64103 10.25 3.43004C10.343 3.52377 10.4536 3.59817 10.5754 3.64893C10.6973 3.6997 10.828 3.72584 10.96 3.72584C11.092 3.72584 11.2227 3.6997 11.3446 3.64893C11.4664 3.59817 11.577 3.52377 11.67 3.43004C12.4692 2.64103 13.547 2.19861 14.67 2.19861C15.793 2.19861 16.8708 2.64103 17.67 3.43004C18.465 4.22119 18.9186 5.29223 18.9335 6.41373C18.9485 7.53522 18.5236 8.61798 17.75 9.43004V9.46004Z"
+                                                        fill="#F91880" />
+                                                </svg>
+                                                <p class="ps-1 fs-6" style="color:#F91880;">13</p>
+                                        </div>
+                                    </article>
+                                    <p class="p-0 m-0">Responder</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <div class="d-flex justify-content-start">
+                                    <svg  width="35" height="35" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <defs>
+                                            <pattern id="imgpattern" x="0" y="0" width="1" height="1">
+                                              <image width="35" height="35"
+                                                     xlink:href="https://picsum.photos/35/35"/>
+                                            </pattern>
+                                        </defs>
+                                        <path
+                                            d="M39.5 20C39.5 30.7696 30.7696 39.5 20 39.5C9.23045 39.5 0.5 30.7696 0.5 20C0.5 9.23045 9.23045 0.5 20 0.5C30.7696 0.5 39.5 9.23045 39.5 20Z"
+                                            stroke="#8A0BEE" fill="url(#imgpattern)"/>
+                                    </svg>
+                                    <div class="d-grid">
+                                        <article class="d-flex justify-content-start">
+                                            <p class="mb-1 d-flex align-items-center fs-6 ps-1">@NombreUsuario2</p>
+                                            <p class="mb-1 d-flex align-items-center fs-6"> • 2h</p>
+                                        </article>
+                                        <article class="d-flex">
+                                            <p class="m-0">Comentario de la persona, tal vez un poco extenso puede ser</p>
+                                            <div class="d-flex justify-content-evenly ps-2">
+                                                    <svg class="pt-1" width="20" height="20" viewBox="0 0 21 18" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M19.16 2.00004C18.1 0.937251 16.6948 0.288583 15.1983 0.171213C13.7019 0.0538432 12.2128 0.475509 11 1.36004C9.72766 0.413681 8.14399 -0.0154454 6.56792 0.159081C4.99185 0.333607 3.54044 1.09882 2.50597 2.30063C1.47151 3.50244 0.930823 5.05156 0.992802 6.63606C1.05478 8.22055 1.71482 9.72271 2.84 10.84L9.05 17.06C9.57002 17.5718 10.2704 17.8587 11 17.8587C11.7296 17.8587 12.43 17.5718 12.95 17.06L19.16 10.84C20.3276 9.66531 20.9829 8.07632 20.9829 6.42004C20.9829 4.76377 20.3276 3.17478 19.16 2.00004ZM17.75 9.46004L11.54 15.67C11.4693 15.7414 11.3852 15.798 11.2925 15.8367C11.1999 15.8753 11.1004 15.8953 11 15.8953C10.8996 15.8953 10.8001 15.8753 10.7075 15.8367C10.6148 15.798 10.5307 15.7414 10.46 15.67L4.25 9.43004C3.46576 8.62839 3.02661 7.55151 3.02661 6.43004C3.02661 5.30858 3.46576 4.2317 4.25 3.43004C5.04916 2.64103 6.12697 2.19861 7.25 2.19861C8.37303 2.19861 9.45085 2.64103 10.25 3.43004C10.343 3.52377 10.4536 3.59817 10.5754 3.64893C10.6973 3.6997 10.828 3.72584 10.96 3.72584C11.092 3.72584 11.2227 3.6997 11.3446 3.64893C11.4664 3.59817 11.577 3.52377 11.67 3.43004C12.4692 2.64103 13.547 2.19861 14.67 2.19861C15.793 2.19861 16.8708 2.64103 17.67 3.43004C18.465 4.22119 18.9186 5.29223 18.9335 6.41373C18.9485 7.53522 18.5236 8.61798 17.75 9.43004V9.46004Z"
+                                                            fill="#F91880" />
+                                                    </svg>
+                                                    <p class="ps-1 fs-6" style="color:#F91880;">13</p>
+                                            </div>
+                                        </article>
+                                        <p class="p-0 m-0">Responder</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
     </div>
     <div class="pt-2 pb-2 line-violet-top fixed-bottom botonera">
-        <div class="row row-cols-5 text-center ">
-            <div class="col p-0">
-                <svg width="29" height="25" viewBox="0 0 29 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M0.815948 9.94444L14.5295 1L28.2431 9.94444M25.421 8.66667L24.1029 22.194C24.0031 23.2186 23.1418 24 22.1124 24H17.8587H11.2003H6.94667C5.91723 24 5.05594 23.2186 4.9561 22.194L3.63803 8.66667"
-                        stroke="#782DB3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                    <ellipse cx="14.7106" cy="14.5294" rx="4.48214" ry="4.05882" fill="#F5F5F5" stroke="#782DB3"
-                        stroke-width="1.5" />
-                </svg>
-
-            </div>
-            <div class="col p-0">
+        <div class="d-flex justify-content-around">
+                <svg width="29" height="27" viewBox="0 0 29 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0.815948 10.7222L14.5295 1L28.2431 10.7222M25.421 9.33333L24.0902 24.1786C23.9978 25.2098 23.1336 26 22.0982 26H17.8587H11.2003H6.96081C5.92544 26 5.06124 25.2098 4.9688 24.1786L3.63803 9.33333" stroke="#782DB3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <ellipse cx="14.7106" cy="15.7059" rx="4.48214" ry="4.41177" fill="#F5F5F5" stroke="#782DB3" stroke-width="1.5"/>
+                    </svg>
                 <svg width="30" height="27" viewBox="0 0 30 27" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <ellipse cx="14.4356" cy="12.6667" rx="12.8834" ry="11.6667" stroke="#782DB3" stroke-width="1.5" />
                     <path d="M23.6381 21L29.1595 26" stroke="#782DB3" stroke-width="1.5" stroke-linecap="round" />
                 </svg>
-
-            </div>
-            <div class="col p-0">
                 <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <line x1="11.75" y1="25" x2="11.75" stroke="#782DB3" stroke-width="1.5" />
                     <line y1="11.75" x2="25" y2="11.75" stroke="#782DB3" stroke-width="1.5" />
                 </svg>
-            </div>
-            <div class="col p-0">
+
                 <svg width="29" height="25" viewBox="0 0 29 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
                         d="M5.36615 12.2601C5.36615 7.31358 9.37607 3.30366 14.3226 3.30366V3.30366V3.30366C19.269 3.30366 23.279 7.31358 23.279 12.2601V12.6645L27.5722 16.9647C27.7545 17.1473 27.6957 17.4563 27.459 17.5592V17.5592C19.08 21.201 9.56514 21.201 1.18612 17.5592V17.5592C0.949382 17.4563 0.890568 17.1473 1.07295 16.9647L5.36615 12.6645V12.2601Z"
@@ -453,9 +635,6 @@
                         d="M16.4644 3.30366V2.31638C16.4644 1.58936 15.6799 1 14.7121 1C13.7443 1 12.9598 1.58936 12.9598 2.31638V3.30366"
                         stroke="#782DB3" stroke-width="1.5" />
                 </svg>
-
-            </div>
-            <div class="col p-0">
                 <svg width="29" height="27" viewBox="0 0 30 27" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <ellipse cx="14.6503" cy="5.6875" rx="6.90184" ry="4.6875" stroke="#782DB3" stroke-width="1.5"
                         stroke-linecap="round" />
@@ -463,8 +642,6 @@
                         d="M28.454 21.3125C28.454 25.6272 21.0033 26 14.6503 26C8.29733 26 0.846619 25.6272 0.846619 21.3125C0.846619 16.9978 8.29733 13.5 14.6503 13.5C21.0033 13.5 28.454 16.9978 28.454 21.3125Z"
                         stroke="#782DB3" stroke-width="1.5" stroke-linecap="round" />
                 </svg>
-
-            </div>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
