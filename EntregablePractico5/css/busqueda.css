@@ -180,3 +180,10 @@ body article section ul li div {
     margin-top: 2%;
     margin-left: 1%;
 }
+
+.img-busqueda {
+    border-radius: 50%;
+    margin-top: 5%;
+    object-fit: cover;
+    border: 2px solid rgba(120, 45, 178, 1);
+}
