@@ -219,13 +219,15 @@ a {
 .pub-info-perfil p:nth-child(4) {
     margin: 0;
     padding-left: 0;
-    font-size: 9px;
+    font-size: 10px;
     font-weight: normal;
     color: rgba(0, 0, 0, 0.54);
+    margin-top: 1%;
 }
 
 .publicaciones section .pub-info-perfil div svg {
     width: 12px;
+    margin-top: 1%;
 }
 
 .publicaciones section p {
@@ -313,9 +315,9 @@ div.comentarios p {
 }
 
 .comentario .hora {
-    font-size: 9px;
+    font-size: 11px;
     color: rgba(0, 0, 0, 0.54);
-    margin-bottom: 3px;
+    margin-bottom: 1px;
 }
 
 .comentario .desc {
