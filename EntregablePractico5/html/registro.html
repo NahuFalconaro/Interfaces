@@ -9,7 +9,7 @@
     <title>Registro SocialVet</title>
 </head>
 <body>
-    <nav class="pt-3 ps-2 container">
+    <nav class="pt-3 ps-2 container nav-registro">
         <a href="../index.html#formulario" class="row row-col-2 a-redireccion-dark">
                 <svg class="col-2 p-0 m-0" width="37" height="37" viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect x="1" y="1" width="35" height="35" rx="17.5" stroke="#782DB3" stroke-width="1.5"/>
@@ -41,16 +41,16 @@
             <div class="modal-password d-none" id="modal-info-pass">
                 <div>
                     <h4>Requisitos de la contraseña:</h4>
-                    <p>*Minimo 8 caracteres</p>
-                    <p>*Minimo 1 caracter numerico</p>
-                    <p>*Minimo 1 letra mayuscula</p>
+                    <p id="password-cant">*Minimo 8 caracteres</p>
+                    <p id="password-numer">*Minimo 1 caracter numerico</p>
+                    <p id="password-mayus">*Minimo 1 letra mayuscula</p>
                 </div>
             </div>
             <input type="password" class="input-formulario px-0 col-10" id="inputPassword1" required>
             <div class="col-10 ps-0 d-grid">
                 <p class="mensaje-contraseña m-0" id="incorrect-password-cant"></p>
                 <p class="mensaje-contraseña m-0" id="incorrect-password-numer"></p>
-                <p class="mensaje-contraseña m-0" id="incorrect-password-mayus"></p>
+                <p class="mensaje-contraseña m-0" id="incorrect-password-mayus"></p> 
             </div>
             <label for="inputPassword2" class="col-10 ps-0 mt-3">Repetir contraseña</label>
             <input type="password" class="input-formulario px-0 col-10" id="inputPassword2" required>

@@ -153,7 +153,9 @@
 .input-formulario:focus {
     outline: 1px solid #782DB2;
 }
-
+.input-formulario-error{
+    outline: 1px solid red;
+}
 .visited {
     outline: 1px solid #782DB2;
 }
@@ -206,7 +208,6 @@ footer p:first-child {
 .nav-registro {
     width: 100%;
 }
-
 .logo {
     position: absolute;
     left: 0;
@@ -240,10 +241,9 @@ footer p:first-child {
 }
 
 .mensaje-contraseña {
-    color: red;
+    color: black;
     display: none;
 }
-
 .btn-info-pass {
     background-color: white;
     padding: 0;
@@ -278,24 +278,6 @@ h4 {
     text-indent: 10px;
 }
 
-nav {
-    display: flex;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
-    z-index: 3;
-}
-
-nav button {
-    width: 20%;
-    height: 53px;
-    border: 2px solid rgba(120, 45, 178, 1);
-    border-left: 0;
-    border-right: 0;
-    border-bottom: 0;
-    background-color: white;
-}
-
 .titulo-comentario {
     font-size: 20px;
     margin-bottom: 0;
@@ -304,8 +286,7 @@ nav button {
 
 /* LOADER */
 .displayNone{
-   display: none;
-   background-color: red;
+   display: none !important;
 }
 .loader{
     border: 15px solid #ccc;
