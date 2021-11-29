@@ -340,6 +340,7 @@ div.comentarios p {
     height: 13px;
     margin-top: 5.5%;
     margin-left: 2%;
+    z-index: -1;
 }
 
 .cont-desc .cant-likes {
@@ -347,6 +348,7 @@ div.comentarios p {
     margin-top: 5.5%;
     color: #F91880;
     font-size: 10px;
+    z-index: -1;
 }
 
 .reaccion-comentarios {
