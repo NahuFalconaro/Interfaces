@@ -10,7 +10,9 @@
     <title>Muro inicio</title>
 </head>
 
-<body>
+<body >
+    <div class="loader" id="loader"></div>
+    <div class="displayNone" id="contenidoPagina">
         <div class="sticky-top">
             <nav class="navbar nav-muro  py-0">
                 <div class="container-fluid line-violet-bottom  py-1 ">
@@ -434,7 +436,7 @@
                         stroke-width="3" stroke-linecap="round" />
                 </svg>
             </button>
-            <button>
+            <button id="btn-busqueda">
                 <a href="busqueda.html">
                     <svg width="30" height="27" viewBox="0 0 30 27" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <ellipse cx="14.4356" cy="12.6667" rx="12.8834" ry="11.6667" stroke="#782DB3" stroke-width="1.5" />
@@ -476,8 +478,10 @@
 
             </button>
         </nav>
+        <script src="../js/index.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    </div>
 </body>
 
 </html>
