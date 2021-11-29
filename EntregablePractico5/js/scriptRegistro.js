@@ -63,6 +63,8 @@ function passCorrecta(){
             }
             if(validaCant && validaNum && validaMayus){
                 pass.style.outline = "1px solid #4DFF00"
+                btn_info_pass.style.borderColor = "black"
+                btn_info_pass.style.color = "black"
             }else if(!validaCant){
                 pass.style.outline = "1px solid red"
             }else if(!validaNum || !validaMayus){
@@ -80,15 +82,18 @@ function passCorrecta(){
             pass.style.outline = "1px solid #782DB2"
         }
     }, 1000);
-}   
+}  
+let inputPassword2 = document.getElementById("inputPassword2")
 function passIguales(){
         setTimeout(() => {
             let pMsg = document.getElementById("diferent-password");
             if(pass.value !== passVerify.value){
                 pMsg.innerText = "*Las contraseñas no coinciden"
+                inputPassword2.style.outline = "1px solid red"
                 pMsg.style.display = "initial"
             }else{
                 pMsg.style.display = "none"
+                inputPassword2.style.outline = "1px solid #4DFF00"
             }
         }, 1000);
 }
@@ -99,4 +104,12 @@ let btn_info = document.getElementById("btn-info");
 btn_info.addEventListener("click", ()=>{
     let modal = document.getElementById("modal-info-pass");
     modal.classList.toggle("d-none");
+})
+
+document.getElementById("btn-iniciar-registro").addEventListener("click", (e)=> {
+    if(pass.value.length <= 0 || passVerify.value.length <= 0 || exampleInputEmail1.value.length <= 0){
+        e.preventDefault()
+        let msg_completar_campos = document.getElementById("msg-completar-campos");
+        msg_completar_campos.classList.toggle("displayNone");
+    }
 })
