@@ -22,12 +22,14 @@
 .hidden {
     display: none
 }
-
+.input-buscador:focus {
+    outline: 1px solid #782DB2;
+}
 .input-buscador {
     margin-top: 3%;
-    margin-left: 7.5%;
+    margin-left: 3%;
     height: 56px;
-    width: 321px;
+    width: 90%;
     border-color: rgba(0, 0, 0, 0.25);
     border-width: 1px;
     border-radius: 15px;
@@ -45,7 +47,7 @@
 .icon-buscador {
     z-index: 1;
     position: absolute;
-    margin-left: 10%;
+    margin-left: 5%;
     margin-top: 7%;
 }
 

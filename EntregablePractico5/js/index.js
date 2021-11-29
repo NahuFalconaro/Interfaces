@@ -7,5 +7,5 @@ window.onload = function(){
         let loader = document.getElementById("loader");
         contenidoPagina.classList.toggle("displayNone")
         loader.classList.toggle("displayNone")
-    }, 1000);
+    }, 1500);
  };
