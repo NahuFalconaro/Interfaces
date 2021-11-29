@@ -37,15 +37,24 @@
         <form class="row p-0 m-0">
             <label for="exampleInputEmail1" class="col-10 ps-0 mt-4">Correo electronico</label>
             <input type="email" class="input-formulario px-0 col-10" id="exampleInputEmail1" required>
-            <label for="inputPassword1" class="col-10 ps-0 mt-3">Contraseña<button type="button" class="btn-info-pass ms-3 mb-1" id="btn-info">?</button></label>
-            <div class="modal-password d-none" id="modal-info-pass">
-                <div>
-                    <h4>Requisitos de la contraseña:</h4>
-                    <p id="password-cant">*Minimo 8 caracteres</p>
-                    <p id="password-numer">*Minimo 1 caracter numerico</p>
-                    <p id="password-mayus">*Minimo 1 letra mayuscula</p>
+            <label class="col-10 ps-0 mt-3">Contraseña<button type="button" class="btn-info-pass ms-3 mb-1" id="btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"><!--Data target es a q modal apunta el boton, el valor es el id del modal que quier abrir-->
+                ?
+            </button></label>
+            <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog"><!-- modal-dialog-centered    para centrar el modal-->
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Requisitos de la contraseña:</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button><!--Data dismiss=modal, cuando se hace click en este boton, se cierra la ventana modal-->
+                    </div>
+                    <div class="modal-body">
+                      <p id="password-cant">*Minimo 8 caracteres</p>
+                      <p id="password-numer">*Minimo 1 caracter numerico</p>
+                      <p id="password-mayus">*Minimo 1 letra mayuscula</p>
+                    </div>
+                  </div>
                 </div>
-            </div>
+              </div>
             <input type="password" class="input-formulario px-0 col-10" id="inputPassword1" required>
             <div class="col-10 ps-0 d-grid">
                 <p class="mensaje-contraseña m-0" id="incorrect-password-cant"></p>
