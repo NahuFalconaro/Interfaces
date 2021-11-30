@@ -64,6 +64,37 @@
         margin-top: 0.7em;
         margin-left: 1.2em;
     }
+    .btn-desktop {
+        background-color: white;
+        border: none;
+        transition: 1s ease all;
+        height: 100%;
+    }
+    .btn-desktop:hover {
+        background-color: #8A0BEE;
+    }
+    .btn-desktop:hover svg path {
+        stroke: white;
+    }
+    .btn-desktop:hover svg ellipse {
+        stroke: white;
+    }
+    .layout-desktop {
+        display: grid;
+        grid-template-areas: 'seguir subirPublicaicon mensajes' 'seguir publicaciones mensajes';
+    }
+    .a-quien-seguir {
+        grid-area: seguir;
+    }
+    .agregar-post {
+        grid-area: subirPublicaicon;
+    }
+    .publicaciones {
+        grid-area: publicaciones;
+    }
+    .mensajes {
+        grid-area: mensajes;
+    }
 }
 
 @media(max-width:750px) {
