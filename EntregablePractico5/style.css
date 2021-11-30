@@ -52,10 +52,11 @@
         box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
         font-size: 18px;
         font-weight: lighter;
-        color: rgba(0, 0, 0, 0.45);
+        color: rgb(0, 0, 0);
         padding-left: 1.8em;
         z-index: -1;
         margin-top: 0.3em;
+        outline-color: transparent;
     }
     .mensajes svg {
         position: absolute;
@@ -81,10 +82,16 @@
     }
     .layout-desktop {
         display: grid;
-        grid-template-areas: 'seguir subirPublicaicon mensajes' 'seguir publicaciones mensajes';
+        grid-template-areas: '. . subirPublicaicon subirPublicaicon subirPublicaicon . .' 
+                            '. . publicaciones publicaciones publicaciones . .';
     }
     .a-quien-seguir {
-        grid-area: seguir;
+        position: fixed;
+        left: 3%;
+        top: 13%;
+        padding: 1%;
+        border-radius: 15px;
+        box-shadow: 0px 4px 9px rgba(0, 0, 0, 0.25);
     }
     .agregar-post {
         grid-area: subirPublicaicon;
@@ -93,7 +100,16 @@
         grid-area: publicaciones;
     }
     .mensajes {
-        grid-area: mensajes;
+        position: fixed;
+        right: 3%;
+        top: 13%;
+    }
+    .btn-a-quien-seguir-desktop{
+       height: 30px;
+       background-color: #8A0BEE;
+       color: white;
+       border-radius: 4px;
+       border: none;
     }
 }
 
