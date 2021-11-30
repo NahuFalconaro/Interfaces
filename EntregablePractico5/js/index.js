@@ -5,7 +5,7 @@ window.onload = function(){
     setTimeout(function(){
         let contenidoPagina = document.getElementById("contenidoPagina");
         let loader = document.getElementById("loader");
-        contenidoPagina.classList.toggle("displayNone")
+        contenidoPagina.classList.toggle("displayNone");
         loader.classList.toggle("displayNone")
     }, 1500);
  };
