@@ -21,14 +21,18 @@
         left: 7.5%;
         width: 75%;
         outline-color: transparent;
+        font-size: 18px;
+        font-weight: 100;
+        color: rgba(0, 0, 0, 0.62);
     }
     .div-buscador-desktop {
         box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
         height: 44px;
         border-radius: 10px;
-        margin-right: 1%;
+        margin-right: 1.5%;
         margin-top: 1%;
         margin-bottom: 1%;
+        width: 19.8%;
     }
     /*--- Chat ---*/
     .mensajes {
@@ -43,6 +47,7 @@
         font-size: 24px;
         font-weight: lighter;
         color: rgba(0, 0, 0, 0.53);
+        margin-right: 1em;
     }
     .mensajes input {
         margin-right: 1.3em;
@@ -53,7 +58,7 @@
         font-size: 18px;
         font-weight: 100;
         color: rgba(0, 0, 0, 0.45);
-        padding: 0.2em 0 0.2em 0;
+        padding: 0.3em 0 0.15em 0;
         padding-left: 1.75em;
         z-index: -1;
         margin-top: 0.3em;
@@ -63,10 +68,11 @@
         position: absolute;
         z-index: 1;
         left: 0;
-        margin-top: 0.85em;
+        margin-top: 0.9em;
         margin-left: 0.5em;
     }
     .contactos {
+        background-color: white;
         overflow: scroll;
         overflow-x: hidden;
         height: 37em;
@@ -138,9 +144,92 @@
     .contacto.msj-no-leido {
         background-color: rgba(120, 45, 178, 0.2);
     }
+    .contacto:hover {
+        background-color: rgba(138, 11, 238, 0.3)
+    }
     .chat {
         display: flex;
         flex-direction: column;
+        position: fixed;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+        margin-top: 0.5em;
+        width: 17.81em;
+        background-color: white;
+        bottom: 0;
+    }
+    .chat .header-chat {
+        padding: 0.3em;
+        padding-left: 0.4em;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    .chat .header-chat p:nth-child(1) {
+        font-size: 18px;
+        font-weight: 100;
+        color: rgba(0, 0, 0, 0.68);
+        margin: 0;
+    }
+    .chat .header-chat svg:nth-child(2) {
+        margin: 0;
+        left: 10.9em;
+        margin-top: 0.11em;
+    }
+    .chat .header-chat p:nth-child(3) {
+        margin: 0;
+        margin-left: 2.5em;
+    }
+    .chat .header-chat button {
+        height: 18px;
+        width: 20px;
+        border: 0;
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+        position: absolute;
+        left: 16.1em;
+        background-color: white;
+    }
+    .chat .header-chat button:hover {
+        background-color: rgba(0, 0, 0, 0.1);
+        ;
+    }
+    .chat .header-chat button svg {
+        bottom: 0.57em;
+        margin: 0;
+        bottom: 0.15em;
+        left: 0.3em;
+    }
+    .chat .conversacion {
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+        border: 0;
+        width: 100%;
+        height: 20em;
+    }
+    .chat .conversacion .controles {
+        display: flex;
+        flex-direction: row;
+        position: absolute;
+        bottom: 0;
+        padding: 0.1em;
+    }
+    .chat .conversacion .controles .enviar-adjunto {
+        left: 11%;
+    }
+    .chat .conversacion .controles input {
+        width: 17.5em;
+        margin-left: 23%;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 15px;
+        border: 1px solid rgba(0, 0, 0, 0.33);
+        font-size: 16px;
+        font-weight: 100;
+        color: rgba(0, 0, 0, 0.55);
+        margin-bottom: 0.2em;
+        padding-left: 0.8em;
+    }
+    .chat .conversacion .controles .enviar-mensaje {
+        margin: 0;
+        bottom: 0.8em;
+        left: 82.5%;
     }
     /* ------------- */
     .btn-desktop {
@@ -228,6 +317,9 @@
         border-radius: 4px;
         border: none;
         background-color: rgba(196, 196, 196, 1);
+    }
+    .hidden {
+        display: none;
     }
 }
 
