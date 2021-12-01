@@ -338,6 +338,9 @@
         color: gray;
         font-size: 12px;
     }
+    .botonera-desktop{
+        margin-left: 10%;
+    }
 }
 
 @media(max-width:750px) {
