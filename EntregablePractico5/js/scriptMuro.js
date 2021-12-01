@@ -44,3 +44,22 @@ contactos.forEach(contacto => {
         chat.classList.remove("hidden");
     })
 });
+let dislikes = document.querySelectorAll(".dislike");
+
+for (const dislike of dislikes) {
+    dislike.addEventListener("click", () => {
+        let p = dislike.lastChild.textContent;
+        p += "3"
+    })
+}
+
+
+
+
+let likes = document.querySelectorAll(".like");
+
+for (const like of likes) {
+    like.addEventListener("click", () => {
+        console.log("Aprete like");
+    })
+}
