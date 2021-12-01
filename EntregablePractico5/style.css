@@ -41,7 +41,7 @@
         align-items: center;
         flex-direction: column;
         right: 0%;
-        margin-top: 0.5%;
+        margin-top: 2%;
     }
     .mensajes h1 {
         font-size: 24px;
@@ -306,7 +306,7 @@
         font-weight: 100;
         color: rgba(0, 0, 0, 0.52);
     }
-    .publicaciones {
+    .tarjeta-publicacion-desktop {
         width: 700px;
         box-shadow: 0px 4px 9px rgba(0, 0, 0, 0.25);
         border-radius: 5px;
