@@ -28,12 +28,17 @@ for (const btn of btns_seguir) {
     })
 }
 
+
+
 let dislikes = document.querySelectorAll(".dislike");
 
 for (const dislike of dislikes) {
     dislike.addEventListener("click", ()=>{
-        let p = dislike.lastChild.textContent;
-        p += "3"
+        let p = dislike.nextElementSibling;
+        let valorActual = p.ariaValueNow;
+        let nuevoValor = Number(valorActual) + 1;
+        p.ariaValueNow = nuevoValor;
+        p.innerHTML = nuevoValor;
     })
 }
 
@@ -44,6 +49,10 @@ let likes = document.querySelectorAll(".like");
 
 for (const like of likes) {
     like.addEventListener("click", ()=>{
-        console.log("Aprete like");
+        let p = like.nextElementSibling;
+        let valorActual = p.ariaValueNow;
+        let nuevoValor = Number(valorActual) + 1;
+        p.ariaValueNow = nuevoValor;
+        p.innerHTML = nuevoValor;
     })
 }
