@@ -396,8 +396,9 @@
     }
     .btn-follow {
         background-color: #782DB2;
+        margin-top: 4%;
         border-radius: 5px;
-        width: 100%;
+        width: 5.5em;
         height: 23%;
     }
     .text-follow {
@@ -432,13 +433,15 @@
     }
     .comentario img {
         object-fit: cover;
+        margin-top: 0.5em;
         width: 43px;
         height: 45px;
         border-radius: 1000px;
     }
     .comentario {
         display: flex;
-        align-items: center;
+        align-items: flex-start;
+        margin-top: 0.5em;
     }
     .comentario div {
         margin-left: 1%;
@@ -727,5 +730,37 @@
     /* LOADER */
     .displayNone {
         display: none !important;
+    }
+    .img-perfil {
+        object-fit: cover;
+        width: 55px;
+        height: 55px;
+        border-radius: 1000px;
+        border: 1px solid rgba(138, 11, 238, 1);
+        margin-right: 0.5em;
+    }
+    .hora-pub {
+        margin: 0;
+        margin-top: 0.3em;
+        font-size: 13px;
+        margin-left: 0.3em;
+    }
+    .img-comentario {
+        object-fit: cover;
+        width: 55px;
+        height: 55px;
+        border-radius: 1000px;
+        border: 1px solid rgba(138, 11, 238, 1);
+        margin-right: 0.5em;
+    }
+    .foto-publicidad {
+        object-fit: contain;
+        height: 10em;
+    }
+    .titulo-seguir {
+        color: rgba(0, 0, 0, 0.65);
+        font-weight: 100;
+        font-size: 18px;
+        margin-bottom: 1em;
     }
 }
