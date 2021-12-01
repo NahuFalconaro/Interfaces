@@ -221,7 +221,10 @@
         border: none;
         background-color: rgba(196, 196, 196, 1);
     }
-
+    .btn-reacciones{
+        border: none;
+        background-color: transparent;
+    }
 }
 
 @media(max-width:750px) {
