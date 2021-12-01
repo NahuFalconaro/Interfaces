@@ -119,3 +119,4 @@ document.getElementById("btn-iniciar-registro").addEventListener("click", (e)=> 
         msg_completar_campos.classList.toggle("displayNone");
     }
 })
+
