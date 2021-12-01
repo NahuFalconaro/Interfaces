@@ -36,30 +36,38 @@ document.getElementById("btn-cerrar-chat").addEventListener("click", () => {
     chat.classList.add("hidden");
     console.log(chat)
 })
-
 let contactos = document.querySelectorAll(".contacto");
-
 contactos.forEach(contacto => {
     contacto.addEventListener("click", () => {
         chat.classList.remove("hidden");
     })
 });
+
+
+
+//Like y disklike
+
 let dislikes = document.querySelectorAll(".dislike");
 
 for (const dislike of dislikes) {
-    dislike.addEventListener("click", () => {
-        let p = dislike.lastChild.textContent;
-        p += "3"
+    dislike.addEventListener("click", ()=>{
+        let p = dislike.nextElementSibling;
+        let valorActual = p.ariaValueNow;
+        let nuevoValor = Number(valorActual) + 1;
+        p.ariaValueNow = nuevoValor;
+        p.innerHTML = nuevoValor;
+
     })
 }
-
-
-
 
 let likes = document.querySelectorAll(".like");
 
 for (const like of likes) {
-    like.addEventListener("click", () => {
-        console.log("Aprete like");
+    like.addEventListener("click", ()=>{
+        let p = like.nextElementSibling;
+        let valorActual = p.ariaValueNow;
+        let nuevoValor = Number(valorActual) + 1;
+        p.ariaValueNow = nuevoValor;
+        p.innerHTML = nuevoValor;
     })
 }
