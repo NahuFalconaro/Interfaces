@@ -41,7 +41,7 @@
         align-items: center;
         flex-direction: column;
         right: 0%;
-        margin-top: 2%;
+        margin-top: 0;
     }
     .mensajes h1 {
         font-size: 24px;
@@ -250,6 +250,14 @@
     .btn-desktop:hover svg circle {
         stroke: white;
     }
+    .btn-desktop:nth-child(3):hover path {
+        stroke: white;
+        fill: white;
+    }
+    .btn-desktop:nth-child(3):hover svg ellipse {
+        stroke: white;
+        fill: #8A0BEE;
+    }
     .layout-desktop {
         display: grid;
         grid-template-areas: '. . . . subirPublicaicon . . . .' '. . . . publicaciones . . . .';
@@ -257,7 +265,7 @@
     .a-quien-seguir {
         position: fixed;
         left: 2%;
-        top: 14%;
+        top: 10%;
         padding: 1%;
         border-radius: 15px;
         box-shadow: 0px 4px 9px rgba(0, 0, 0, 0.25);
@@ -370,6 +378,9 @@
     }
     .like {
         margin-top: 1px;
+    }
+    .botonera-nav {
+        margin-right: 5%;
     }
 }
 
@@ -796,7 +807,5 @@
         font-size: 18px;
         margin-bottom: 1em;
     }
-    .secciones-index{
-       
-    }
+    .secciones-index {}
 }
