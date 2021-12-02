@@ -618,7 +618,7 @@
                 <input class="input-buscador-desktop" type="text" placeholder="Buscar">
             </div>
         </nav>
-        <section class="layout-desktop mt-5" >
+        <section class="layout-desktop mt-5">
             <aside class="a-quien-seguir px-3">
                 <div class="d-grid text-center">
                     <h3 class="mb-0 titulo-a-quien-seguir">A quien seguir</h3>
@@ -752,24 +752,15 @@
                     </div>
                 </div>
             </article>
-            <article class="publicaciones d-grid ms-4 mb-4">
-                <section class="d-grid tarjeta-publicacion-desktop ps-2">
+            <article class="publicaciones d-grid ms-4 mb-4 ">
+                <section class="d-grid tarjeta-publicacion-desktop ps-2 pt-2">
                     <div class="d-flex align-items-center">
-                        <svg width="65" height="70" viewBox="0 -5 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <pattern id="imgpattern" x="0" y="0" width="1" height="1">
-                                    <image width="65" height="70" xlink:href="" />
-                                </pattern>
-                            </defs>
-                            <path
-                                d="M39.5 20C39.5 30.7696 30.7696 39.5 20 39.5C9.23045 39.5 0.5 30.7696 0.5 20C0.5 9.23045 9.23045 0.5 20 0.5C30.7696 0.5 39.5 9.23045 39.5 20Z"
-                                stroke="#8A0BEE" fill="url(#imgpattern)" />
-                        </svg>
-                        <p class="fs-5 mb-0">@NombreUsuario</p>
-                        <p class="fs-6 mb-0 ms-2" style="color: grey;"> • 3h</p>
+                        <img class="img-perfil-pub" src="https://img.freepik.com/foto-gratis/concepto-emociones-personas-foto-cabeza-hombre-atractivo-feliz-riendo-sonriendo-expresa-regocijo-fondo-blanco_1258-34795.jpg?size=626&ext=jpg" alt="Foto de perfil">
+                        <p class="fs-5 mb-0 ms-2">@Marting_</p>
+                        <p class="fs-6 mb-0 ms-2" style="color: grey;"> • 1d</p>
                     </div>
-                    <div class="d-flex justify-content-start">
-                        <p>#Cachorro 2 meses desde que saque esta foto!</p>
+                    <div class="d-flex justify-content-start ">
+                        <p class="m-0 mt-2 mb-1">#Cachorros 2 meses desde que saque esta foto!</p>
                     </div>
                     <div>
                         <img src="../img/Cachorros.png" class="img-publi-desktop" width="680" height="250" alt="">
@@ -788,7 +779,7 @@
                                 <rect width="4" height="6.05504" rx="2" transform="matrix(0 1 1 0 13.1101 15)"
                                     stroke="#00BA7C" stroke-width="1.5" />
                             </svg>
-                            <p class="ps-1 d-flex align-items-center">13</p>
+                            <p class="ps-1 d-flex align-items-center" style="color:#00BA7C">2</p>
                         </div>
                         <div class="mt-1 d-flex">
                             <svg class="mt-1" width="23" height="22" viewBox="0 0 23 22" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -800,115 +791,88 @@
                                                 <path d="M7.52686 12.25L16.6645 12.25" stroke="#3C32FF" stroke-width="1.5"
                                                     stroke-linecap="round" />
                             </svg>
-                            <p class="ps-1 d-flex align-items-center">5</p>
+                            <p class="ps-1 d-flex align-items-center" style="color:#3C32FF">10</p>
                         </div>
                         <div class="mt-1 d-flex">
                             <button class="btn-reacciones d-flex dislike">
-                                <svg  class="mt-1" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <svg  class="dislike" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M6.36 13.33C6.15844 13.4993 6.03176 13.7412 6.00742 14.0033C5.98308 14.2654 6.06306 14.5265 6.23 14.73C6.31395 14.8313 6.41705 14.915 6.5334 14.9763C6.64975 15.0377 6.77706 15.0755 6.90803 15.0875C7.03901 15.0996 7.17108 15.0857 7.29669 15.0467C7.42229 15.0076 7.53896 14.9442 7.64 14.86C8.30849 14.321 9.14131 14.0271 10 14.0271C10.8587 14.0271 11.6915 14.321 12.36 14.86C12.4611 14.9442 12.5777 15.0076 12.7033 15.0467C12.8289 15.0857 12.961 15.0996 13.092 15.0875C13.223 15.0755 13.3503 15.0377 13.4666 14.9763C13.583 14.915 13.6861 14.8313 13.77 14.73C13.9369 14.5265 14.0169 14.2654 13.9926 14.0033C13.9683 13.7412 13.8416 13.4993 13.64 13.33C12.6081 12.5006 11.3239 12.0484 10 12.0484C8.67609 12.0484 7.39188 12.5006 6.36 13.33ZM7 9C7.19779 9 7.39113 8.94135 7.55557 8.83147C7.72002 8.72159 7.8482 8.56541 7.92388 8.38268C7.99957 8.19996 8.01937 7.99889 7.98079 7.80491C7.9422 7.61093 7.84696 7.43275 7.70711 7.29289C7.56726 7.15304 7.38908 7.0578 7.19509 7.01921C7.00111 6.98063 6.80005 7.00043 6.61732 7.07612C6.43459 7.15181 6.27842 7.27998 6.16853 7.44443C6.05865 7.60888 6 7.80222 6 8C6 8.26522 6.10536 8.51957 6.2929 8.70711C6.48043 8.89464 6.73479 9 7 9ZM10 0C8.02219 0 6.08879 0.58649 4.4443 1.6853C2.79981 2.78412 1.51809 4.3459 0.761209 6.17317C0.00433284 8.00043 -0.193701 10.0111 0.192152 11.9509C0.578004 13.8907 1.53041 15.6725 2.92894 17.0711C4.32746 18.4696 6.10929 19.422 8.0491 19.8079C9.98891 20.1937 11.9996 19.9957 13.8268 19.2388C15.6541 18.4819 17.2159 17.2002 18.3147 15.5557C19.4135 13.9112 20 11.9778 20 10C20 8.68678 19.7413 7.38642 19.2388 6.17317C18.7363 4.95991 17.9997 3.85752 17.0711 2.92893C16.1425 2.00035 15.0401 1.26375 13.8268 0.761205C12.6136 0.258658 11.3132 0 10 0ZM10 18C8.41775 18 6.87104 17.5308 5.55544 16.6518C4.23985 15.7727 3.21447 14.5233 2.60897 13.0615C2.00347 11.5997 1.84504 9.99113 2.15372 8.43928C2.4624 6.88743 3.22433 5.46197 4.34315 4.34315C5.46197 3.22433 6.88743 2.4624 8.43928 2.15372C9.99113 1.84504 11.5997 2.00346 13.0615 2.60896C14.5233 3.21447 15.7727 4.23984 16.6518 5.55544C17.5308 6.87103 18 8.41775 18 10C18 12.1217 17.1572 14.1566 15.6569 15.6569C14.1566 17.1571 12.1217 18 10 18ZM13 7C12.8022 7 12.6089 7.05865 12.4444 7.16853C12.28 7.27841 12.1518 7.43459 12.0761 7.61732C12.0004 7.80004 11.9806 8.00111 12.0192 8.19509C12.0578 8.38907 12.153 8.56725 12.2929 8.70711C12.4328 8.84696 12.6109 8.9422 12.8049 8.98079C12.9989 9.01937 13.2 8.99957 13.3827 8.92388C13.5654 8.84819 13.7216 8.72002 13.8315 8.55557C13.9414 8.39112 14 8.19778 14 8C14 7.73478 13.8946 7.48043 13.7071 7.29289C13.5196 7.10536 13.2652 7 13 7Z" fill="black" />
                                 </svg>
                             </button>
-                            <p class="ps-1" aria-valuenow="0">0</p>
+                            <p class="ps-1 reaccion-carita" aria-valuenow="0">2</p>
                         </div>
                         <div class="me-2 mt-1 pe-1 d-flex ">
                             <button class="btn-reacciones d-flex like">
-                                <svg class="mt-1" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <svg class="like" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M7 9C7.19779 9 7.39113 8.94135 7.55557 8.83147C7.72002 8.72159 7.8482 8.56541 7.92388 8.38268C7.99957 8.19996 8.01937 7.99889 7.98079 7.80491C7.9422 7.61093 7.84696 7.43275 7.70711 7.29289C7.56726 7.15304 7.38908 7.0578 7.19509 7.01921C7.00111 6.98063 6.80005 7.00043 6.61732 7.07612C6.43459 7.15181 6.27842 7.27998 6.16853 7.44443C6.05865 7.60888 6 7.80222 6 8C6 8.26522 6.10536 8.51957 6.2929 8.70711C6.48043 8.89464 6.73479 9 7 9ZM10 0C8.02219 0 6.08879 0.58649 4.4443 1.6853C2.79981 2.78412 1.51809 4.3459 0.761209 6.17317C0.00433284 8.00043 -0.193701 10.0111 0.192152 11.9509C0.578004 13.8907 1.53041 15.6725 2.92894 17.0711C4.32746 18.4696 6.10929 19.422 8.0491 19.8079C9.98891 20.1937 11.9996 19.9957 13.8268 19.2388C15.6541 18.4819 17.2159 17.2002 18.3147 15.5557C19.4135 13.9112 20 11.9778 20 10C20 8.68678 19.7413 7.38642 19.2388 6.17317C18.7363 4.95991 17.9997 3.85752 17.0711 2.92893C16.1425 2.00035 15.0401 1.26375 13.8268 0.761205C12.6136 0.258658 11.3132 0 10 0ZM10 18C8.41775 18 6.87104 17.5308 5.55544 16.6518C4.23985 15.7727 3.21447 14.5233 2.60897 13.0615C2.00347 11.5997 1.84504 9.99113 2.15372 8.43928C2.4624 6.88743 3.22433 5.46197 4.34315 4.34315C5.46197 3.22433 6.88743 2.4624 8.43928 2.15372C9.99113 1.84504 11.5997 2.00346 13.0615 2.60896C14.5233 3.21447 15.7727 4.23984 16.6518 5.55544C17.5308 6.87103 18 8.41775 18 10C18 12.1217 17.1572 14.1566 15.6569 15.6569C14.1566 17.1571 12.1217 18 10 18ZM13 11H7C6.73479 11 6.48043 11.1054 6.2929 11.2929C6.10536 11.4804 6 11.7348 6 12C6 13.0609 6.42143 14.0783 7.17158 14.8284C7.92172 15.5786 8.93914 16 10 16C11.0609 16 12.0783 15.5786 12.8284 14.8284C13.5786 14.0783 14 13.0609 14 12C14 11.7348 13.8946 11.4804 13.7071 11.2929C13.5196 11.1054 13.2652 11 13 11ZM10 14C9.64928 13.9996 9.30481 13.9071 9.00117 13.7315C8.69752 13.556 8.44537 13.3037 8.27001 13H11.73C11.5546 13.3037 11.3025 13.556 10.9988 13.7315C10.6952 13.9071 10.3507 13.9996 10 14ZM13 7C12.8022 7 12.6089 7.05865 12.4444 7.16853C12.28 7.27841 12.1518 7.43459 12.0761 7.61732C12.0004 7.80004 11.9806 8.00111 12.0192 8.19509C12.0578 8.38907 12.153 8.56725 12.2929 8.70711C12.4328 8.84696 12.6109 8.9422 12.8049 8.98079C12.9989 9.01937 13.2 8.99957 13.3827 8.92388C13.5654 8.84819 13.7216 8.72002 13.8315 8.55557C13.9414 8.39112 14 8.19778 14 8C14 7.73478 13.8946 7.48043 13.7071 7.29289C13.5196 7.10536 13.2652 7 13 7Z"
                                         fill="#F91880" /></svg>
                             </button>
-                            <p class="ps-1" aria-valuenow="0">0</p>
+                            <p class="ps-1 reaccion-carita" aria-valuenow="0" style="color:#F91880">95</p>
                         </div>
                     </div>
-                    <h5>Comentarios</h5>
-                    <div class="d-flex pt-2">
-                        <svg width="65" height="70" viewBox="0 -5 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <pattern id="imgpattern" x="0" y="0" width="1" height="1">
-                                    <image width="65" height="70" xlink:href="" />
-                                </pattern>
-                            </defs>
-                            <path
-                                d="M39.5 20C39.5 30.7696 30.7696 39.5 20 39.5C9.23045 39.5 0.5 30.7696 0.5 20C0.5 9.23045 9.23045 0.5 20 0.5C30.7696 0.5 39.5 9.23045 39.5 20Z"
-                                stroke="#8A0BEE" fill="url(#imgpattern)" />
-                        </svg>
+                    <h5 class="ms-2">Comentarios</h5>
+                    <div class="d-flex pt-2 ms-2">
+                        <img class="img-perfil-pub" src="data:image/jpeg;base64,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"
+                            alt="Foto de perfil">
                         <div class="d-grid">
-                            <div class="d-flex" id="datos">
-                                <p class="nombre-comentarios-desktop">@NombreUsuario</p>
-                                <p class="nombre-comentarios-desktop" style="color: grey;"> • 3h</p>
+                            <div class="d-flex ms-2" id="datos">
+                                <p class="nombre-comentarios-desktop">@toomi221</p>
+                                <p class="nombre-comentarios-desktop" style="color: grey;"> • 1h</p>
                             </div>
-                            <div class="d-flex" id="comentario-desktop">
-                                <p class="comentario-desktop p-2  m-0">comentario extenso para testear input</p>
+                            <div class="d-flex ms-2 cont-comentario-desktop " id="comentario-desktop ">
+                                <p class="comentario-desktop m-0 ">Alto perrooooo</p>
                                 <div class="d-flex">
-                                    <div class="ps-2 d-flex align-items-center">
+                                    <div class="ps-2 d-flex align-items-center mt-2">
                                         <svg width="19" height="15" viewBox="0 0 19 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M17.2678 1.58905C16.2605 0.690292 14.9253 0.141742 13.5033 0.0424872C12.0812 -0.0567676 10.6662 0.299817 9.51381 1.04783C8.30478 0.247532 6.79992 -0.115362 5.30227 0.0322272C3.80462 0.179816 2.42543 0.826925 1.44244 1.84324C0.459443 2.85956 -0.054338 4.16959 0.00455679 5.50953C0.0634516 6.84947 0.690647 8.11978 1.75984 9.06466L7.66084 14.3246C8.15498 14.7574 8.8205 15 9.51381 15C10.2071 15 10.8726 14.7574 11.3668 14.3246L17.2678 9.06466C18.3773 8.07124 19 6.7275 19 5.32686C19 3.92622 18.3773 2.58247 17.2678 1.58905ZM15.9279 7.89765L10.0269 13.1492C9.95979 13.2095 9.87987 13.2574 9.7918 13.2901C9.70372 13.3228 9.60924 13.3396 9.51381 13.3396C9.41839 13.3396 9.3239 13.3228 9.23583 13.2901C9.14775 13.2574 9.06783 13.2095 9.00068 13.1492L3.09968 7.87228C2.35446 7.19436 1.93717 6.28369 1.93717 5.33531C1.93717 4.38694 2.35446 3.47627 3.09968 2.79834C3.85907 2.13111 4.88326 1.75697 5.95041 1.75697C7.01755 1.75697 8.04174 2.13111 8.80113 2.79834C8.88947 2.8776 8.99457 2.94051 9.11036 2.98345C9.22616 3.02638 9.35036 3.04848 9.4758 3.04848C9.60125 3.04848 9.72545 3.02638 9.84124 2.98345C9.95704 2.94051 10.0621 2.8776 10.1505 2.79834C10.9099 2.13111 11.9341 1.75697 13.0012 1.75697C14.0683 1.75697 15.0925 2.13111 15.8519 2.79834C16.6074 3.46738 17.0384 4.37312 17.0526 5.32152C17.0668 6.26992 16.6631 7.18555 15.9279 7.87228V7.89765Z" fill="#F91880" fill-opacity="0.83"/>
                                         </svg>
                                     </div>
-                                    <p class="pt-3 ps-1" style="color: #F91880;">5</p>
+                                    <p class="pt-3 ps-1 " style="color: #F91880;">32</p>
                                 </div>
                             </div>
                             <div class="d-flex m-0" id="reacion-comentarios-desktop">
-                                <p class="texto-reaccion-desktop">Responder</p>
+                                <p class="texto-reaccion-desktop pe-1">Responder</p>
                                 <p class="texto-reaccion-desktop">• Me gusta</p>
                             </div>
                         </div>
                     </div>
-                    <div class="d-flex pt-2 pb-2">
-                        <div>
-                            <svg width="65" height="70" viewBox="0 -5 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <defs>
-                                    <pattern id="imgpattern" x="0" y="0" width="1" height="1">
-                                        <image width="65" height="70" xlink:href="" />
-                                    </pattern>
-                                </defs>
-                                <path
-                                    d="M39.5 20C39.5 30.7696 30.7696 39.5 20 39.5C9.23045 39.5 0.5 30.7696 0.5 20C0.5 9.23045 9.23045 0.5 20 0.5C30.7696 0.5 39.5 9.23045 39.5 20Z"
-                                    stroke="#8A0BEE" fill="url(#imgpattern)" />
-                            </svg>
-                        </div>
+                    <div class="d-flex pt-2 ms-2">
+                        <img class="img-perfil-pub" src="https://www.ecosbox.com/wp-content/uploads/2017/10/spiderman-perro.jpg" alt="Foto de perfil">
                         <div class="d-grid">
-                            <div class="d-flex" id="datos">
-                                <p class="nombre-comentarios-desktop">@NombreUsuario</p>
-                                <p class="nombre-comentarios-desktop" style="color: grey;"> • 3h</p>
+                            <div class="d-flex ms-2" id="datos">
+                                <p class="nombre-comentarios-desktop">@TomHolland</p>
+                                <p class="nombre-comentarios-desktop" style="color: grey;"> • 1h</p>
                             </div>
-                            <div class="d-flex" id="comentario-desktop">
-                                <p class="comentario-desktop p-2  m-0">comentario extenso para testear input</p>
+                            <div class="d-flex ms-2 cont-comentario-desktop " id="comentario-desktop ">
+                                <p class="comentario-desktop m-0 ">Tenes alguno para adoptar?</p>
                                 <div class="d-flex">
-                                    <div class="ps-2 d-flex align-items-center">
+                                    <div class="ps-2 d-flex align-items-center mt-2">
                                         <svg width="19" height="15" viewBox="0 0 19 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M17.2678 1.58905C16.2605 0.690292 14.9253 0.141742 13.5033 0.0424872C12.0812 -0.0567676 10.6662 0.299817 9.51381 1.04783C8.30478 0.247532 6.79992 -0.115362 5.30227 0.0322272C3.80462 0.179816 2.42543 0.826925 1.44244 1.84324C0.459443 2.85956 -0.054338 4.16959 0.00455679 5.50953C0.0634516 6.84947 0.690647 8.11978 1.75984 9.06466L7.66084 14.3246C8.15498 14.7574 8.8205 15 9.51381 15C10.2071 15 10.8726 14.7574 11.3668 14.3246L17.2678 9.06466C18.3773 8.07124 19 6.7275 19 5.32686C19 3.92622 18.3773 2.58247 17.2678 1.58905ZM15.9279 7.89765L10.0269 13.1492C9.95979 13.2095 9.87987 13.2574 9.7918 13.2901C9.70372 13.3228 9.60924 13.3396 9.51381 13.3396C9.41839 13.3396 9.3239 13.3228 9.23583 13.2901C9.14775 13.2574 9.06783 13.2095 9.00068 13.1492L3.09968 7.87228C2.35446 7.19436 1.93717 6.28369 1.93717 5.33531C1.93717 4.38694 2.35446 3.47627 3.09968 2.79834C3.85907 2.13111 4.88326 1.75697 5.95041 1.75697C7.01755 1.75697 8.04174 2.13111 8.80113 2.79834C8.88947 2.8776 8.99457 2.94051 9.11036 2.98345C9.22616 3.02638 9.35036 3.04848 9.4758 3.04848C9.60125 3.04848 9.72545 3.02638 9.84124 2.98345C9.95704 2.94051 10.0621 2.8776 10.1505 2.79834C10.9099 2.13111 11.9341 1.75697 13.0012 1.75697C14.0683 1.75697 15.0925 2.13111 15.8519 2.79834C16.6074 3.46738 17.0384 4.37312 17.0526 5.32152C17.0668 6.26992 16.6631 7.18555 15.9279 7.87228V7.89765Z" fill="#F91880" fill-opacity="0.83"/>
                                         </svg>
                                     </div>
-                                    <p class="pt-3 ps-1" style="color: #F91880;">5</p>
+                                    <p class="pt-3 ps-1 " style="color: #F91880;">1</p>
                                 </div>
                             </div>
                             <div class="d-flex m-0" id="reacion-comentarios-desktop">
-                                <p class="texto-reaccion-desktop">Responder</p>
+                                <p class="texto-reaccion-desktop pe-1">Responder</p>
                                 <p class="texto-reaccion-desktop">• Me gusta</p>
                             </div>
                         </div>
                     </div>
                 </section>
-                <section class="d-grid mt-5 pt-0 ps-2 tarjeta-publicacion-desktop">
+                <section class="d-grid tarjeta-publicacion-desktop ps-2 pt-2 mt-5">
                     <div class="d-flex align-items-center">
-                        <svg width="65" height="70" viewBox="0 -5 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <pattern id="imgpattern" x="0" y="0" width="1" height="1">
-                                    <image width="65" height="70" xlink:href="" />
-                                </pattern>
-                            </defs>
-                            <path
-                                d="M39.5 20C39.5 30.7696 30.7696 39.5 20 39.5C9.23045 39.5 0.5 30.7696 0.5 20C0.5 9.23045 9.23045 0.5 20 0.5C30.7696 0.5 39.5 9.23045 39.5 20Z"
-                                stroke="#8A0BEE" fill="url(#imgpattern)" />
-                        </svg>
-                        <p class="fs-5 mb-0">@NombreUsuario</p>
+                        <img class="img-perfil-pub" src="https://img.freepik.com/foto-gratis/perro-examen-veterinario_137573-2346.jpg?size=626&ext=jpg" alt="Foto de perfil">
+                        <p class="fs-5 mb-0 ms-2">@Romii22_vet
+                        </p>
                         <p class="fs-6 mb-0 ms-2" style="color: grey;"> • 3h</p>
                     </div>
-                    <div class="d-flex justify-content-start">
-                        <p>#Cachorro 2 meses desde que saque esta foto!</p>
+                    <div class="d-flex justify-content-start ">
+                        <p class="m-0 mt-2 mb-1">#Husky</p>
                     </div>
                     <div>
-                        <img src="../img/Cachorros.png" class="img-publi-desktop" width="680" height="250" alt="">
+                        <img src="https://blog.mystart.com/wp-content/uploads/shutterstock_345091346-e1527792775311.jpg" class="img-publi-desktop" width="680" height="250" alt="">
                     </div>
                     <div class="btns-reacciones d-flex justify-content-between">
                         <div class="m-1 d-flex">
@@ -924,7 +888,7 @@
                                 <rect width="4" height="6.05504" rx="2" transform="matrix(0 1 1 0 13.1101 15)"
                                     stroke="#00BA7C" stroke-width="1.5" />
                             </svg>
-                            <p class="ps-1 d-flex align-items-center">13</p>
+                            <p class="ps-1 d-flex align-items-center" style="color:#00BA7C">52</p>
                         </div>
                         <div class="mt-1 d-flex">
                             <svg class="mt-1" width="23" height="22" viewBox="0 0 23 22" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -936,90 +900,71 @@
                                                 <path d="M7.52686 12.25L16.6645 12.25" stroke="#3C32FF" stroke-width="1.5"
                                                     stroke-linecap="round" />
                             </svg>
-                            <p class="ps-1 d-flex align-items-center">5</p>
+                            <p class="ps-1 d-flex align-items-center" style="color:#3C32FF">3</p>
                         </div>
                         <div class="mt-1 d-flex">
                             <button class="btn-reacciones d-flex dislike">
-                                <svg  class="mt-1" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <svg  class="dislike" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M6.36 13.33C6.15844 13.4993 6.03176 13.7412 6.00742 14.0033C5.98308 14.2654 6.06306 14.5265 6.23 14.73C6.31395 14.8313 6.41705 14.915 6.5334 14.9763C6.64975 15.0377 6.77706 15.0755 6.90803 15.0875C7.03901 15.0996 7.17108 15.0857 7.29669 15.0467C7.42229 15.0076 7.53896 14.9442 7.64 14.86C8.30849 14.321 9.14131 14.0271 10 14.0271C10.8587 14.0271 11.6915 14.321 12.36 14.86C12.4611 14.9442 12.5777 15.0076 12.7033 15.0467C12.8289 15.0857 12.961 15.0996 13.092 15.0875C13.223 15.0755 13.3503 15.0377 13.4666 14.9763C13.583 14.915 13.6861 14.8313 13.77 14.73C13.9369 14.5265 14.0169 14.2654 13.9926 14.0033C13.9683 13.7412 13.8416 13.4993 13.64 13.33C12.6081 12.5006 11.3239 12.0484 10 12.0484C8.67609 12.0484 7.39188 12.5006 6.36 13.33ZM7 9C7.19779 9 7.39113 8.94135 7.55557 8.83147C7.72002 8.72159 7.8482 8.56541 7.92388 8.38268C7.99957 8.19996 8.01937 7.99889 7.98079 7.80491C7.9422 7.61093 7.84696 7.43275 7.70711 7.29289C7.56726 7.15304 7.38908 7.0578 7.19509 7.01921C7.00111 6.98063 6.80005 7.00043 6.61732 7.07612C6.43459 7.15181 6.27842 7.27998 6.16853 7.44443C6.05865 7.60888 6 7.80222 6 8C6 8.26522 6.10536 8.51957 6.2929 8.70711C6.48043 8.89464 6.73479 9 7 9ZM10 0C8.02219 0 6.08879 0.58649 4.4443 1.6853C2.79981 2.78412 1.51809 4.3459 0.761209 6.17317C0.00433284 8.00043 -0.193701 10.0111 0.192152 11.9509C0.578004 13.8907 1.53041 15.6725 2.92894 17.0711C4.32746 18.4696 6.10929 19.422 8.0491 19.8079C9.98891 20.1937 11.9996 19.9957 13.8268 19.2388C15.6541 18.4819 17.2159 17.2002 18.3147 15.5557C19.4135 13.9112 20 11.9778 20 10C20 8.68678 19.7413 7.38642 19.2388 6.17317C18.7363 4.95991 17.9997 3.85752 17.0711 2.92893C16.1425 2.00035 15.0401 1.26375 13.8268 0.761205C12.6136 0.258658 11.3132 0 10 0ZM10 18C8.41775 18 6.87104 17.5308 5.55544 16.6518C4.23985 15.7727 3.21447 14.5233 2.60897 13.0615C2.00347 11.5997 1.84504 9.99113 2.15372 8.43928C2.4624 6.88743 3.22433 5.46197 4.34315 4.34315C5.46197 3.22433 6.88743 2.4624 8.43928 2.15372C9.99113 1.84504 11.5997 2.00346 13.0615 2.60896C14.5233 3.21447 15.7727 4.23984 16.6518 5.55544C17.5308 6.87103 18 8.41775 18 10C18 12.1217 17.1572 14.1566 15.6569 15.6569C14.1566 17.1571 12.1217 18 10 18ZM13 7C12.8022 7 12.6089 7.05865 12.4444 7.16853C12.28 7.27841 12.1518 7.43459 12.0761 7.61732C12.0004 7.80004 11.9806 8.00111 12.0192 8.19509C12.0578 8.38907 12.153 8.56725 12.2929 8.70711C12.4328 8.84696 12.6109 8.9422 12.8049 8.98079C12.9989 9.01937 13.2 8.99957 13.3827 8.92388C13.5654 8.84819 13.7216 8.72002 13.8315 8.55557C13.9414 8.39112 14 8.19778 14 8C14 7.73478 13.8946 7.48043 13.7071 7.29289C13.5196 7.10536 13.2652 7 13 7Z" fill="black" />
                                 </svg>
                             </button>
-                            <p class="ps-1" aria-valuenow="0">0</p>
+                            <p class="ps-1 reaccion-carita" aria-valuenow="0">0</p>
                         </div>
                         <div class="me-2 mt-1 pe-1 d-flex ">
                             <button class="btn-reacciones d-flex like">
-                                <svg class="mt-1" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <svg class="like" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M7 9C7.19779 9 7.39113 8.94135 7.55557 8.83147C7.72002 8.72159 7.8482 8.56541 7.92388 8.38268C7.99957 8.19996 8.01937 7.99889 7.98079 7.80491C7.9422 7.61093 7.84696 7.43275 7.70711 7.29289C7.56726 7.15304 7.38908 7.0578 7.19509 7.01921C7.00111 6.98063 6.80005 7.00043 6.61732 7.07612C6.43459 7.15181 6.27842 7.27998 6.16853 7.44443C6.05865 7.60888 6 7.80222 6 8C6 8.26522 6.10536 8.51957 6.2929 8.70711C6.48043 8.89464 6.73479 9 7 9ZM10 0C8.02219 0 6.08879 0.58649 4.4443 1.6853C2.79981 2.78412 1.51809 4.3459 0.761209 6.17317C0.00433284 8.00043 -0.193701 10.0111 0.192152 11.9509C0.578004 13.8907 1.53041 15.6725 2.92894 17.0711C4.32746 18.4696 6.10929 19.422 8.0491 19.8079C9.98891 20.1937 11.9996 19.9957 13.8268 19.2388C15.6541 18.4819 17.2159 17.2002 18.3147 15.5557C19.4135 13.9112 20 11.9778 20 10C20 8.68678 19.7413 7.38642 19.2388 6.17317C18.7363 4.95991 17.9997 3.85752 17.0711 2.92893C16.1425 2.00035 15.0401 1.26375 13.8268 0.761205C12.6136 0.258658 11.3132 0 10 0ZM10 18C8.41775 18 6.87104 17.5308 5.55544 16.6518C4.23985 15.7727 3.21447 14.5233 2.60897 13.0615C2.00347 11.5997 1.84504 9.99113 2.15372 8.43928C2.4624 6.88743 3.22433 5.46197 4.34315 4.34315C5.46197 3.22433 6.88743 2.4624 8.43928 2.15372C9.99113 1.84504 11.5997 2.00346 13.0615 2.60896C14.5233 3.21447 15.7727 4.23984 16.6518 5.55544C17.5308 6.87103 18 8.41775 18 10C18 12.1217 17.1572 14.1566 15.6569 15.6569C14.1566 17.1571 12.1217 18 10 18ZM13 11H7C6.73479 11 6.48043 11.1054 6.2929 11.2929C6.10536 11.4804 6 11.7348 6 12C6 13.0609 6.42143 14.0783 7.17158 14.8284C7.92172 15.5786 8.93914 16 10 16C11.0609 16 12.0783 15.5786 12.8284 14.8284C13.5786 14.0783 14 13.0609 14 12C14 11.7348 13.8946 11.4804 13.7071 11.2929C13.5196 11.1054 13.2652 11 13 11ZM10 14C9.64928 13.9996 9.30481 13.9071 9.00117 13.7315C8.69752 13.556 8.44537 13.3037 8.27001 13H11.73C11.5546 13.3037 11.3025 13.556 10.9988 13.7315C10.6952 13.9071 10.3507 13.9996 10 14ZM13 7C12.8022 7 12.6089 7.05865 12.4444 7.16853C12.28 7.27841 12.1518 7.43459 12.0761 7.61732C12.0004 7.80004 11.9806 8.00111 12.0192 8.19509C12.0578 8.38907 12.153 8.56725 12.2929 8.70711C12.4328 8.84696 12.6109 8.9422 12.8049 8.98079C12.9989 9.01937 13.2 8.99957 13.3827 8.92388C13.5654 8.84819 13.7216 8.72002 13.8315 8.55557C13.9414 8.39112 14 8.19778 14 8C14 7.73478 13.8946 7.48043 13.7071 7.29289C13.5196 7.10536 13.2652 7 13 7Z"
                                         fill="#F91880" /></svg>
                             </button>
-                            <p class="ps-1" aria-valuenow="0">0</p>
+                            <p class="ps-1 reaccion-carita" aria-valuenow="532" style="color:#F91880">532</p>
                         </div>
                     </div>
-                    <h5>Comentarios</h5>
-                    <div class="d-flex pt-2">
-                        <svg width="65" height="70" viewBox="0 -5 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <pattern id="imgpattern" x="0" y="0" width="1" height="1">
-                                    <image width="65" height="70" xlink:href="" />
-                                </pattern>
-                            </defs>
-                            <path
-                                d="M39.5 20C39.5 30.7696 30.7696 39.5 20 39.5C9.23045 39.5 0.5 30.7696 0.5 20C0.5 9.23045 9.23045 0.5 20 0.5C30.7696 0.5 39.5 9.23045 39.5 20Z"
-                                stroke="#8A0BEE" fill="url(#imgpattern)" />
-                        </svg>
+                    <h5 class="ms-2">Comentarios</h5>
+                    <div class="d-flex pt-2 ms-2">
+                        <img class="img-perfil-pub" src="https://media.gq.com.mx/photos/6165c414e1224bdb3d42c49b/16:9/w_2560%2Cc_limit/habitos-de-un-hombre-con-estilo-como-se-comporta.jpg" alt="Foto de perfil">
                         <div class="d-grid">
-                            <div class="d-flex" id="datos">
-                                <p class="nombre-comentarios-desktop">@NombreUsuario</p>
-                                <p class="nombre-comentarios-desktop" style="color: grey;"> • 3h</p>
+                            <div class="d-flex ms-2" id="datos">
+                                <p class="nombre-comentarios-desktop">@Draven17</p>
+                                <p class="nombre-comentarios-desktop" style="color: grey;"> • 3min</p>
                             </div>
-                            <div class="d-flex" id="comentario-desktop">
-                                <p class="comentario-desktop p-2  m-0">comentario extenso para testear input</p>
+                            <div class="d-flex ms-2 cont-comentario-desktop " id="comentario-desktop ">
+                                <p class="comentario-desktop m-0 ">Muuy facheros</p>
                                 <div class="d-flex">
-                                    <div class="ps-2 d-flex align-items-center">
+                                    <div class="ps-2 d-flex align-items-center mt-2">
                                         <svg width="19" height="15" viewBox="0 0 19 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M17.2678 1.58905C16.2605 0.690292 14.9253 0.141742 13.5033 0.0424872C12.0812 -0.0567676 10.6662 0.299817 9.51381 1.04783C8.30478 0.247532 6.79992 -0.115362 5.30227 0.0322272C3.80462 0.179816 2.42543 0.826925 1.44244 1.84324C0.459443 2.85956 -0.054338 4.16959 0.00455679 5.50953C0.0634516 6.84947 0.690647 8.11978 1.75984 9.06466L7.66084 14.3246C8.15498 14.7574 8.8205 15 9.51381 15C10.2071 15 10.8726 14.7574 11.3668 14.3246L17.2678 9.06466C18.3773 8.07124 19 6.7275 19 5.32686C19 3.92622 18.3773 2.58247 17.2678 1.58905ZM15.9279 7.89765L10.0269 13.1492C9.95979 13.2095 9.87987 13.2574 9.7918 13.2901C9.70372 13.3228 9.60924 13.3396 9.51381 13.3396C9.41839 13.3396 9.3239 13.3228 9.23583 13.2901C9.14775 13.2574 9.06783 13.2095 9.00068 13.1492L3.09968 7.87228C2.35446 7.19436 1.93717 6.28369 1.93717 5.33531C1.93717 4.38694 2.35446 3.47627 3.09968 2.79834C3.85907 2.13111 4.88326 1.75697 5.95041 1.75697C7.01755 1.75697 8.04174 2.13111 8.80113 2.79834C8.88947 2.8776 8.99457 2.94051 9.11036 2.98345C9.22616 3.02638 9.35036 3.04848 9.4758 3.04848C9.60125 3.04848 9.72545 3.02638 9.84124 2.98345C9.95704 2.94051 10.0621 2.8776 10.1505 2.79834C10.9099 2.13111 11.9341 1.75697 13.0012 1.75697C14.0683 1.75697 15.0925 2.13111 15.8519 2.79834C16.6074 3.46738 17.0384 4.37312 17.0526 5.32152C17.0668 6.26992 16.6631 7.18555 15.9279 7.87228V7.89765Z" fill="#F91880" fill-opacity="0.83"/>
                                         </svg>
                                     </div>
-                                    <p class="pt-3 ps-1" style="color: #F91880;">5</p>
+                                    <p class="pt-3 ps-1 " style="color: #F91880;">12</p>
                                 </div>
                             </div>
                             <div class="d-flex m-0" id="reacion-comentarios-desktop">
-                                <p class="texto-reaccion-desktop">Responder</p>
+                                <p class="texto-reaccion-desktop pe-1">Responder</p>
                                 <p class="texto-reaccion-desktop">• Me gusta</p>
                             </div>
                         </div>
                     </div>
-                    <div class="d-flex pt-2 pb-2">
-                        <div>
-                            <svg width="65" height="70" viewBox="0 -5 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <defs>
-                                    <pattern id="imgpattern" x="0" y="0" width="1" height="1">
-                                        <image width="65" height="70" xlink:href="" />
-                                    </pattern>
-                                </defs>
-                                <path
-                                    d="M39.5 20C39.5 30.7696 30.7696 39.5 20 39.5C9.23045 39.5 0.5 30.7696 0.5 20C0.5 9.23045 9.23045 0.5 20 0.5C30.7696 0.5 39.5 9.23045 39.5 20Z"
-                                    stroke="#8A0BEE" fill="url(#imgpattern)" />
-                            </svg>
-                        </div>
+                    <div class="d-flex pt-2 ms-2">
+                        <img class="img-perfil-pub" src="data:image/jpeg;base64,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"
+                            alt="Foto de perfil">
                         <div class="d-grid">
-                            <div class="d-flex" id="datos">
-                                <p class="nombre-comentarios-desktop">@NombreUsuario</p>
-                                <p class="nombre-comentarios-desktop" style="color: grey;"> • 3h</p>
+                            <div class="d-flex ms-2" id="datos">
+                                <p class="nombre-comentarios-desktop">@Maartina.2</p>
+                                <p class="nombre-comentarios-desktop" style="color: grey;"> • 30min</p>
                             </div>
-                            <div class="d-flex" id="comentario-desktop">
-                                <p class="comentario-desktop p-2  m-0">comentario extenso para testear input</p>
+                            <div class="d-flex ms-2 cont-comentario-desktop " id="comentario-desktop ">
+                                <p class="comentario-desktop m-0 ">Que bonito :)</p>
                                 <div class="d-flex">
-                                    <div class="ps-2 d-flex align-items-center">
+                                    <div class="ps-2 d-flex align-items-center mt-2">
                                         <svg width="19" height="15" viewBox="0 0 19 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M17.2678 1.58905C16.2605 0.690292 14.9253 0.141742 13.5033 0.0424872C12.0812 -0.0567676 10.6662 0.299817 9.51381 1.04783C8.30478 0.247532 6.79992 -0.115362 5.30227 0.0322272C3.80462 0.179816 2.42543 0.826925 1.44244 1.84324C0.459443 2.85956 -0.054338 4.16959 0.00455679 5.50953C0.0634516 6.84947 0.690647 8.11978 1.75984 9.06466L7.66084 14.3246C8.15498 14.7574 8.8205 15 9.51381 15C10.2071 15 10.8726 14.7574 11.3668 14.3246L17.2678 9.06466C18.3773 8.07124 19 6.7275 19 5.32686C19 3.92622 18.3773 2.58247 17.2678 1.58905ZM15.9279 7.89765L10.0269 13.1492C9.95979 13.2095 9.87987 13.2574 9.7918 13.2901C9.70372 13.3228 9.60924 13.3396 9.51381 13.3396C9.41839 13.3396 9.3239 13.3228 9.23583 13.2901C9.14775 13.2574 9.06783 13.2095 9.00068 13.1492L3.09968 7.87228C2.35446 7.19436 1.93717 6.28369 1.93717 5.33531C1.93717 4.38694 2.35446 3.47627 3.09968 2.79834C3.85907 2.13111 4.88326 1.75697 5.95041 1.75697C7.01755 1.75697 8.04174 2.13111 8.80113 2.79834C8.88947 2.8776 8.99457 2.94051 9.11036 2.98345C9.22616 3.02638 9.35036 3.04848 9.4758 3.04848C9.60125 3.04848 9.72545 3.02638 9.84124 2.98345C9.95704 2.94051 10.0621 2.8776 10.1505 2.79834C10.9099 2.13111 11.9341 1.75697 13.0012 1.75697C14.0683 1.75697 15.0925 2.13111 15.8519 2.79834C16.6074 3.46738 17.0384 4.37312 17.0526 5.32152C17.0668 6.26992 16.6631 7.18555 15.9279 7.87228V7.89765Z" fill="#F91880" fill-opacity="0.83"/>
                                         </svg>
                                     </div>
-                                    <p class="pt-3 ps-1" style="color: #F91880;">5</p>
+                                    <p class="pt-3 ps-1 " style="color: #F91880;">2</p>
                                 </div>
                             </div>
                             <div class="d-flex m-0" id="reacion-comentarios-desktop">
-                                <p class="texto-reaccion-desktop">Responder</p>
+                                <p class="texto-reaccion-desktop pe-1">Responder</p>
                                 <p class="texto-reaccion-desktop">• Me gusta</p>
                             </div>
                         </div>
