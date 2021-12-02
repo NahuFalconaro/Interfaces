@@ -760,12 +760,14 @@
         background-color: white;
         padding: 0;
         margin: 0;
+        margin-bottom: 4px;
         color: black;
         border-radius: 10px;
-        height: 25px;
+        height: 23px;
         width: 25px;
         outline: inherit;
-        border: 1px solid black;
+        border: 0;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.8);
     }
     .titulo-comentario {
         font-size: 20px;
@@ -807,37 +809,45 @@
         font-size: 18px;
         margin-bottom: 1em;
     }
-.icon-scroll,
-.icon-scroll:before{
-  position: absolute;
-  left: 50%;
-
-}
-.icon-scroll{
-  width: 40px;
-  height: 70px;
-  margin-left: -20px;
-  top:80%;
-  margin-top: -35px;
-  box-shadow: 0 0 0 3px #8A0BEE inset;
-  border-radius: 25px;
-}
-.icon-scroll:before{
-  content: '';
-  width: 8px;
-  height: 8px;
-  background: #8A0BEE;
-  margin-left: -4px;
-  top: 8px;
-  border-radius: 4px;
-  animation-duration: 1.5s;
-  animation-iteration-count: infinite;
-  animation-name: scroll;
-}
-@keyframes scroll{
-        0%{
-            opacity: 1;}
-        100%{
+    .icon-scroll,
+    .icon-scroll:before {
+        position: absolute;
+        left: 50%;
+    }
+    .icon-scroll {
+        width: 40px;
+        height: 70px;
+        margin-left: -20px;
+        top: 80%;
+        margin-top: -35px;
+        box-shadow: 0 0 0 3px #8A0BEE inset;
+        border-radius: 25px;
+    }
+    .icon-scroll:before {
+        content: '';
+        width: 8px;
+        height: 8px;
+        background: #8A0BEE;
+        margin-left: -4px;
+        top: 8px;
+        border-radius: 4px;
+        animation-duration: 1.5s;
+        animation-iteration-count: infinite;
+        animation-name: scroll;
+    }
+    .bordes-contenedores {
+        border: 1.5px solid #782DB2;
+        border-right: 0;
+        border-left: 0;
+    }
+    .bordes-contenedores:last-child {
+        border-bottom: 0;
+    }
+    @keyframes scroll {
+        0% {
+            opacity: 1;
+        }
+        100% {
             opacity: 0;
             transform: translateY(46px);
         }
