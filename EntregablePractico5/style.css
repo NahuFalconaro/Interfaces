@@ -11,7 +11,7 @@
     nav {
         border-bottom: 0.5px solid rgba(82, 80, 80, 0.274);
     }
-    .icon-buscador-desktop {
+    /*.icon-buscador-desktop {
         position: relative;
         left: 5%;
     }
@@ -33,7 +33,7 @@
         margin-top: 1%;
         margin-bottom: 1%;
         width: 19.8%;
-    }
+    }*/
     /*--- Chat ---*/
     .mensajes {
         display: flex;
@@ -245,6 +245,9 @@
         stroke: white;
     }
     .btn-desktop:hover svg ellipse {
+        stroke: white;
+    }
+    .btn-desktop:hover svg circle {
         stroke: white;
     }
     .layout-desktop {
@@ -792,5 +795,8 @@
         font-weight: 100;
         font-size: 18px;
         margin-bottom: 1em;
+    }
+    .secciones-index{
+       
     }
 }
