@@ -41,7 +41,7 @@
         align-items: center;
         flex-direction: column;
         right: 0%;
-        margin-top: 2%;
+        margin-top: 0;
     }
     .mensajes h1 {
         font-size: 24px;
@@ -250,6 +250,14 @@
     .btn-desktop:hover svg circle {
         stroke: white;
     }
+    .btn-desktop:nth-child(3):hover path {
+        stroke: white;
+        fill: white;
+    }
+    .btn-desktop:nth-child(3):hover svg ellipse {
+        stroke: white;
+        fill: #8A0BEE;
+    }
     .layout-desktop {
         display: grid;
         grid-template-areas: '. . . . subirPublicaicon . . . .' '. . . . publicaciones . . . .';
@@ -257,7 +265,7 @@
     .a-quien-seguir {
         position: fixed;
         left: 2%;
-        top: 14%;
+        top: 10%;
         padding: 1%;
         border-radius: 15px;
         box-shadow: 0px 4px 9px rgba(0, 0, 0, 0.25);
@@ -327,19 +335,52 @@
     .btn-reacciones {
         border: none;
         background-color: transparent;
+        padding-right: 1px;
     }
-    .nombre-comentarios-desktop{
+    .nombre-comentarios-desktop {
         font-size: 15px;
         height: 10px;
     }
-    .comentario-desktop{
+    .comentario-desktop {
+        display: flex;
+        align-items: center;
         box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
         border-radius: 10px;
-        height: 45px;
+        padding: 0.3em 0.5em 0.3em 0.5em;
+        height: 38px;
     }
-    .texto-reaccion-desktop{
+    .texto-reaccion-desktop {
         color: gray;
-        font-size: 12px;
+        font-size: 14px;
+    }
+    .texto-reaccion-desktop:nth-child(1) {
+        margin-left: 0.7em;
+    }
+    .img-perfil-pub {
+        object-fit: cover;
+        width: 60px;
+        height: 60px;
+        border-radius: 1000px;
+        border: 1px solid rgba(138, 11, 238, 1);
+    }
+    .cont-comentario-desktop {
+        height: 3em;
+    }
+    .img-publi-desktop {
+        object-fit: cover;
+        border-radius: 10px;
+    }
+    .reaccion-carita {
+        padding-top: 0.1em;
+    }
+    .dislike {
+        margin-top: 1.5px;
+    }
+    .like {
+        margin-top: 1px;
+    }
+    .botonera-nav {
+        margin-right: 5%;
     }
 }
 
